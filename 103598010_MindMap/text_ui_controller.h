@@ -1,12 +1,13 @@
 #pragma once
 #include "mind_map_model.h"
 
-class TextUI
+class TextUIController
 {
 public:
-    TextUI(MindMapModel* mindMapModel, ostream& ostream, istream& istream);
-    ~TextUI();
+    TextUIController(MindMapModel* mindMapModel, ostream& ostream, istream& istream);
+    ~TextUIController();
     bool performUI();
+    void run();
 private:
     ostream& _ostream;
     istream& _istream;
@@ -20,5 +21,5 @@ private:
     string readLineString(string message);
     int readInt(string message);
     char readChar(string message);
-    map<int, bool(TextUI::*)()> _instructionMap;
+    map<int, bool(TextUIController::*)()> _instructionMap;
 };

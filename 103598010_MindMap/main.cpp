@@ -2,7 +2,7 @@
 
 #include "stdafx.h"
 #include "mind_map_model.h"
-#include "text_ui.h"
+#include "text_ui_controller.h"
 
 using namespace std;
 
@@ -10,7 +10,9 @@ using namespace std;
 int _tmain(int argc, _TCHAR* argv[])
 {
     MindMapModel mindMapModel;
-    TextUI textUI(&mindMapModel, cout, cin);
-    while (textUI.performUI());
+    TextUIController textUIController(&mindMapModel, cout, cin);
+    textUIController.run();
+//    while (textUIController.performUI());
+    system("pause");
     return 0;
 }

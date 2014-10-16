@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\TextUIState">
+      <UniqueIdentifier>{b9be2bc7-b8da-48b4-82fb-472410a51cae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TextUIState">
+      <UniqueIdentifier>{d7c051ff-7901-40f6-95f0-621c2fcc2c87}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -25,9 +31,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="mind_map_model.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="text_ui.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="component.h">
@@ -48,6 +51,21 @@
     <ClInclude Include="componentFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="menu_state.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="text_ui_state.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="text_ui_view.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="text_ui_controller.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="exit_state.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -57,9 +75,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="mind_map_model.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="text_ui.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="component.cpp">
@@ -78,6 +93,21 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="componentFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="menu_state.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="text_ui_state.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="text_ui_controller.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="text_ui_view.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="exit_state.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

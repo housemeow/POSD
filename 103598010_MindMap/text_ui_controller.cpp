@@ -1,27 +1,41 @@
 #include "stdafx.h"
-#include "text_ui.h"
+#include "text_ui_controller.h"
 #include "mind_map_model.h"
 #include "componentFactory.h"
+#include "text_ui_state.h"
+#include "menu_state.h"
 
 using namespace std;
 
-TextUI::TextUI(MindMapModel* mindMapModel, ostream& ostream, istream& istream)
+TextUIController::TextUIController(MindMapModel* mindMapModel, ostream& ostream, istream& istream)
     : _ostream(ostream), _istream(istream)
 {
     _mindMapModel = mindMapModel;
-    _instructionMap[1] = &TextUI::createMindMap;
-    _instructionMap[2] = &TextUI::insertNewNode;
-    _instructionMap[3] = &TextUI::displayMindMap;
-    _instructionMap[4] = &TextUI::saveMindMap;
-    _instructionMap[5] = &TextUI::exit;
+    _instructionMap[1] = &TextUIController::createMindMap;
+    _instructionMap[2] = &TextUIController::insertNewNode;
+    _instructionMap[3] = &TextUIController::displayMindMap;
+    _instructionMap[4] = &TextUIController::saveMindMap;
+    _instructionMap[5] = &TextUIController::exit;
 }
 
-TextUI::~TextUI()
+TextUIController::~TextUIController()
 {
 }
 
+
+void TextUIController::run()
+{
+    TextUIState* state = new MenuState();
+    do {
+        TextUIState* nextState = state->run();
+        delete state;
+        state = nextState;
+    } while(state != NULL);
+}
+
+
 // 執行TextUI
-bool TextUI::performUI()
+bool TextUIController::performUI()
 {
     int instruction = readInt(kTextUIMenuString);
     if (_instructionMap[instruction]) {
@@ -34,7 +48,7 @@ bool TextUI::performUI()
 }
 
 // 建立MindMap
-bool TextUI::createMindMap()
+bool TextUIController::createMindMap()
 {
     string description;
     description = readLineString(kTextUICreateMindMapMessage);
@@ -44,7 +58,7 @@ bool TextUI::createMindMap()
 }
 
 // 顯示提示訊息並要求使用者輸入一個整數
-int TextUI::readInt(string message)
+int TextUIController::readInt(string message)
 {
     _ostream << message << kTextUINotifyUserInputCharacter;
     int integer;
@@ -53,7 +67,7 @@ int TextUI::readInt(string message)
 }
 
 // 顯示提示訊息並要求使用者輸入一行文字
-string TextUI::readLineString(string message)
+string TextUIController::readLineString(string message)
 {
     _ostream << message << kTextUINotifyUserInputCharacter;
     string line;
@@ -66,7 +80,7 @@ string TextUI::readLineString(string message)
 }
 
 // 顯示提示訊息並要求使用者輸入一個字元
-char TextUI::readChar(string message)
+char TextUIController::readChar(string message)
 {
     _ostream << message << kTextUINotifyUserInputCharacter;
     char character;
@@ -75,7 +89,7 @@ char TextUI::readChar(string message)
 }
 
 // 讓使用者加入一個節點
-bool TextUI::insertNewNode()
+bool TextUIController::insertNewNode()
 {
     if (!_mindMapModel->getMindMap()) {
         _ostream << kMindMapNotExist;
@@ -107,14 +121,14 @@ bool TextUI::insertNewNode()
 }
 
 // 在螢幕上顯示MindMap
-bool TextUI::displayMindMap()
+bool TextUIController::displayMindMap()
 {
     _ostream << _mindMapModel->getMindMapDisplayString() << endl;
     return true;
 }
 
 // 儲存MindMap
-bool TextUI::saveMindMap()
+bool TextUIController::saveMindMap()
 {
     _mindMapModel->saveMindMap();
     _ostream << kSaveMindMapSuccess;
@@ -122,7 +136,7 @@ bool TextUI::saveMindMap()
 }
 
 // 離開主程式
-bool TextUI::exit()
+bool TextUIController::exit()
 {
     return false;
 }
