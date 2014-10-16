@@ -10,6 +10,8 @@ public:
     virtual TextUIState* run() = 0;
 protected:
     string readLineString();
+    int readInt();
+
     TextUIView _textUIView;
     MindMapModel* _mindMapModel;
 };

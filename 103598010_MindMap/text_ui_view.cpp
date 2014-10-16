@@ -68,3 +68,35 @@ void TextUIView::printCreateMindMapMessage()
 {
     cout << "Please enter the topic:\n";
 }
+
+void TextUIView::printMindMapNotExist()
+{
+    cout << "Mind map is not exist\n";
+}
+
+void TextUIView::printEnterNodeIDMessage()
+{
+    cout << "Enter the node ID:\n";
+}
+
+void TextUIView::printInsertNewNodeMenu()
+{
+    cout << "a. Insert a parent node\n";
+    cout << "b. Insert a child node\n";
+    cout << "c. Insert a sibling node\n";
+}
+
+void TextUIView::printEnterNodeNameMessage()
+{
+    cout << "Enter the node name\n";
+}
+
+
+void TextUIView::printLine(string message)
+{
+    cout << message << endl;
+}
+void TextUIView::printWrongInsertCommandMessage()
+{
+    cout << "insert command is not correct!\n";
+}

@@ -13,4 +13,10 @@ public:
     void getMindMapString(Component* component, stringstream& stringStream, bool needVerticleLine);
     void printInputNotify();
     void printCreateMindMapMessage();
+    void printMindMapNotExist();
+    void printEnterNodeIDMessage();
+    void printInsertNewNodeMenu();
+    void printEnterNodeNameMessage();
+    void printLine(string message);
+    void printWrongInsertCommandMessage();
 };
