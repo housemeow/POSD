@@ -84,6 +84,7 @@
     <ClInclude Include="componentFactory.h" />
     <ClInclude Include="composite.h" />
     <ClInclude Include="constants.h" />
+    <ClInclude Include="create_mindmap_state.h" />
     <ClInclude Include="exit_state.h" />
     <ClInclude Include="menu_state.h" />
     <ClInclude Include="mind_map_model.h" />
@@ -100,6 +101,7 @@
     <ClCompile Include="componentFactory.cpp" />
     <ClCompile Include="composite.cpp" />
     <ClCompile Include="constants.cpp" />
+    <ClCompile Include="create_mindmap_state.cpp" />
     <ClCompile Include="exit_state.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="menu_state.cpp" />

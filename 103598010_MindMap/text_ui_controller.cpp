@@ -25,7 +25,7 @@ TextUIController::~TextUIController()
 
 void TextUIController::run()
 {
-    TextUIState* state = new MenuState();
+    TextUIState* state = new MenuState(_mindMapModel);
     do {
         TextUIState* nextState = state->run();
         delete state;

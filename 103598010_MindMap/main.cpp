@@ -12,7 +12,6 @@ int _tmain(int argc, _TCHAR* argv[])
     MindMapModel mindMapModel;
     TextUIController textUIController(&mindMapModel, cout, cin);
     textUIController.run();
-//    while (textUIController.performUI());
     system("pause");
     return 0;
 }

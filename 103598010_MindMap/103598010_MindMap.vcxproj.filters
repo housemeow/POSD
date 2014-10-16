@@ -66,6 +66,9 @@
     <ClInclude Include="exit_state.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="create_mindmap_state.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -108,6 +111,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="exit_state.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="create_mindmap_state.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -4,7 +4,7 @@ class ExitState :
     public TextUIState
 {
 public:
-    ExitState();
+    ExitState(MindMapModel* mindMapModel);
     ~ExitState();
     TextUIState* run();
 };

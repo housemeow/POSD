@@ -4,7 +4,7 @@ class MenuState :
     public TextUIState
 {
 public:
-    MenuState();
+    MenuState(MindMapModel* mindMapModel);
     ~MenuState();
     TextUIState* run();
 };

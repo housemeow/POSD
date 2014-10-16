@@ -2,7 +2,7 @@
 #include "exit_state.h"
 
 
-ExitState::ExitState()
+ExitState::ExitState(MindMapModel* mindMapModel) : TextUIState(mindMapModel)
 {
 }
 
