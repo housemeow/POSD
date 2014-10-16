@@ -62,43 +62,6 @@ void MindMapModel::insertNewNode(Component* component, string description, Inser
     insertNode(component, newNode, insertMode);
 }
 
-//取得MindMap的輸出
-string MindMapModel::getMindMapDisplayString()
-{
-    stringstream stringStream;
-    getMindMapString(_mindMap, stringStream, false);
-    string displayMindMapString = kTheMindMapString + _mindMap->getDescription() + kIsDisplayedAsFollows;
-    displayMindMapString += stringStream.str();
-    return displayMindMapString;
-}
-
-// 產出MindMapString的遞迴函數
-void MindMapModel::getMindMapString(Component* component, stringstream& stringStream, bool needVerticleLine)
-{
-    if (component) {
-        stringStream << "＋－" << component->getName() << endl;
-        stringstream tempStringstream;
-        for (ComponentIterator iterator = component->getNodeList().begin(), end = component->getNodeList().end(); iterator != end;) {
-            Component* child = *iterator;
-            ++iterator;
-            getMindMapString(child, tempStringstream, component->getNodeList().size() > 1 && iterator != end);
-        }
-        bool first = true;
-        while (!tempStringstream.eof()) {
-            string line;
-            getline(tempStringstream, line);
-            if (line.size() != 0) {
-                if (needVerticleLine) {
-                    stringStream << "｜　" << line << endl;
-                } else {
-                    stringStream << "　　" << line << endl;
-                }
-            }
-            first = false;
-        }
-    }
-}
-
 // 將MindMap存檔
 void MindMapModel::saveMindMap()
 {

@@ -10,7 +10,7 @@ using namespace std;
 int _tmain(int argc, _TCHAR* argv[])
 {
     MindMapModel mindMapModel;
-    TextUIController textUIController(&mindMapModel, cout, cin);
+    TextUIController textUIController(&mindMapModel);
     textUIController.run();
     system("pause");
     return 0;

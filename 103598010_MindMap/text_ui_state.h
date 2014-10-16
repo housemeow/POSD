@@ -11,7 +11,7 @@ public:
 protected:
     string readLineString();
     int readInt();
-
+    char readChar();
     TextUIView _textUIView;
     MindMapModel* _mindMapModel;
 };

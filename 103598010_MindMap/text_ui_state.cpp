@@ -26,11 +26,21 @@ string TextUIState::readLineString()
     return "";
 }
 
-// 顯示提示訊息並要求使用者輸入一個整數
+// 要求使用者輸入一個整數
 int TextUIState::readInt()
 {
     _textUIView.printInputNotify();
     int integer;
     cin >> integer;
     return integer;
+}
+
+
+// 要求使用者輸入一個字元
+char TextUIState::readChar()
+{
+    _textUIView.printInputNotify();
+    char character;
+    cin >> character;
+    return character;
 }
