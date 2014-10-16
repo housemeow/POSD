@@ -13,11 +13,23 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\TextUIState">
+    <Filter Include="Header Files\Components">
+      <UniqueIdentifier>{304ea154-aaaa-426e-b695-ddbe08ad629e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TextUIStates">
       <UniqueIdentifier>{b9be2bc7-b8da-48b4-82fb-472410a51cae}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\TextUIState">
+    <Filter Include="Source Files\TextUIStates">
       <UniqueIdentifier>{d7c051ff-7901-40f6-95f0-621c2fcc2c87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components">
+      <UniqueIdentifier>{f7901d1b-b0c1-4f94-9989-87db81f3186a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Exceptions">
+      <UniqueIdentifier>{eb62a490-54bf-4af7-bdb5-1ca988de2139}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Exceptions">
+      <UniqueIdentifier>{13cfd745-c019-4236-b193-8466e29f8393}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -33,49 +45,61 @@
     <ClInclude Include="mind_map_model.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="component.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="node.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="composite.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="root.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="constants.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="text_ui_view.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="text_ui_controller.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="component_factory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="exit_state.h">
-      <Filter>Header Files\TextUIState</Filter>
+      <Filter>Header Files\TextUIStates</Filter>
     </ClInclude>
     <ClInclude Include="insert_state.h">
-      <Filter>Header Files\TextUIState</Filter>
+      <Filter>Header Files\TextUIStates</Filter>
     </ClInclude>
     <ClInclude Include="menu_state.h">
-      <Filter>Header Files\TextUIState</Filter>
+      <Filter>Header Files\TextUIStates</Filter>
     </ClInclude>
     <ClInclude Include="text_ui_state.h">
-      <Filter>Header Files\TextUIState</Filter>
+      <Filter>Header Files\TextUIStates</Filter>
     </ClInclude>
     <ClInclude Include="create_mind_map_state.h">
-      <Filter>Header Files\TextUIState</Filter>
+      <Filter>Header Files\TextUIStates</Filter>
     </ClInclude>
     <ClInclude Include="display_mind_map_state.h">
-      <Filter>Header Files\TextUIState</Filter>
+      <Filter>Header Files\TextUIStates</Filter>
+    </ClInclude>
+    <ClInclude Include="composite.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="component_factory.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="component.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="node.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="root.h">
+      <Filter>Header Files\Components</Filter>
     </ClInclude>
     <ClInclude Include="save_state.h">
+      <Filter>Header Files\TextUIStates</Filter>
+    </ClInclude>
+    <ClInclude Include="edit_state.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="load_state.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="redo_state.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="undo_state.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="enumeration.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -89,49 +113,61 @@
     <ClCompile Include="mind_map_model.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="component.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="node.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="composite.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="root.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="constants.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="text_ui_controller.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="text_ui_view.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="component_factory.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="exit_state.cpp">
-      <Filter>Source Files\TextUIState</Filter>
+      <Filter>Source Files\TextUIStates</Filter>
     </ClCompile>
     <ClCompile Include="insert_state.cpp">
-      <Filter>Source Files\TextUIState</Filter>
+      <Filter>Source Files\TextUIStates</Filter>
     </ClCompile>
     <ClCompile Include="menu_state.cpp">
-      <Filter>Source Files\TextUIState</Filter>
+      <Filter>Source Files\TextUIStates</Filter>
     </ClCompile>
     <ClCompile Include="text_ui_state.cpp">
-      <Filter>Source Files\TextUIState</Filter>
+      <Filter>Source Files\TextUIStates</Filter>
     </ClCompile>
     <ClCompile Include="create_mind_map_state.cpp">
-      <Filter>Source Files\TextUIState</Filter>
+      <Filter>Source Files\TextUIStates</Filter>
     </ClCompile>
     <ClCompile Include="display_mind_map_state.cpp">
-      <Filter>Source Files\TextUIState</Filter>
+      <Filter>Source Files\TextUIStates</Filter>
+    </ClCompile>
+    <ClCompile Include="component.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="composite.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="node.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="root.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="component_factory.cpp">
+      <Filter>Source Files\Components</Filter>
     </ClCompile>
     <ClCompile Include="save_state.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="edit_state.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="load_state.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="redo_state.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="undo_state.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="enumeration.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -46,8 +46,8 @@ TextUIState* InsertState::run()
             description = readLineString();
             _mindMapModel->insertNewNode(component, description, instructionEnum);
             continueInput = false;
-        } catch (string exception) {
-            _textUIView.printLine(exception);
+        } catch (exception exception) {
+            _textUIView.printException(exception);
         }
     }
     _textUIView.printMindMap(_mindMapModel->getMindMap());

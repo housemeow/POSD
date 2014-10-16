@@ -18,6 +18,7 @@ public:
     void printInsertNewNodeMenu();
     void printEnterNodeNameMessage();
     void printLine(string message);
+    void printException(exception exception);
     void printWrongInsertCommandMessage();
     void printWrongMenuInstruction();
     void printSaveMindMapSuccess();

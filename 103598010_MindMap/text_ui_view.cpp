@@ -15,9 +15,13 @@ void TextUIView::printMenu()
 {
     cout << "1. Create a new mind map\n";
     cout << "2. Insert a new node\n";
-    cout << "3. Display mind map\n";
-    cout << "4. Save mind map\n";
-    cout << "5. Exit\n";
+    cout << "3. Edit a node\n";
+    cout << "4. Display mind map\n";
+    cout << "5. Save mind map\n";
+    cout << "6. Load mind map\n";
+    cout << "7. Redo\n";
+    cout << "8. Undo\n";
+    cout << "9. Exit\n";
 }
 
 //¿é¥XMindMap
@@ -96,6 +100,13 @@ void TextUIView::printLine(string message)
 {
     cout << message << endl;
 }
+
+
+void TextUIView::printException(exception exception)
+{
+    cout << exception.what() << endl;
+}
+
 void TextUIView::printWrongInsertCommandMessage()
 {
     cout << "insert command is not correct!\n";

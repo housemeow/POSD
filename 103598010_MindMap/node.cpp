@@ -12,5 +12,5 @@ Node::~Node()
 // 取得Node的名稱
 string Node::getTypeName()
 {
-    return kNodeName;
+    return "Node";
 }
