@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "insert_state.h"
 #include "menu_state.h"
-#include "componentFactory.h"
+#include "component_factory.h"
 
 InsertState::InsertState(MindMapModel* mindMapModel) : TextUIState(mindMapModel)
 {
@@ -18,7 +18,7 @@ TextUIState* InsertState::run()
         _textUIView.printMindMapNotExist();
         return new MenuState(_mindMapModel);
     }
-    _textUIView.printMindMap(_mindMapModel);
+    _textUIView.printMindMap(_mindMapModel->getMindMap());
     int id;
     Component* component = NULL;
     while (component == NULL) {
@@ -50,6 +50,6 @@ TextUIState* InsertState::run()
             _textUIView.printLine(exception);
         }
     }
-    _textUIView.printMindMap(_mindMapModel);
+    _textUIView.printMindMap(_mindMapModel->getMindMap());
     return new MenuState(_mindMapModel);
 }

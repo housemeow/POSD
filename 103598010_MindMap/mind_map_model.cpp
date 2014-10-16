@@ -1,6 +1,6 @@
 ﻿#include "stdafx.h"
 #include "mind_map_model.h"
-#include "componentFactory.h"
+#include "component_factory.h"
 
 using namespace std;
 

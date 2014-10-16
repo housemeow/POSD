@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "text_ui_controller.h"
 #include "mind_map_model.h"
-#include "componentFactory.h"
+#include "component_factory.h"
 #include "text_ui_state.h"
 #include "menu_state.h"
 
@@ -30,6 +30,8 @@ void TextUIController::run()
         TextUIState* nextState = state->run();
         delete state;
         state = nextState;
+        TextUIView textUIView;
+        textUIView.printLine("");
     } while(state != NULL);
 }
 

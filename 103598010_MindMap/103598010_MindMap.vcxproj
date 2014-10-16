@@ -81,16 +81,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="component.h" />
-    <ClInclude Include="componentFactory.h" />
+    <ClInclude Include="component_factory.h" />
     <ClInclude Include="composite.h" />
     <ClInclude Include="constants.h" />
-    <ClInclude Include="create_mindmap_state.h" />
+    <ClInclude Include="create_mind_map_state.h" />
+    <ClInclude Include="display_mind_map_state.h" />
     <ClInclude Include="exit_state.h" />
     <ClInclude Include="insert_state.h" />
     <ClInclude Include="menu_state.h" />
     <ClInclude Include="mind_map_model.h" />
     <ClInclude Include="node.h" />
     <ClInclude Include="root.h" />
+    <ClInclude Include="save_state.h" />
     <ClInclude Include="text_ui_state.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -99,10 +101,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="component.cpp" />
-    <ClCompile Include="componentFactory.cpp" />
+    <ClCompile Include="component_factory.cpp" />
     <ClCompile Include="composite.cpp" />
     <ClCompile Include="constants.cpp" />
-    <ClCompile Include="create_mindmap_state.cpp" />
+    <ClCompile Include="create_mind_map_state.cpp" />
+    <ClCompile Include="display_mind_map_state.cpp" />
     <ClCompile Include="exit_state.cpp" />
     <ClCompile Include="insert_state.cpp" />
     <ClCompile Include="main.cpp" />
@@ -110,6 +113,7 @@
     <ClCompile Include="mind_map_model.cpp" />
     <ClCompile Include="node.cpp" />
     <ClCompile Include="root.cpp" />
+    <ClCompile Include="save_state.cpp" />
     <ClCompile Include="text_ui_state.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

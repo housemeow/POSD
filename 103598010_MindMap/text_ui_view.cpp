@@ -21,11 +21,11 @@ void TextUIView::printMenu()
 }
 
 //¿é¥XMindMap
-void TextUIView::printMindMap(MindMapModel* mindMapModel)
+void TextUIView::printMindMap(Component* component)
 {
     stringstream stringStream;
-    getMindMapString(mindMapModel->getMindMap(), stringStream, false);
-    string displayMindMapString = "The mind map " + mindMapModel->getMindMap()->getDescription() + " is displayed as follows:\n";
+    getMindMapString(component, stringStream, false);
+    string displayMindMapString = "The mind map " + component->getDescription() + " is displayed as follows:\n";
     displayMindMapString += stringStream.str();
     cout << displayMindMapString;
 }
@@ -99,4 +99,14 @@ void TextUIView::printLine(string message)
 void TextUIView::printWrongInsertCommandMessage()
 {
     cout << "insert command is not correct!\n";
+}
+
+void TextUIView::printWrongMenuInstruction()
+{
+    cout << "menu instrution is not correct!\n";
+}
+
+void TextUIView::printSaveMindMapSuccess()
+{
+    cout << "Save MindMap Success\n";
 }

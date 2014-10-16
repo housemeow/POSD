@@ -48,28 +48,34 @@
     <ClInclude Include="constants.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="componentFactory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="menu_state.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="text_ui_state.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="text_ui_view.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="text_ui_controller.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="exit_state.h">
+    <ClInclude Include="component_factory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="create_mindmap_state.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="exit_state.h">
+      <Filter>Header Files\TextUIState</Filter>
     </ClInclude>
     <ClInclude Include="insert_state.h">
+      <Filter>Header Files\TextUIState</Filter>
+    </ClInclude>
+    <ClInclude Include="menu_state.h">
+      <Filter>Header Files\TextUIState</Filter>
+    </ClInclude>
+    <ClInclude Include="text_ui_state.h">
+      <Filter>Header Files\TextUIState</Filter>
+    </ClInclude>
+    <ClInclude Include="create_mind_map_state.h">
+      <Filter>Header Files\TextUIState</Filter>
+    </ClInclude>
+    <ClInclude Include="display_mind_map_state.h">
+      <Filter>Header Files\TextUIState</Filter>
+    </ClInclude>
+    <ClInclude Include="save_state.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -98,28 +104,34 @@
     <ClCompile Include="constants.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="componentFactory.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="menu_state.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="text_ui_state.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="text_ui_controller.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="text_ui_view.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="exit_state.cpp">
+    <ClCompile Include="component_factory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="create_mindmap_state.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="exit_state.cpp">
+      <Filter>Source Files\TextUIState</Filter>
     </ClCompile>
     <ClCompile Include="insert_state.cpp">
+      <Filter>Source Files\TextUIState</Filter>
+    </ClCompile>
+    <ClCompile Include="menu_state.cpp">
+      <Filter>Source Files\TextUIState</Filter>
+    </ClCompile>
+    <ClCompile Include="text_ui_state.cpp">
+      <Filter>Source Files\TextUIState</Filter>
+    </ClCompile>
+    <ClCompile Include="create_mind_map_state.cpp">
+      <Filter>Source Files\TextUIState</Filter>
+    </ClCompile>
+    <ClCompile Include="display_mind_map_state.cpp">
+      <Filter>Source Files\TextUIState</Filter>
+    </ClCompile>
+    <ClCompile Include="save_state.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

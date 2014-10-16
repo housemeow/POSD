@@ -9,7 +9,7 @@ public:
     TextUIView();
     ~TextUIView();
     void printMenu();
-    void printMindMap(MindMapModel* mindMapModel);
+    void printMindMap(Component* component);
     void getMindMapString(Component* component, stringstream& stringStream, bool needVerticleLine);
     void printInputNotify();
     void printCreateMindMapMessage();
@@ -19,4 +19,6 @@ public:
     void printEnterNodeNameMessage();
     void printLine(string message);
     void printWrongInsertCommandMessage();
+    void printWrongMenuInstruction();
+    void printSaveMindMapSuccess();
 };

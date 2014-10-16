@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "componentFactory.h"
+#include "component_factory.h"
 #include "component.h"
 #include "root.h"
 #include "node.h"

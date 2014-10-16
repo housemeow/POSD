@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "text_ui_state.h"
 #include "menu_state.h"
+#include "mind_map_model.h"
 
 TextUIState::TextUIState(MindMapModel* mindMapModel)
 {
@@ -24,8 +25,6 @@ string TextUIState::readLineString()
     }
     return "";
 }
-
-
 
 // 顯示提示訊息並要求使用者輸入一個整數
 int TextUIState::readInt()
