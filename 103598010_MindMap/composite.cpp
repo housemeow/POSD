@@ -37,3 +37,13 @@ void Composite::addParent(Component* component)
         component->addChild(this);
     }
 }
+
+bool Composite::isAncientOf(Component* component)
+{
+    if (this == component) {
+        return true;
+    } else if(component->getParent() != NULL) {
+        return isAncientOf(component->getParent());
+    }
+    return false;
+}

@@ -156,3 +156,13 @@ void TextUIView::printEnterDescription()
 {
     cout << "Enter the description: ";
 }
+
+void TextUIView::printEnterParent()
+{
+    cout << "Enter the parent:";
+}
+
+void TextUIView::printParentCannotSelectItself()
+{
+    cout << "You can'tselect itself!!\n";
+}

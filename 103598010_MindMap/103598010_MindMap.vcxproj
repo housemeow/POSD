@@ -80,11 +80,14 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="change_parent_command.h" />
+    <ClInclude Include="change_parent_state.h" />
     <ClInclude Include="command.h" />
     <ClInclude Include="command_manager.h" />
     <ClInclude Include="component.h" />
     <ClInclude Include="component_factory.h" />
     <ClInclude Include="composite.h" />
+    <ClInclude Include="delete_node_state.h" />
     <ClInclude Include="edit_description_command.h" />
     <ClInclude Include="edit_description_state.h" />
     <ClInclude Include="enumeration.h" />
@@ -108,11 +111,14 @@
     <ClInclude Include="undo_state.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="change_parent_command.cpp" />
+    <ClCompile Include="change_parent_state.cpp" />
     <ClCompile Include="command.cpp" />
     <ClCompile Include="command_manager.cpp" />
     <ClCompile Include="component.cpp" />
     <ClCompile Include="component_factory.cpp" />
     <ClCompile Include="composite.cpp" />
+    <ClCompile Include="delete_node_state.cpp" />
     <ClCompile Include="edit_description_command.cpp" />
     <ClCompile Include="edit_description_state.cpp" />
     <ClCompile Include="enumeration.cpp" />

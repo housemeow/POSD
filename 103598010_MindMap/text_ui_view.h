@@ -28,4 +28,6 @@ public:
     void printEditMenu();
     void printCommandNotFound();
     void printEnterDescription();
+    void printEnterParent();
+    void printParentCannotSelectItself();
 };

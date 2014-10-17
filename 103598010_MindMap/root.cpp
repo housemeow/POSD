@@ -26,3 +26,8 @@ string Root::getTypeName()
 {
     return "Root";
 }
+
+bool Root::isAncientOf(Component* component)
+{
+    return true;
+}

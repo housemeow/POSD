@@ -123,7 +123,16 @@
     <ClInclude Include="edit_menu_state.h">
       <Filter>Header Files\TextUIStates</Filter>
     </ClInclude>
+    <ClInclude Include="change_parent_state.h">
+      <Filter>Header Files\TextUIStates</Filter>
+    </ClInclude>
+    <ClInclude Include="delete_node_state.h">
+      <Filter>Header Files\TextUIStates</Filter>
+    </ClInclude>
     <ClInclude Include="edit_description_state.h">
+      <Filter>Header Files\TextUIStates</Filter>
+    </ClInclude>
+    <ClInclude Include="change_parent_command.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -203,7 +212,16 @@
     <ClCompile Include="edit_menu_state.cpp">
       <Filter>Source Files\TextUIStates</Filter>
     </ClCompile>
+    <ClCompile Include="change_parent_state.cpp">
+      <Filter>Source Files\TextUIStates</Filter>
+    </ClCompile>
+    <ClCompile Include="delete_node_state.cpp">
+      <Filter>Source Files\TextUIStates</Filter>
+    </ClCompile>
     <ClCompile Include="edit_description_state.cpp">
+      <Filter>Source Files\TextUIStates</Filter>
+    </ClCompile>
+    <ClCompile Include="change_parent_command.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
