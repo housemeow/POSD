@@ -14,10 +14,11 @@ TextUIState::~TextUIState()
 }
 
 // 要求使用者輸入一行文字
-string TextUIState::readLineString()
+string TextUIState::readLineString(bool printNotify)
 {
     string line;
-    _textUIView.printInputNotify();
+    if (printNotify)
+        _textUIView.printInputNotify();
     while (getline(cin, line)) {
         if (!line.empty()) {
             return line;

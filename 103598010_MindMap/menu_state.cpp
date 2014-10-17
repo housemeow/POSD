@@ -5,7 +5,7 @@
 #include "insert_state.h"
 #include "display_mind_map_state.h"
 #include "save_state.h"
-#include "edit_state.h"
+#include "edit_menu_state.h"
 #include "load_state.h"
 #include "undo_state.h"
 #include "redo_state.h"
@@ -40,7 +40,7 @@ TextUIState* MenuState::run()
             return new InsertState(_mindMapModel);
             break;
         case TEXT_UI_EDIT_NODE_INSTRUCTION:
-            return new EditState(_mindMapModel);
+            return new EditMenuState(_mindMapModel);
             break;
         case TEXT_UI_DISPLAY_MIND_MAP_INSTRUCTION:
             return new DisplayMindMapState(_mindMapModel);

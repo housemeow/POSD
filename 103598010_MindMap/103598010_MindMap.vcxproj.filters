@@ -31,6 +31,18 @@
     <Filter Include="Source Files\Exceptions">
       <UniqueIdentifier>{13cfd745-c019-4236-b193-8466e29f8393}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\TextUI">
+      <UniqueIdentifier>{8aebcf5a-edd0-4210-8598-9a34b6efd8ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TextUI">
+      <UniqueIdentifier>{e3d9ff19-bff4-44de-a3bd-0de4a6c44f47}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Commands">
+      <UniqueIdentifier>{6c3f41f3-60f1-49f3-898c-03dacf72c9d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Commands">
+      <UniqueIdentifier>{9932cd97-1629-4dd7-9cb0-d4d399c83afc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -43,12 +55,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="mind_map_model.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="text_ui_view.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="text_ui_controller.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="exit_state.h">
@@ -87,19 +93,37 @@
     <ClInclude Include="save_state.h">
       <Filter>Header Files\TextUIStates</Filter>
     </ClInclude>
-    <ClInclude Include="edit_state.h">
+    <ClInclude Include="enumeration.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="load_state.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\TextUIStates</Filter>
     </ClInclude>
     <ClInclude Include="redo_state.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\TextUIStates</Filter>
     </ClInclude>
     <ClInclude Include="undo_state.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\TextUIStates</Filter>
     </ClInclude>
-    <ClInclude Include="enumeration.h">
+    <ClInclude Include="text_ui_controller.h">
+      <Filter>Header Files\TextUI</Filter>
+    </ClInclude>
+    <ClInclude Include="text_ui_view.h">
+      <Filter>Header Files\TextUI</Filter>
+    </ClInclude>
+    <ClInclude Include="command.h">
+      <Filter>Header Files\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="command_manager.h">
+      <Filter>Header Files\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="edit_description_command.h">
+      <Filter>Header Files\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="edit_menu_state.h">
+      <Filter>Header Files\TextUIStates</Filter>
+    </ClInclude>
+    <ClInclude Include="edit_description_state.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -111,12 +135,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="mind_map_model.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="text_ui_controller.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="text_ui_view.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="exit_state.cpp">
@@ -155,19 +173,37 @@
     <ClCompile Include="save_state.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
-    <ClCompile Include="edit_state.cpp">
+    <ClCompile Include="enumeration.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="load_state.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\TextUIStates</Filter>
     </ClCompile>
     <ClCompile Include="redo_state.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\TextUIStates</Filter>
     </ClCompile>
     <ClCompile Include="undo_state.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\TextUIStates</Filter>
     </ClCompile>
-    <ClCompile Include="enumeration.cpp">
+    <ClCompile Include="text_ui_view.cpp">
+      <Filter>Source Files\TextUI</Filter>
+    </ClCompile>
+    <ClCompile Include="text_ui_controller.cpp">
+      <Filter>Source Files\TextUI</Filter>
+    </ClCompile>
+    <ClCompile Include="command.cpp">
+      <Filter>Source Files\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="command_manager.cpp">
+      <Filter>Source Files\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="edit_description_command.cpp">
+      <Filter>Source Files\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="edit_menu_state.cpp">
+      <Filter>Source Files\TextUIStates</Filter>
+    </ClCompile>
+    <ClCompile Include="edit_description_state.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

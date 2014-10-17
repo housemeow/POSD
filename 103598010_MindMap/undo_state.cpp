@@ -15,6 +15,11 @@ UndoState::~UndoState()
 
 TextUIState* UndoState::run()
 {
-    cout << "UndoState\n";
+    try {
+        _mindMapModel->undo();
+        _textUIView.printMindMap(_mindMapModel->getMindMap());
+    } catch (exception exception) {
+        _textUIView.printException(exception);
+    }
     return new MenuState(_mindMapModel);
 }

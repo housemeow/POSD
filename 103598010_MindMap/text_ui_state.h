@@ -9,7 +9,7 @@ public:
     virtual ~TextUIState();
     virtual TextUIState* run() = 0;
 protected:
-    string readLineString();
+    string readLineString(bool printNotify = true);
     int readInt();
     char readChar();
     TextUIView _textUIView;

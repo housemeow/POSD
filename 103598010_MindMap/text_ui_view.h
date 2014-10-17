@@ -15,6 +15,7 @@ public:
     void printCreateMindMapMessage();
     void printMindMapNotExist();
     void printEnterNodeIDMessage();
+    void printEnterEditNodeIDMessage();
     void printInsertNewNodeMenu();
     void printEnterNodeNameMessage();
     void printLine(string message);
@@ -22,4 +23,9 @@ public:
     void printWrongInsertCommandMessage();
     void printWrongMenuInstruction();
     void printSaveMindMapSuccess();
+    void printEnterFilePath();
+    void printNodeIsNotExist();
+    void printEditMenu();
+    void printCommandNotFound();
+    void printEnterDescription();
 };

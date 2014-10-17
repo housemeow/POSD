@@ -27,11 +27,13 @@ void TextUIView::printMenu()
 //輸出MindMap
 void TextUIView::printMindMap(Component* component)
 {
-    stringstream stringStream;
-    getMindMapString(component, stringStream, false);
-    string displayMindMapString = "The mind map " + component->getDescription() + " is displayed as follows:\n";
-    displayMindMapString += stringStream.str();
-    cout << displayMindMapString;
+    if (component) {
+        stringstream stringStream;
+        getMindMapString(component, stringStream, false);
+        string displayMindMapString = "The mind map " + component->getDescription() + " is displayed as follows:\n";
+        displayMindMapString += stringStream.str();
+        cout << displayMindMapString;
+    }
 }
 
 //產出MindMapString的遞迴函數
@@ -83,6 +85,11 @@ void TextUIView::printEnterNodeIDMessage()
     cout << "Enter the node ID:\n";
 }
 
+void TextUIView::printEnterEditNodeIDMessage()
+{
+    cout << "Enter the edit node ID:\n";
+}
+
 void TextUIView::printInsertNewNodeMenu()
 {
     cout << "a. Insert a parent node\n";
@@ -120,4 +127,32 @@ void TextUIView::printWrongMenuInstruction()
 void TextUIView::printSaveMindMapSuccess()
 {
     cout << "Save MindMap Success\n";
+}
+
+
+void TextUIView::printEnterFilePath()
+{
+    cout << "Please input a file path:";
+}
+
+void TextUIView::printNodeIsNotExist()
+{
+    cout << "The node is not exist!!\n";
+}
+
+void TextUIView::printEditMenu()
+{
+    cout << "a. Edit the description of a node\n";
+    cout << "b. Change the parent of a node\n";
+    cout << "c. Delete a node\n";
+}
+
+void TextUIView::printCommandNotFound()
+{
+    cout << "The command is not found!!\n";
+}
+
+void TextUIView::printEnterDescription()
+{
+    cout << "Enter the description: ";
 }

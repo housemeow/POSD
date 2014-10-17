@@ -1,6 +1,7 @@
 ﻿#include "stdafx.h"
 #include "mind_map_model.h"
 #include "component_factory.h"
+#include "command.h"
 
 using namespace std;
 
@@ -79,6 +80,88 @@ void MindMapModel::saveMindMap()
         }
     }
     file.close();
+}
+
+void MindMapModel::loadMindMap(string filePath)
+{
+    ifstream ifstream(filePath, ifstream::in);
+    if (!ifstream) {
+        throw exception("File not found!!");
+    }
+    string line;
+    list<Component*> components;
+    multimap<Component*, int> componentChildren;
+    while (getline(ifstream, line)) {
+        stringstream splitterStringStream(line);
+        int id;
+        string description;
+        string childrenString;
+        readComponentData(line, id, description, childrenString);
+        stringstream childrenStringStream(childrenString);
+        ComponentFactory factory;
+        int child;
+        Component* component = factory.createComponent(getComponentType(id), id);
+        component->setDescription(description);
+        components.push_back(component);
+        while (childrenStringStream >> child) {
+            componentChildren.insert(std::pair<Component*, int>(component, child));
+        }
+    }
+    for (list<Component*>::iterator componentIterator = components.begin(); componentIterator != components.end(); ++componentIterator) {
+        for (multimap<Component*, int>::const_iterator mapIterator = componentChildren.begin(); mapIterator != componentChildren.end(); ++mapIterator)
+            if (mapIterator->first == *componentIterator) {
+                (*componentIterator)->addChild(findComponent(components, mapIterator->second));
+            }
+    }
+    if (_mindMap != NULL) {
+        delete _mindMap;
+    }
+    _mindMap = findComponent(components, 0);
+    ifstream.close();
+}
+
+Component* MindMapModel::findComponent(list<Component*> components, int id)
+{
+    for (list<Component*>::iterator componentIterator = components.begin(); componentIterator != components.end(); ++componentIterator) {
+        if ((*componentIterator)->getId() == id) {
+            return *componentIterator;
+        }
+    }
+    return NULL;
+}
+
+ComponentType MindMapModel::getComponentType(int id)
+{
+    if (id == 0) {
+        return ComponentTypeRoot;
+    } else {
+        return ComponentTypeNode;
+    }
+}
+void MindMapModel::undo()
+{
+    _commandManager.undo();
+}
+
+void MindMapModel::redo()
+{
+    _commandManager.redo();
+}
+
+void MindMapModel::execute(Command* command)
+{
+    _commandManager.execute(command);
+}
+
+void MindMapModel::readComponentData(string line, int& id, string& description, string& children)
+{
+    stringstream splitterStringStream(line);
+    string idString;
+    getline(splitterStringStream, idString, '\"');
+    getline(splitterStringStream, description, '\"');
+    getline(splitterStringStream, children, '\"');
+    stringstream idStringStream(idString);
+    idStringStream >> id;
 }
 
 // 取得當前的MindMap根節點

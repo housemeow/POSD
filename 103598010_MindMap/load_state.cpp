@@ -15,6 +15,13 @@ LoadState::~LoadState()
 
 TextUIState* LoadState::run()
 {
-    cout << "LoadState\n";
+    _textUIView.printEnterFilePath();
+    string filePath = readLineString();
+    try {
+        _mindMapModel->loadMindMap(filePath);
+        _textUIView.printMindMap(_mindMapModel->getMindMap());
+    } catch (exception exception) {
+        _textUIView.printException(exception);
+    }
     return new MenuState(_mindMapModel);
 }

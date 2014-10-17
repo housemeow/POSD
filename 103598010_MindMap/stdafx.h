@@ -10,11 +10,13 @@
 #include <tchar.h>
 #include <string>
 #include <list>
+#include <stack>
 #include <iostream>
 #include <sstream>
 #include <fstream>
 #include <map>
 #include "enumeration.h"
 #include "component.h"
+#include <regex>
 
 typedef std::list<Component*>::const_iterator ComponentIterator;

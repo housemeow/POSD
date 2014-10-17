@@ -80,13 +80,17 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="command.h" />
+    <ClInclude Include="command_manager.h" />
     <ClInclude Include="component.h" />
     <ClInclude Include="component_factory.h" />
     <ClInclude Include="composite.h" />
+    <ClInclude Include="edit_description_command.h" />
+    <ClInclude Include="edit_description_state.h" />
     <ClInclude Include="enumeration.h" />
     <ClInclude Include="create_mind_map_state.h" />
     <ClInclude Include="display_mind_map_state.h" />
-    <ClInclude Include="edit_state.h" />
+    <ClInclude Include="edit_menu_state.h" />
     <ClInclude Include="exit_state.h" />
     <ClInclude Include="insert_state.h" />
     <ClInclude Include="load_state.h" />
@@ -104,13 +108,17 @@
     <ClInclude Include="undo_state.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="command.cpp" />
+    <ClCompile Include="command_manager.cpp" />
     <ClCompile Include="component.cpp" />
     <ClCompile Include="component_factory.cpp" />
     <ClCompile Include="composite.cpp" />
+    <ClCompile Include="edit_description_command.cpp" />
+    <ClCompile Include="edit_description_state.cpp" />
     <ClCompile Include="enumeration.cpp" />
     <ClCompile Include="create_mind_map_state.cpp" />
     <ClCompile Include="display_mind_map_state.cpp" />
-    <ClCompile Include="edit_state.cpp" />
+    <ClCompile Include="edit_menu_state.cpp" />
     <ClCompile Include="exit_state.cpp" />
     <ClCompile Include="insert_state.cpp" />
     <ClCompile Include="load_state.cpp" />

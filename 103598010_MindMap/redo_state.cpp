@@ -14,6 +14,11 @@ RedoState::~RedoState()
 
 TextUIState* RedoState::run()
 {
-    cout << "RedoState\n";
+    try {
+        _mindMapModel->redo();
+        _textUIView.printMindMap(_mindMapModel->getMindMap());
+    } catch (exception exception) {
+        _textUIView.printException(exception);
+    }
     return new MenuState(_mindMapModel);
 }

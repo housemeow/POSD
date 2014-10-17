@@ -1,11 +1,11 @@
 #pragma once
 #include "text_ui_state.h"
-class EditState :
+class EditMenuState :
     public TextUIState
 {
 public:
-    EditState(MindMapModel* mindMapModel);
-    ~EditState();
+    EditMenuState(MindMapModel* mindMapModel);
+    ~EditMenuState();
     TextUIState* run();
 };
 
