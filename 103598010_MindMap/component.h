@@ -6,6 +6,7 @@ public:
     Component(int id);
     virtual ~Component();
     int getId();
+    void setId(int id);
     string getDescription();
     void setDescription(string description);
     string getName();

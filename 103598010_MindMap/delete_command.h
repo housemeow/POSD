@@ -1,19 +1,18 @@
 #pragma once
 #include "command.h"
-
-class ChangeParentCommand :
+class DeleteCommand :
     public Command
 {
 public:
-    ChangeParentCommand(Component* component, Component* parentComponent);
-    ~ChangeParentCommand();
+    DeleteCommand(Component* component);
+    ~DeleteCommand();
     void execute();
     void unexecute();
 private:
     Component* _component;
     Component* _parentComponent;
-    Component* _originParentComponent;
-    int _originPosition;
     list<Component*> _children;
+    int _id;
+    string _description;
 };
 

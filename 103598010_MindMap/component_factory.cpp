@@ -26,3 +26,18 @@ Component* ComponentFactory::createComponent(ComponentType componentType, int id
     }
     return component;
 }
+
+
+Component* ComponentFactory::copyMindMap(Component* component)
+{
+    if (component != NULL) {
+        // create component
+        Component* newComponent = new Node(component->getId());
+        newComponent->setDescription(component->getDescription());
+        list<Component*> componentList = component->getNodeList();
+        for (list<Component*>::const_iterator child = componentList.begin(); child != componentList.end(); child++) {
+            newComponent->addChild(copyMindMap(*child));
+        }
+        return newComponent;
+    }
+}

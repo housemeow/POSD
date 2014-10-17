@@ -133,6 +133,9 @@
       <Filter>Header Files\TextUIStates</Filter>
     </ClInclude>
     <ClInclude Include="change_parent_command.h">
+      <Filter>Header Files\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="delete_command.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -158,12 +161,6 @@
     <ClCompile Include="text_ui_state.cpp">
       <Filter>Source Files\TextUIStates</Filter>
     </ClCompile>
-    <ClCompile Include="create_mind_map_state.cpp">
-      <Filter>Source Files\TextUIStates</Filter>
-    </ClCompile>
-    <ClCompile Include="display_mind_map_state.cpp">
-      <Filter>Source Files\TextUIStates</Filter>
-    </ClCompile>
     <ClCompile Include="component.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
@@ -177,9 +174,6 @@
       <Filter>Source Files\Components</Filter>
     </ClCompile>
     <ClCompile Include="component_factory.cpp">
-      <Filter>Source Files\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="save_state.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
     <ClCompile Include="enumeration.cpp">
@@ -209,20 +203,32 @@
     <ClCompile Include="edit_description_command.cpp">
       <Filter>Source Files\Commands</Filter>
     </ClCompile>
-    <ClCompile Include="edit_menu_state.cpp">
+    <ClCompile Include="change_parent_state.cpp">
       <Filter>Source Files\TextUIStates</Filter>
     </ClCompile>
-    <ClCompile Include="change_parent_state.cpp">
+    <ClCompile Include="create_mind_map_state.cpp">
       <Filter>Source Files\TextUIStates</Filter>
     </ClCompile>
     <ClCompile Include="delete_node_state.cpp">
       <Filter>Source Files\TextUIStates</Filter>
     </ClCompile>
+    <ClCompile Include="display_mind_map_state.cpp">
+      <Filter>Source Files\TextUIStates</Filter>
+    </ClCompile>
     <ClCompile Include="edit_description_state.cpp">
       <Filter>Source Files\TextUIStates</Filter>
     </ClCompile>
+    <ClCompile Include="edit_menu_state.cpp">
+      <Filter>Source Files\TextUIStates</Filter>
+    </ClCompile>
     <ClCompile Include="change_parent_command.cpp">
+      <Filter>Source Files\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="delete_command.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="save_state.cpp">
+      <Filter>Source Files\TextUIStates</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

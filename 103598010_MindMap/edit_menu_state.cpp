@@ -20,6 +20,10 @@ EditMenuState::~EditMenuState()
 
 TextUIState* EditMenuState::run()
 {
+    if (_mindMapModel->getMindMap() == NULL) {
+        _textUIView.printMindMapNotExist();
+        return new MenuState(_mindMapModel);
+    }
     _textUIView.printMindMap(_mindMapModel->getMindMap());
     int id;
     _textUIView.printEnterEditNodeIDMessage();
@@ -47,6 +51,7 @@ TextUIState* EditMenuState::run()
         }
     } else {
         _textUIView.printNodeIsNotExist();
+        return new EditMenuState(_mindMapModel);
     }
     return new MenuState(_mindMapModel);
 }

@@ -10,8 +10,8 @@ public:
     virtual TextUIState* run() = 0;
 protected:
     string readLineString(bool printNotify = true);
-    int readInt();
-    char readChar();
+    int readInt(bool printNotify = true);
+    char readChar(bool printNotify = true);
     TextUIView _textUIView;
     MindMapModel* _mindMapModel;
 };

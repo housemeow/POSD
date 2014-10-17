@@ -18,6 +18,11 @@ int Component::getId()
     return _id;
 }
 
+void Component::setId(int id)
+{
+    _id = id;
+}
+
 string Component::getDescription()
 {
     return _description;
@@ -47,6 +52,9 @@ string Component::getName()
 
 void Component::setParent(Component* parent)
 {
+    if (this->getParent()) {
+        this->getParent()->getNodeList().remove(this);
+    }
     _parent = parent;
 }
 

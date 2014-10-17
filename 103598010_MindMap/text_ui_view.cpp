@@ -82,7 +82,7 @@ void TextUIView::printMindMapNotExist()
 
 void TextUIView::printEnterNodeIDMessage()
 {
-    cout << "Enter the node ID:\n";
+    cout << "Enter the node ID:";
 }
 
 void TextUIView::printEnterEditNodeIDMessage()
@@ -157,7 +157,7 @@ void TextUIView::printEnterDescription()
     cout << "Enter the description: ";
 }
 
-void TextUIView::printEnterParent()
+void TextUIView::printEnterParentID()
 {
     cout << "Enter the parent:";
 }
@@ -165,4 +165,14 @@ void TextUIView::printEnterParent()
 void TextUIView::printParentCannotSelectItself()
 {
     cout << "You can'tselect itself!!\n";
+}
+
+void TextUIView::printCannotDeleteRoot()
+{
+    cout << "You can't delete the root.\n";
+}
+
+void TextUIView::printRootCannotChangeParent()
+{
+    cout << "Root can't be changed the parent.\n";
 }

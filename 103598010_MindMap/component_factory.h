@@ -7,4 +7,5 @@ public:
     ComponentFactory();
     ~ComponentFactory();
     Component* createComponent(ComponentType componentType, int id);
+    Component* copyMindMap(Component* component);
 };

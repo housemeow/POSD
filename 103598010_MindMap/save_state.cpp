@@ -15,6 +15,7 @@ TextUIState* SaveState::run()
 {
     if (_mindMapModel->getMindMap()) {
         _mindMapModel->saveMindMap();
+        _textUIView.printMindMap(_mindMapModel->getMindMap());
         _textUIView.printSaveMindMapSuccess();
     } else {
         _textUIView.printMindMapNotExist();

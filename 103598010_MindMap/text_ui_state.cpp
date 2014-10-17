@@ -28,9 +28,10 @@ string TextUIState::readLineString(bool printNotify)
 }
 
 // 要求使用者輸入一個整數
-int TextUIState::readInt()
+int TextUIState::readInt(bool printNotify)
 {
-    _textUIView.printInputNotify();
+    if (printNotify)
+        _textUIView.printInputNotify();
     int integer;
     cin >> integer;
     return integer;
@@ -38,9 +39,10 @@ int TextUIState::readInt()
 
 
 // 要求使用者輸入一個字元
-char TextUIState::readChar()
+char TextUIState::readChar(bool printNotify)
 {
-    _textUIView.printInputNotify();
+    if (printNotify)
+        _textUIView.printInputNotify();
     char character;
     cin >> character;
     return character;

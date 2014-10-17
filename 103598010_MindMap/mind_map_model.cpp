@@ -67,9 +67,18 @@ void MindMapModel::insertNewNode(Component* component, string description, Inser
 void MindMapModel::saveMindMap()
 {
     ofstream file;
-    file.open("mindMap.txt");
+    file.open("file__exist.mm");
+    ComponentFactory componentFactory;
+    Component* saveMindMap = componentFactory.copyMindMap(_mindMap);
+    int newId = 0;
     for (int id = 0; id < _currentId; id++) {
-        Component* component = _mindMap->findNode(id);
+        Component* component = saveMindMap->findNode(id);
+        if (component) {
+            component->setId(newId++);
+        }
+    }
+    for (int id = 0; id < _currentId; id++) {
+        Component* component = saveMindMap->findNode(id);
         if (component) {
             file << id << " \"" << component->getDescription() << "\"";
             for (ComponentIterator iterator = component->getNodeList().begin(), end = component->getNodeList().end(); iterator != end; ++iterator) {
@@ -79,6 +88,7 @@ void MindMapModel::saveMindMap()
             file << endl;
         }
     }
+    delete saveMindMap;
     file.close();
 }
 
@@ -97,6 +107,7 @@ void MindMapModel::loadMindMap(string filePath)
         string description;
         string childrenString;
         readComponentData(line, id, description, childrenString);
+        _currentId = id + 1;
         stringstream childrenStringStream(childrenString);
         ComponentFactory factory;
         int child;

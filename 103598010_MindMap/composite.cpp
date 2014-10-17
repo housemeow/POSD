@@ -13,9 +13,6 @@ Composite::~Composite()
 void Composite::addChild(Component* component)
 {
     if (component) {
-        if (component->getParent()) {
-            component->getParent()->getNodeList().remove(component);
-        }
         component->setParent(this);
         _children.push_back(component);
     }
