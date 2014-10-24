@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "save_state.h"
-#include "menu_state.h"
+#include "text_ui_state_factory.h"
 
 SaveState::SaveState(MindMapModel* mindMapModel) : TextUIState(mindMapModel)
 {
@@ -20,5 +20,5 @@ TextUIState* SaveState::run()
     } else {
         _textUIView.printMindMapNotExist();
     }
-    return new MenuState(_mindMapModel);
+    return TextUIStateFactory::createTextUIState(MenuStateInstruction, _mindMapModel);
 }

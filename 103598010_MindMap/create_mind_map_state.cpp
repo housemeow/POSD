@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "create_mind_map_state.h"
-#include "mind_map_model.h"
-#include "menu_state.h"
+#include "text_ui_state_factory.h"
 
 CreateMindMapState::CreateMindMapState(MindMapModel* mindMapModel) : TextUIState(mindMapModel)
 {
@@ -20,5 +19,5 @@ TextUIState* CreateMindMapState::run()
     description = readLineString();
     _mindMapModel->createMindMap(description);
     _textUIView.printMindMap(_mindMapModel->getMindMap());
-    return new MenuState(_mindMapModel);
+    return TextUIStateFactory::createTextUIState(MenuStateInstruction, _mindMapModel);
 }

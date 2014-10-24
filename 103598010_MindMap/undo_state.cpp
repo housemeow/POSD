@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "undo_state.h"
-#include "menu_state.h"
+#include "text_ui_state_factory.h"
 
 
 UndoState::UndoState(MindMapModel* mindMapModel) : TextUIState(mindMapModel)
@@ -21,5 +21,5 @@ TextUIState* UndoState::run()
     } catch (exception exception) {
         _textUIView.printException(exception);
     }
-    return new MenuState(_mindMapModel);
+    return TextUIStateFactory::createTextUIState(MenuStateInstruction, _mindMapModel);
 }

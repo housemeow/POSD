@@ -1,14 +1,6 @@
 #include "stdafx.h"
 #include "menu_state.h"
-#include "exit_state.h"
-#include "create_mind_map_state.h"
-#include "insert_state.h"
-#include "display_mind_map_state.h"
-#include "save_state.h"
-#include "edit_menu_state.h"
-#include "load_state.h"
-#include "undo_state.h"
-#include "redo_state.h"
+#include "text_ui_state_factory.h"
 
 const int TEXT_UI_CREATE_MIND_MAP_INSTRUCTION = 1;
 const int TEXT_UI_INSERT_NODE_INSTRUCTION = 2;
@@ -34,34 +26,34 @@ TextUIState* MenuState::run()
     int instruction = readInt();
     switch (instruction) {
         case TEXT_UI_CREATE_MIND_MAP_INSTRUCTION:
-            return new CreateMindMapState(_mindMapModel);
+            return TextUIStateFactory::createTextUIState(CreateMindMapStateInstruction, _mindMapModel);
             break;
         case TEXT_UI_INSERT_NODE_INSTRUCTION:
-            return new InsertState(_mindMapModel);
+            return TextUIStateFactory::createTextUIState(InsertMenuStateInstruction, _mindMapModel);
             break;
         case TEXT_UI_EDIT_NODE_INSTRUCTION:
-            return new EditMenuState(_mindMapModel);
+            return TextUIStateFactory::createTextUIState(EditMenuStateInstruction, _mindMapModel);
             break;
         case TEXT_UI_DISPLAY_MIND_MAP_INSTRUCTION:
-            return new DisplayMindMapState(_mindMapModel);
+            return TextUIStateFactory::createTextUIState(DisplayMindMapStateInstruction, _mindMapModel);
             break;
         case TEXT_UI_SAVE_MIND_MAP_INSTRUCTION:
-            return new SaveState(_mindMapModel);
+            return TextUIStateFactory::createTextUIState(SaveStateInstruction, _mindMapModel);
             break;
         case TEXT_UI_LOAD_MIND_MAP_INSTRUCTION:
-            return new LoadState(_mindMapModel);
+            return TextUIStateFactory::createTextUIState(LoadStateInstruction, _mindMapModel);
             break;
         case TEXT_UI_REDO_INSTRUCTION:
-            return new RedoState(_mindMapModel);
+            return TextUIStateFactory::createTextUIState(RedoStateInstruction, _mindMapModel);
             break;
         case TEXT_UI_UNDO_INSTRUCTION:
-            return new UndoState(_mindMapModel);
+            return TextUIStateFactory::createTextUIState(UndoStateInstruction, _mindMapModel);
             break;
         case TEXT_UI_EXIT_INSTRUCTION:
-            return new ExitState(_mindMapModel);
+            return TextUIStateFactory::createTextUIState(ExitStateInstruction, _mindMapModel);
             break;
         default:
             _textUIView.printWrongMenuInstruction();
-            return new MenuState(_mindMapModel);
+            return TextUIStateFactory::createTextUIState(MenuStateInstruction, _mindMapModel);
     }
 }

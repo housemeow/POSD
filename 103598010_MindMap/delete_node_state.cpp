@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "delete_node_state.h"
-#include "menu_state.h"
+#include "text_ui_state_factory.h"
 #include "delete_command.h"
 
 DeleteNodeState::DeleteNodeState(MindMapModel* mindMapModel, Component* component) : TextUIState(mindMapModel)
@@ -22,5 +22,5 @@ TextUIState* DeleteNodeState::run()
         _mindMapModel->execute(deleteCommand);
         _textUIView.printMindMap(_mindMapModel->getMindMap());
     }
-    return new MenuState(_mindMapModel);
+    return TextUIStateFactory::createTextUIState(MenuStateInstruction, _mindMapModel);
 }

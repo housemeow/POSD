@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "redo_state.h"
-#include "menu_state.h"
+#include "text_ui_state_factory.h"
 
 
 RedoState::RedoState(MindMapModel* mindMapModel) : TextUIState(mindMapModel)
@@ -20,5 +20,5 @@ TextUIState* RedoState::run()
     } catch (exception exception) {
         _textUIView.printException(exception);
     }
-    return new MenuState(_mindMapModel);
+    return TextUIStateFactory::createTextUIState(MenuStateInstruction, _mindMapModel);
 }

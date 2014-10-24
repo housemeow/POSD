@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "load_state.h"
-#include "menu_state.h"
+#include "text_ui_state_factory.h"
 
 
 LoadState::LoadState(MindMapModel* mindMapModel) : TextUIState(mindMapModel)
@@ -23,5 +23,5 @@ TextUIState* LoadState::run()
     } catch (exception exception) {
         _textUIView.printException(exception);
     }
-    return new MenuState(_mindMapModel);
+    return TextUIStateFactory::createTextUIState(MenuStateInstruction, _mindMapModel);
 }

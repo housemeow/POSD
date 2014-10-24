@@ -43,6 +43,18 @@
     <Filter Include="Source Files\Commands">
       <UniqueIdentifier>{9932cd97-1629-4dd7-9cb0-d4d399c83afc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\TextUIStates\Edit">
+      <UniqueIdentifier>{3ab3e6c7-8d66-4f5f-aa99-25270579e8ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TextUIStates\Edit">
+      <UniqueIdentifier>{351cc77a-a99c-4179-aff1-383bb0116b7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TextUIStates\Insert">
+      <UniqueIdentifier>{d6805a95-c77a-4761-84c3-0051ab5c8eee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TextUIStates\Insert">
+      <UniqueIdentifier>{8c6e6e64-8330-44dc-a1d3-761dd6c27db3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -58,9 +70,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="exit_state.h">
-      <Filter>Header Files\TextUIStates</Filter>
-    </ClInclude>
-    <ClInclude Include="insert_state.h">
       <Filter>Header Files\TextUIStates</Filter>
     </ClInclude>
     <ClInclude Include="menu_state.h">
@@ -120,23 +129,29 @@
     <ClInclude Include="edit_description_command.h">
       <Filter>Header Files\Commands</Filter>
     </ClInclude>
-    <ClInclude Include="edit_menu_state.h">
-      <Filter>Header Files\TextUIStates</Filter>
-    </ClInclude>
-    <ClInclude Include="change_parent_state.h">
-      <Filter>Header Files\TextUIStates</Filter>
-    </ClInclude>
-    <ClInclude Include="delete_node_state.h">
-      <Filter>Header Files\TextUIStates</Filter>
-    </ClInclude>
-    <ClInclude Include="edit_description_state.h">
-      <Filter>Header Files\TextUIStates</Filter>
-    </ClInclude>
     <ClInclude Include="change_parent_command.h">
       <Filter>Header Files\Commands</Filter>
     </ClInclude>
     <ClInclude Include="delete_command.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="text_ui_state_factory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="change_parent_state.h">
+      <Filter>Header Files\TextUIStates\Edit</Filter>
+    </ClInclude>
+    <ClInclude Include="edit_description_state.h">
+      <Filter>Header Files\TextUIStates\Edit</Filter>
+    </ClInclude>
+    <ClInclude Include="edit_menu_state.h">
+      <Filter>Header Files\TextUIStates\Edit</Filter>
+    </ClInclude>
+    <ClInclude Include="delete_node_state.h">
+      <Filter>Header Files\TextUIStates\Edit</Filter>
+    </ClInclude>
+    <ClInclude Include="insert_menu_state.h">
+      <Filter>Header Files\TextUIStates\Insert</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -150,9 +165,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="exit_state.cpp">
-      <Filter>Source Files\TextUIStates</Filter>
-    </ClCompile>
-    <ClCompile Include="insert_state.cpp">
       <Filter>Source Files\TextUIStates</Filter>
     </ClCompile>
     <ClCompile Include="menu_state.cpp">
@@ -203,22 +215,10 @@
     <ClCompile Include="edit_description_command.cpp">
       <Filter>Source Files\Commands</Filter>
     </ClCompile>
-    <ClCompile Include="change_parent_state.cpp">
-      <Filter>Source Files\TextUIStates</Filter>
-    </ClCompile>
     <ClCompile Include="create_mind_map_state.cpp">
       <Filter>Source Files\TextUIStates</Filter>
     </ClCompile>
-    <ClCompile Include="delete_node_state.cpp">
-      <Filter>Source Files\TextUIStates</Filter>
-    </ClCompile>
     <ClCompile Include="display_mind_map_state.cpp">
-      <Filter>Source Files\TextUIStates</Filter>
-    </ClCompile>
-    <ClCompile Include="edit_description_state.cpp">
-      <Filter>Source Files\TextUIStates</Filter>
-    </ClCompile>
-    <ClCompile Include="edit_menu_state.cpp">
       <Filter>Source Files\TextUIStates</Filter>
     </ClCompile>
     <ClCompile Include="change_parent_command.cpp">
@@ -230,8 +230,30 @@
     <ClCompile Include="save_state.cpp">
       <Filter>Source Files\TextUIStates</Filter>
     </ClCompile>
+    <ClCompile Include="text_ui_state_factory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="edit_description_state.cpp">
+      <Filter>Source Files\TextUIStates\Edit</Filter>
+    </ClCompile>
+    <ClCompile Include="edit_menu_state.cpp">
+      <Filter>Source Files\TextUIStates\Edit</Filter>
+    </ClCompile>
+    <ClCompile Include="delete_node_state.cpp">
+      <Filter>Source Files\TextUIStates\Edit</Filter>
+    </ClCompile>
+    <ClCompile Include="change_parent_state.cpp">
+      <Filter>Source Files\TextUIStates\Edit</Filter>
+    </ClCompile>
+    <ClCompile Include="insert_menu_state.cpp">
+      <Filter>Source Files\TextUIStates\Insert</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
+    <None Include="ClassDiagram3.cd" />
+    <None Include="ClassDiagram4.cd" />
   </ItemGroup>
 </Project>

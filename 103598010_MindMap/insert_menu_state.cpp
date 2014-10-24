@@ -1,22 +1,22 @@
 #include "stdafx.h"
-#include "insert_state.h"
-#include "menu_state.h"
+#include "insert_menu_state.h"
+#include "text_ui_state_factory.h"
 #include "component_factory.h"
 
-InsertState::InsertState(MindMapModel* mindMapModel) : TextUIState(mindMapModel)
+InsertMenuState::InsertMenuState(MindMapModel* mindMapModel) : TextUIState(mindMapModel)
 {
 }
 
 
-InsertState::~InsertState()
+InsertMenuState::~InsertMenuState()
 {
 }
 
-TextUIState* InsertState::run()
+TextUIState* InsertMenuState::run()
 {
     if (!_mindMapModel->getMindMap()) {
         _textUIView.printMindMapNotExist();
-        return new MenuState(_mindMapModel);
+        return TextUIStateFactory::createTextUIState(MenuStateInstruction, _mindMapModel);
     }
     _textUIView.printMindMap(_mindMapModel->getMindMap());
     int id;
@@ -51,5 +51,5 @@ TextUIState* InsertState::run()
         }
     }
     _textUIView.printMindMap(_mindMapModel->getMindMap());
-    return new MenuState(_mindMapModel);
+    return TextUIStateFactory::createTextUIState(MenuStateInstruction, _mindMapModel);
 }

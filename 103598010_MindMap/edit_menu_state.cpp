@@ -1,9 +1,6 @@
 #include "stdafx.h"
 #include "edit_menu_state.h"
-#include "menu_state.h"
-#include "edit_description_state.h"
-#include "change_parent_state.h"
-#include "delete_node_state.h"
+#include "text_ui_state_factory.h"
 
 const int TEXT_UI_EDIT_DESCRIPTION_INSTRUCTION = 'a';
 const int TEXT_UI_CHANGE_PARENT_INSTRUCTION = 'b';
@@ -22,7 +19,7 @@ TextUIState* EditMenuState::run()
 {
     if (_mindMapModel->getMindMap() == NULL) {
         _textUIView.printMindMapNotExist();
-        return new MenuState(_mindMapModel);
+        return TextUIStateFactory::createTextUIState(MenuStateInstruction, _mindMapModel);
     }
     _textUIView.printMindMap(_mindMapModel->getMindMap());
     int id;
@@ -36,13 +33,13 @@ TextUIState* EditMenuState::run()
             instruction = readChar();
             switch (instruction) {
                 case TEXT_UI_EDIT_DESCRIPTION_INSTRUCTION:
-                    return new EditDescriptionState(_mindMapModel, component);
+                    return TextUIStateFactory::createTextUIState(EditDescriptionStateInstruction, _mindMapModel, component);
                     break;
                 case TEXT_UI_CHANGE_PARENT_INSTRUCTION:
-                    return new ChangeParentState(_mindMapModel, component);
+                    return TextUIStateFactory::createTextUIState(ChangeParentStateInstruction, _mindMapModel, component);
                     break;
                 case TEXT_UI_DELETE_NODE_INSTRUCTION:
-                    return new DeleteNodeState(_mindMapModel, component);
+                    return TextUIStateFactory::createTextUIState(DeleteNodeStateInstruction, _mindMapModel, component);
                     break;
                 default:
                     _textUIView.printCommandNotFound();
@@ -53,5 +50,5 @@ TextUIState* EditMenuState::run()
         _textUIView.printNodeIsNotExist();
         return new EditMenuState(_mindMapModel);
     }
-    return new MenuState(_mindMapModel);
+    return TextUIStateFactory::createTextUIState(MenuStateInstruction, _mindMapModel);
 }

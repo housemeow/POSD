@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "display_mind_map_state.h"
-#include "menu_state.h"
+#include "text_ui_state_factory.h"
 
 DisplayMindMapState::DisplayMindMapState(MindMapModel* mindMapModel) : TextUIState(mindMapModel)
 {
@@ -19,5 +19,5 @@ TextUIState* DisplayMindMapState::run()
     } else {
         _textUIView.printMindMapNotExist();
     }
-    return new MenuState(_mindMapModel);
+    return TextUIStateFactory::createTextUIState(MenuStateInstruction, _mindMapModel);
 }

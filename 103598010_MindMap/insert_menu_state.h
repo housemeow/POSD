@@ -1,11 +1,11 @@
 #pragma once
 #include "text_ui_state.h"
-class InsertState :
+class InsertMenuState :
     public TextUIState
 {
 public:
-    InsertState(MindMapModel* mindMapModel);
-    ~InsertState();
+    InsertMenuState(MindMapModel* mindMapModel);
+    ~InsertMenuState();
     TextUIState* run();
 };
 
