@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{84739ECC-9F68-4ED9-ABA1-A8389C826E1B}</ProjectGuid>
+    <ProjectGuid>{29ACDEA3-B71B-4F66-B5F9-601F4CBB4F86}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>My103598010_MindMap</RootNamespace>
+    <RootNamespace>My103598010_Test</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -52,11 +52,12 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>C:\gtest\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalDependencies>C:\gtest\lib\gtestd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -80,73 +81,16 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="change_parent_command.h" />
-    <ClInclude Include="change_parent_state.h" />
-    <ClInclude Include="command.h" />
-    <ClInclude Include="command_manager.h" />
-    <ClInclude Include="component.h" />
-    <ClInclude Include="component_factory.h" />
-    <ClInclude Include="composite.h" />
-    <ClInclude Include="delete_command.h" />
-    <ClInclude Include="delete_node_state.h" />
-    <ClInclude Include="edit_description_command.h" />
-    <ClInclude Include="edit_description_state.h" />
-    <ClInclude Include="enumeration.h" />
-    <ClInclude Include="create_mind_map_state.h" />
-    <ClInclude Include="display_mind_map_state.h" />
-    <ClInclude Include="edit_menu_state.h" />
-    <ClInclude Include="exit_state.h" />
-    <ClInclude Include="insert_menu_state.h" />
-    <ClInclude Include="load_state.h" />
-    <ClInclude Include="menu_state.h" />
-    <ClInclude Include="mind_map_model.h" />
-    <ClInclude Include="node.h" />
-    <ClInclude Include="redo_state.h" />
-    <ClInclude Include="root.h" />
-    <ClInclude Include="save_state.h" />
-    <ClInclude Include="text_ui_state.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="text_ui_state_factory.h" />
-    <ClInclude Include="text_ui_view.h" />
-    <ClInclude Include="text_ui_controller.h" />
-    <ClInclude Include="undo_state.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="change_parent_command.cpp" />
-    <ClCompile Include="change_parent_state.cpp" />
-    <ClCompile Include="command.cpp" />
-    <ClCompile Include="command_manager.cpp" />
-    <ClCompile Include="component.cpp" />
-    <ClCompile Include="component_factory.cpp" />
-    <ClCompile Include="composite.cpp" />
-    <ClCompile Include="delete_command.cpp" />
-    <ClCompile Include="delete_node_state.cpp" />
-    <ClCompile Include="edit_description_command.cpp" />
-    <ClCompile Include="edit_description_state.cpp" />
-    <ClCompile Include="enumeration.cpp" />
-    <ClCompile Include="create_mind_map_state.cpp" />
-    <ClCompile Include="display_mind_map_state.cpp" />
-    <ClCompile Include="edit_menu_state.cpp" />
-    <ClCompile Include="exit_state.cpp" />
-    <ClCompile Include="insert_menu_state.cpp" />
-    <ClCompile Include="load_state.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="menu_state.cpp" />
-    <ClCompile Include="mind_map_model.cpp" />
-    <ClCompile Include="node.cpp" />
-    <ClCompile Include="redo_state.cpp" />
-    <ClCompile Include="root.cpp" />
-    <ClCompile Include="save_state.cpp" />
-    <ClCompile Include="text_ui_state.cpp" />
+    <ClCompile Include="103598010_Test.cpp" />
+    <ClCompile Include="component_factory_test.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="text_ui_state_factory.cpp" />
-    <ClCompile Include="text_ui_view.cpp" />
-    <ClCompile Include="text_ui_controller.cpp" />
-    <ClCompile Include="undo_state.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

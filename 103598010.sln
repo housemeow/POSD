@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "103598010_MindMap", "103598010_MindMap\103598010_MindMap.vcxproj", "{84739ECC-9F68-4ED9-ABA1-A8389C826E1B}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "103598010_Test", "103598010_Test\103598010_Test.vcxproj", "{29ACDEA3-B71B-4F66-B5F9-601F4CBB4F86}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -15,6 +17,10 @@ Global
 		{84739ECC-9F68-4ED9-ABA1-A8389C826E1B}.Debug|Win32.Build.0 = Debug|Win32
 		{84739ECC-9F68-4ED9-ABA1-A8389C826E1B}.Release|Win32.ActiveCfg = Release|Win32
 		{84739ECC-9F68-4ED9-ABA1-A8389C826E1B}.Release|Win32.Build.0 = Release|Win32
+		{29ACDEA3-B71B-4F66-B5F9-601F4CBB4F86}.Debug|Win32.ActiveCfg = Debug|Win32
+		{29ACDEA3-B71B-4F66-B5F9-601F4CBB4F86}.Debug|Win32.Build.0 = Debug|Win32
+		{29ACDEA3-B71B-4F66-B5F9-601F4CBB4F86}.Release|Win32.ActiveCfg = Release|Win32
+		{29ACDEA3-B71B-4F66-B5F9-601F4CBB4F86}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
