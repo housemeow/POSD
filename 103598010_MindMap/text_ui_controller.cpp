@@ -7,9 +7,10 @@
 
 using namespace std;
 
-TextUIController::TextUIController(MindMapModel* mindMapModel)
+TextUIController::TextUIController(MindMapModel* mindMapModel, TextUIView* textUIView)
 {
     _mindMapModel = mindMapModel;
+    _textUIView = textUIView;
 }
 
 TextUIController::~TextUIController()
@@ -20,10 +21,11 @@ void TextUIController::run()
 {
     TextUIState* state = new MenuState(_mindMapModel);
     do {
+        state->setTextUIView(_textUIView);
         TextUIState* nextState = state->run();
         delete state;
         state = nextState;
-        TextUIView textUIView;
+        TextUIView textUIView(cout);
         textUIView.printLine("");
     } while(state != NULL);
 }

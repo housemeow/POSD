@@ -2,7 +2,7 @@
 #include "text_ui_view.h"
 #include "mind_map_model.h"
 
-TextUIView::TextUIView()
+TextUIView::TextUIView(ostream& ostream): cout(ostream)
 {
 }
 

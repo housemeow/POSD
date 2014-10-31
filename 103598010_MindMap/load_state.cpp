@@ -15,13 +15,13 @@ LoadState::~LoadState()
 
 TextUIState* LoadState::run()
 {
-    _textUIView.printEnterFilePath();
+    _textUIView->printEnterFilePath();
     string filePath = readLineString();
     try {
         _mindMapModel->loadMindMap(filePath);
-        _textUIView.printMindMap(_mindMapModel->getMindMap());
+        _textUIView->printMindMap(_mindMapModel->getMindMap());
     } catch (exception exception) {
-        _textUIView.printException(exception);
+        _textUIView->printException(exception);
     }
     return TextUIStateFactory::createTextUIState(MenuStateInstruction, _mindMapModel);
 }

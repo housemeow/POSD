@@ -15,9 +15,9 @@ CreateMindMapState::~CreateMindMapState()
 TextUIState* CreateMindMapState::run()
 {
     string description;
-    _textUIView.printCreateMindMapMessage();
+    _textUIView->printCreateMindMapMessage();
     description = readLineString();
     _mindMapModel->createMindMap(description);
-    _textUIView.printMindMap(_mindMapModel->getMindMap());
+    _textUIView->printMindMap(_mindMapModel->getMindMap());
     return TextUIStateFactory::createTextUIState(MenuStateInstruction, _mindMapModel);
 }

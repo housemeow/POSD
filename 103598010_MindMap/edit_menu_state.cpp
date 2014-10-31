@@ -18,18 +18,18 @@ EditMenuState::~EditMenuState()
 TextUIState* EditMenuState::run()
 {
     if (_mindMapModel->getMindMap() == NULL) {
-        _textUIView.printMindMapNotExist();
+        _textUIView->printMindMapNotExist();
         return TextUIStateFactory::createTextUIState(MenuStateInstruction, _mindMapModel);
     }
-    _textUIView.printMindMap(_mindMapModel->getMindMap());
+    _textUIView->printMindMap(_mindMapModel->getMindMap());
     int id;
-    _textUIView.printEnterEditNodeIDMessage();
+    _textUIView->printEnterEditNodeIDMessage();
     id = readInt();
     Component* component = _mindMapModel->getMindMap()->findNode(id);
     if (component) {
         char instruction;
         while (true) {
-            _textUIView.printEditMenu();
+            _textUIView->printEditMenu();
             instruction = readChar();
             switch (instruction) {
                 case TEXT_UI_EDIT_DESCRIPTION_INSTRUCTION:
@@ -42,12 +42,12 @@ TextUIState* EditMenuState::run()
                     return TextUIStateFactory::createTextUIState(DeleteNodeStateInstruction, _mindMapModel, component);
                     break;
                 default:
-                    _textUIView.printCommandNotFound();
+                    _textUIView->printCommandNotFound();
                     break;
             }
         }
     } else {
-        _textUIView.printNodeIsNotExist();
+        _textUIView->printNodeIsNotExist();
         return new EditMenuState(_mindMapModel);
     }
     return TextUIStateFactory::createTextUIState(MenuStateInstruction, _mindMapModel);

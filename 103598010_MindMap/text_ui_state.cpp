@@ -13,12 +13,18 @@ TextUIState::~TextUIState()
 {
 }
 
+
+void TextUIState::setTextUIView(TextUIView* textUIView)
+{
+    _textUIView = textUIView;
+}
+
 // 要求使用者輸入一行文字
 string TextUIState::readLineString(bool printNotify)
 {
     string line;
     if (printNotify)
-        _textUIView.printInputNotify();
+        _textUIView->printInputNotify();
     while (getline(cin, line)) {
         if (!line.empty()) {
             return line;
@@ -31,7 +37,7 @@ string TextUIState::readLineString(bool printNotify)
 int TextUIState::readInt(bool printNotify)
 {
     if (printNotify)
-        _textUIView.printInputNotify();
+        _textUIView->printInputNotify();
     int integer;
     cin >> integer;
     return integer;
@@ -42,7 +48,7 @@ int TextUIState::readInt(bool printNotify)
 char TextUIState::readChar(bool printNotify)
 {
     if (printNotify)
-        _textUIView.printInputNotify();
+        _textUIView-> printInputNotify();
     char character;
     cin >> character;
     return character;

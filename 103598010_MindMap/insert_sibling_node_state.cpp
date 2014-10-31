@@ -18,6 +18,6 @@ TextUIState* InsertSiblingNodeState::run()
     description = readLineString();
     InsertSiblingNodeCommand* insertSiblingNodeCommand = new InsertSiblingNodeCommand(_mindMapModel, _component, description);
     _mindMapModel->execute(insertSiblingNodeCommand);
-    _textUIView.printMindMap(_mindMapModel->getMindMap());
+    _textUIView->printMindMap(_mindMapModel->getMindMap());
     return TextUIStateFactory::createTextUIState(MenuStateInstruction, _mindMapModel);
 }

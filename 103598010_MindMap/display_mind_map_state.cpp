@@ -15,9 +15,9 @@ DisplayMindMapState::~DisplayMindMapState()
 TextUIState* DisplayMindMapState::run()
 {
     if (_mindMapModel->getMindMap() != NULL) {
-        _textUIView.printMindMap(_mindMapModel->getMindMap());
+        _textUIView->printMindMap(_mindMapModel->getMindMap());
     } else {
-        _textUIView.printMindMapNotExist();
+        _textUIView->printMindMapNotExist();
     }
     return TextUIStateFactory::createTextUIState(MenuStateInstruction, _mindMapModel);
 }

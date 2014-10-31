@@ -3,6 +3,7 @@
 #include "stdafx.h"
 #include "mind_map_model.h"
 #include "text_ui_controller.h"
+#include "text_ui_view.h"
 
 using namespace std;
 
@@ -10,7 +11,8 @@ using namespace std;
 int _tmain(int argc, _TCHAR* argv[])
 {
     MindMapModel mindMapModel;
-    TextUIController textUIController(&mindMapModel);
+    TextUIView textUIView(cout);
+    TextUIController textUIController(&mindMapModel, &textUIView);
     textUIController.run();
     return 0;
 }

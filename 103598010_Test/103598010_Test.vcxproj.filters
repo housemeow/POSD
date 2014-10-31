@@ -143,5 +143,8 @@
     <ClCompile Include="..\103598010_MindMap\insert_sibling_node_state.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="integration_test.cpp">
+      <Filter>UnitTest</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

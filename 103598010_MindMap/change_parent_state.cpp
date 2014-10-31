@@ -16,22 +16,22 @@ ChangeParentState::~ChangeParentState()
 TextUIState* ChangeParentState::run()
 {
     if (_component == _mindMapModel->getMindMap()) {
-        _textUIView.printRootCannotChangeParent();
+        _textUIView->printRootCannotChangeParent();
         return new MenuState(_mindMapModel);
     }
-    _textUIView.printEnterParentID();
+    _textUIView->printEnterParentID();
     int id = readInt(false);
     if (_component->getId() == id) {
-        _textUIView.printParentCannotSelectItself();
+        _textUIView->printParentCannotSelectItself();
         return new ChangeParentState(_mindMapModel, _component);
     }
     Component* parentComponent = _mindMapModel->getMindMap()->findNode(id);
     if (!parentComponent) {
-        _textUIView.printNodeIsNotExist();
+        _textUIView->printNodeIsNotExist();
         return new ChangeParentState(_mindMapModel, _component);
     }
     ChangeParentCommand* changeParentCommand = new ChangeParentCommand(_component, parentComponent);
     _mindMapModel->execute(changeParentCommand);
-    _textUIView.printMindMap(_mindMapModel->getMindMap());
+    _textUIView->printMindMap(_mindMapModel->getMindMap());
     return new MenuState(_mindMapModel);
 }

@@ -15,36 +15,36 @@ InsertMenuState::~InsertMenuState()
 TextUIState* InsertMenuState::run()
 {
     if (!_mindMapModel->getMindMap()) {
-        _textUIView.printMindMapNotExist();
+        _textUIView->printMindMapNotExist();
         return TextUIStateFactory::createTextUIState(MenuStateInstruction, _mindMapModel);
     }
-    _textUIView.printMindMap(_mindMapModel->getMindMap());
+    _textUIView->printMindMap(_mindMapModel->getMindMap());
     int id;
     Component* component = NULL;
     while (component == NULL) {
-        _textUIView.printEnterNodeIDMessage();
+        _textUIView->printEnterNodeIDMessage();
         id = readInt();
         component = _mindMapModel->getMindMap()->findNode(id);
     }
     ComponentFactory factory;
     while (true) {
-        _textUIView.printInsertNewNodeMenu();
+        _textUIView->printInsertNewNodeMenu();
         char instruction;
         cin >> instruction;
         InsertNodeMode instructionEnum = (InsertNodeMode)instruction;
         if (instructionEnum != InsertNodeModeParent &&
                 instructionEnum != InsertNodeModeChild &&
                 instructionEnum != InsertNodeModeSibling) {
-            _textUIView.printWrongInsertCommandMessage();
+            _textUIView->printWrongInsertCommandMessage();
             continue;
         }
         try {
             _mindMapModel->tryInsertNewNode(component, instructionEnum);
         } catch (exception exception) {
-            _textUIView.printException(exception);
+            _textUIView->printException(exception);
             continue;
         }
-        _textUIView.printEnterNodeNameMessage();
+        _textUIView->printEnterNodeNameMessage();
         switch (instructionEnum) {
             case InsertNodeModeParent:
                 return TextUIStateFactory::createTextUIState(InsertParentNodeStateInstruction, _mindMapModel, component);

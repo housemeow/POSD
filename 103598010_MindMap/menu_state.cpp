@@ -22,7 +22,7 @@ MenuState::~MenuState()
 
 TextUIState* MenuState::run()
 {
-    _textUIView.printMenu();
+    _textUIView->printMenu();
     int instruction = readInt();
     switch (instruction) {
         case TEXT_UI_CREATE_MIND_MAP_INSTRUCTION:
@@ -53,7 +53,7 @@ TextUIState* MenuState::run()
             return TextUIStateFactory::createTextUIState(ExitStateInstruction, _mindMapModel);
             break;
         default:
-            _textUIView.printWrongMenuInstruction();
+            _textUIView->printWrongMenuInstruction();
             return TextUIStateFactory::createTextUIState(MenuStateInstruction, _mindMapModel);
     }
 }

@@ -6,7 +6,7 @@
 class TextUIView
 {
 public:
-    TextUIView();
+    TextUIView(ostream& ostream);
     ~TextUIView();
     void printMenu();
     void printMindMap(Component* component);
@@ -32,4 +32,6 @@ public:
     void printParentCannotSelectItself();
     void printCannotDeleteRoot();
     void printRootCannotChangeParent();
+private:
+    ostream& cout;
 };

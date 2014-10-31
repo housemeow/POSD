@@ -16,11 +16,11 @@ DeleteNodeState::~DeleteNodeState()
 TextUIState* DeleteNodeState::run()
 {
     if (_component == _mindMapModel->getMindMap()) {
-        _textUIView.printCannotDeleteRoot();
+        _textUIView->printCannotDeleteRoot();
     } else {
         DeleteCommand* deleteCommand = new DeleteCommand(_component);
         _mindMapModel->execute(deleteCommand);
-        _textUIView.printMindMap(_mindMapModel->getMindMap());
+        _textUIView->printMindMap(_mindMapModel->getMindMap());
     }
     return TextUIStateFactory::createTextUIState(MenuStateInstruction, _mindMapModel);
 }
