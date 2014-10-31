@@ -8,11 +8,9 @@ EditDescriptionState::EditDescriptionState(MindMapModel* mindMapModel, Component
     _component = component;
 }
 
-
 EditDescriptionState::~EditDescriptionState()
 {
 }
-
 
 TextUIState* EditDescriptionState::run()
 {

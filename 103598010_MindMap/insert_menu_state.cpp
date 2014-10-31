@@ -27,29 +27,31 @@ TextUIState* InsertMenuState::run()
         component = _mindMapModel->getMindMap()->findNode(id);
     }
     ComponentFactory factory;
-    bool continueInput = true;
-    while (continueInput) {
+    while (true) {
         _textUIView.printInsertNewNodeMenu();
         char instruction;
         cin >> instruction;
+        InsertNodeMode instructionEnum = (InsertNodeMode)instruction;
+        if (instructionEnum != InsertNodeModeParent &&
+                instructionEnum != InsertNodeModeChild &&
+                instructionEnum != InsertNodeModeSibling) {
+            _textUIView.printWrongInsertCommandMessage();
+            continue;
+        }
         try {
-            InsertNodeMode instructionEnum = (InsertNodeMode)instruction;
-            if (instructionEnum != InsertNodeModeParent &&
-                    instructionEnum != InsertNodeModeChild &&
-                    instructionEnum != InsertNodeModeSibling) {
-                _textUIView.printWrongInsertCommandMessage();
-                continue;
-            }
             _mindMapModel->tryInsertNewNode(component, instructionEnum);
-            _textUIView.printEnterNodeNameMessage();
-            string description;
-            description = readLineString();
-            _mindMapModel->insertNewNode(component, description, instructionEnum);
-            continueInput = false;
         } catch (exception exception) {
             _textUIView.printException(exception);
+            continue;
+        }
+        _textUIView.printEnterNodeNameMessage();
+        switch (instructionEnum) {
+            case InsertNodeModeParent:
+                return TextUIStateFactory::createTextUIState(InsertParentNodeStateInstruction, _mindMapModel, component);
+            case InsertNodeModeChild:
+                return TextUIStateFactory::createTextUIState(InsertChildNodeStateInstruction, _mindMapModel, component);
+            case InsertNodeModeSibling:
+                return TextUIStateFactory::createTextUIState(InsertSiblingNodeStateInstruction, _mindMapModel, component);
         }
     }
-    _textUIView.printMindMap(_mindMapModel->getMindMap());
-    return TextUIStateFactory::createTextUIState(MenuStateInstruction, _mindMapModel);
 }

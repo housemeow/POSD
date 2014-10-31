@@ -41,6 +41,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>..\103598010_MindMap;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -59,6 +60,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>C:\gtest\lib\gtestd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>$(TargetPath)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -81,10 +85,45 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="..\103598010_MindMap\stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\103598010_MindMap\change_parent_command.cpp" />
+    <ClCompile Include="..\103598010_MindMap\change_parent_state.cpp" />
+    <ClCompile Include="..\103598010_MindMap\command.cpp" />
+    <ClCompile Include="..\103598010_MindMap\command_manager.cpp" />
+    <ClCompile Include="..\103598010_MindMap\component.cpp" />
+    <ClCompile Include="..\103598010_MindMap\component_factory.cpp" />
+    <ClCompile Include="..\103598010_MindMap\composite.cpp" />
+    <ClCompile Include="..\103598010_MindMap\create_mind_map_state.cpp" />
+    <ClCompile Include="..\103598010_MindMap\delete_command.cpp" />
+    <ClCompile Include="..\103598010_MindMap\delete_node_state.cpp" />
+    <ClCompile Include="..\103598010_MindMap\display_mind_map_state.cpp" />
+    <ClCompile Include="..\103598010_MindMap\edit_description_command.cpp" />
+    <ClCompile Include="..\103598010_MindMap\edit_description_state.cpp" />
+    <ClCompile Include="..\103598010_MindMap\edit_menu_state.cpp" />
+    <ClCompile Include="..\103598010_MindMap\enumeration.cpp" />
+    <ClCompile Include="..\103598010_MindMap\exit_state.cpp" />
+    <ClCompile Include="..\103598010_MindMap\insert_child_node_command.cpp" />
+    <ClCompile Include="..\103598010_MindMap\insert_child_node_state.cpp" />
+    <ClCompile Include="..\103598010_MindMap\insert_menu_state.cpp" />
+    <ClCompile Include="..\103598010_MindMap\insert_parent_node_command.cpp" />
+    <ClCompile Include="..\103598010_MindMap\insert_parent_node_state.cpp" />
+    <ClCompile Include="..\103598010_MindMap\insert_sibling_node_command.cpp" />
+    <ClCompile Include="..\103598010_MindMap\insert_sibling_node_state.cpp" />
+    <ClCompile Include="..\103598010_MindMap\load_state.cpp" />
+    <ClCompile Include="..\103598010_MindMap\menu_state.cpp" />
+    <ClCompile Include="..\103598010_MindMap\mind_map_model.cpp" />
+    <ClCompile Include="..\103598010_MindMap\node.cpp" />
+    <ClCompile Include="..\103598010_MindMap\redo_state.cpp" />
+    <ClCompile Include="..\103598010_MindMap\root.cpp" />
+    <ClCompile Include="..\103598010_MindMap\save_state.cpp" />
+    <ClCompile Include="..\103598010_MindMap\text_ui_controller.cpp" />
+    <ClCompile Include="..\103598010_MindMap\text_ui_state.cpp" />
+    <ClCompile Include="..\103598010_MindMap\text_ui_state_factory.cpp" />
+    <ClCompile Include="..\103598010_MindMap\text_ui_view.cpp" />
+    <ClCompile Include="..\103598010_MindMap\undo_state.cpp" />
     <ClCompile Include="103598010_Test.cpp" />
     <ClCompile Include="component_factory_test.cpp" />
     <ClCompile Include="stdafx.cpp">

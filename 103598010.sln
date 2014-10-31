@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "103598010_MindMap", "103598010_MindMap\103598010_MindMap.vcxproj", "{84739ECC-9F68-4ED9-ABA1-A8389C826E1B}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "103598010_Test", "103598010_Test\103598010_Test.vcxproj", "{29ACDEA3-B71B-4F66-B5F9-601F4CBB4F86}"
+	ProjectSection(ProjectDependencies) = postProject
+		{84739ECC-9F68-4ED9-ABA1-A8389C826E1B} = {84739ECC-9F68-4ED9-ABA1-A8389C826E1B}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

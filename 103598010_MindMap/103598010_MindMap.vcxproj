@@ -96,7 +96,13 @@
     <ClInclude Include="display_mind_map_state.h" />
     <ClInclude Include="edit_menu_state.h" />
     <ClInclude Include="exit_state.h" />
+    <ClInclude Include="insert_child_node_command.h" />
+    <ClInclude Include="insert_child_node_state.h" />
     <ClInclude Include="insert_menu_state.h" />
+    <ClInclude Include="insert_parent_node_command.h" />
+    <ClInclude Include="insert_parent_node_state.h" />
+    <ClInclude Include="insert_sibling_node_command.h" />
+    <ClInclude Include="insert_sibling_node_state.h" />
     <ClInclude Include="load_state.h" />
     <ClInclude Include="menu_state.h" />
     <ClInclude Include="mind_map_model.h" />
@@ -129,7 +135,13 @@
     <ClCompile Include="display_mind_map_state.cpp" />
     <ClCompile Include="edit_menu_state.cpp" />
     <ClCompile Include="exit_state.cpp" />
+    <ClCompile Include="insert_child_node_command.cpp" />
+    <ClCompile Include="insert_child_node_state.cpp" />
     <ClCompile Include="insert_menu_state.cpp" />
+    <ClCompile Include="insert_parent_node_command.cpp" />
+    <ClCompile Include="insert_parent_node_state.cpp" />
+    <ClCompile Include="insert_sibling_node_command.cpp" />
+    <ClCompile Include="insert_sibling_node_state.cpp" />
     <ClCompile Include="load_state.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="menu_state.cpp" />

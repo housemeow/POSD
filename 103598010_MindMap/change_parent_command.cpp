@@ -36,11 +36,6 @@ void ChangeParentCommand::execute()
 
 void ChangeParentCommand::unexecute()
 {
-    //list<Component*> children = _component->getNodeList();
-    //for (list<Component*>::const_iterator componentIterator = _children.begin(); componentIterator != _children.end(); ++componentIterator) {
-    //	_component->addChild(*componentIterator);
-    //}
-    //_originParentComponent->addChild(_component);
     for (list<Component*>::const_iterator componentIterator = _children.begin(); componentIterator != _children.end(); ++componentIterator) {
         _component->addChild(*componentIterator);
     }

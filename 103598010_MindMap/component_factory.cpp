@@ -40,4 +40,5 @@ Component* ComponentFactory::copyMindMap(Component* component)
         }
         return newComponent;
     }
+    return NULL;
 }

@@ -132,12 +132,6 @@
     <ClInclude Include="change_parent_command.h">
       <Filter>Header Files\Commands</Filter>
     </ClInclude>
-    <ClInclude Include="delete_command.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="text_ui_state_factory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="change_parent_state.h">
       <Filter>Header Files\TextUIStates\Edit</Filter>
     </ClInclude>
@@ -152,6 +146,30 @@
     </ClInclude>
     <ClInclude Include="insert_menu_state.h">
       <Filter>Header Files\TextUIStates\Insert</Filter>
+    </ClInclude>
+    <ClInclude Include="insert_parent_node_command.h">
+      <Filter>Header Files\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="insert_child_node_command.h">
+      <Filter>Header Files\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="insert_sibling_node_command.h">
+      <Filter>Header Files\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="insert_sibling_node_state.h">
+      <Filter>Header Files\TextUIStates\Insert</Filter>
+    </ClInclude>
+    <ClInclude Include="insert_child_node_state.h">
+      <Filter>Header Files\TextUIStates\Insert</Filter>
+    </ClInclude>
+    <ClInclude Include="insert_parent_node_state.h">
+      <Filter>Header Files\TextUIStates\Insert</Filter>
+    </ClInclude>
+    <ClInclude Include="delete_command.h">
+      <Filter>Header Files\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="text_ui_state_factory.h">
+      <Filter>Header Files\TextUIStates</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -206,9 +224,6 @@
     <ClCompile Include="text_ui_controller.cpp">
       <Filter>Source Files\TextUI</Filter>
     </ClCompile>
-    <ClCompile Include="command.cpp">
-      <Filter>Source Files\Commands</Filter>
-    </ClCompile>
     <ClCompile Include="command_manager.cpp">
       <Filter>Source Files\Commands</Filter>
     </ClCompile>
@@ -224,14 +239,8 @@
     <ClCompile Include="change_parent_command.cpp">
       <Filter>Source Files\Commands</Filter>
     </ClCompile>
-    <ClCompile Include="delete_command.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="save_state.cpp">
       <Filter>Source Files\TextUIStates</Filter>
-    </ClCompile>
-    <ClCompile Include="text_ui_state_factory.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="edit_description_state.cpp">
       <Filter>Source Files\TextUIStates\Edit</Filter>
@@ -246,6 +255,33 @@
       <Filter>Source Files\TextUIStates\Edit</Filter>
     </ClCompile>
     <ClCompile Include="insert_menu_state.cpp">
+      <Filter>Source Files\TextUIStates\Insert</Filter>
+    </ClCompile>
+    <ClCompile Include="insert_parent_node_command.cpp">
+      <Filter>Source Files\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="insert_sibling_node_command.cpp">
+      <Filter>Source Files\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="insert_child_node_command.cpp">
+      <Filter>Source Files\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="insert_child_node_state.cpp">
+      <Filter>Source Files\TextUIStates\Insert</Filter>
+    </ClCompile>
+    <ClCompile Include="insert_parent_node_state.cpp">
+      <Filter>Source Files\TextUIStates\Insert</Filter>
+    </ClCompile>
+    <ClCompile Include="command.cpp">
+      <Filter>Header Files\TextUIStates</Filter>
+    </ClCompile>
+    <ClCompile Include="delete_command.cpp">
+      <Filter>Source Files\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="text_ui_state_factory.cpp">
+      <Filter>Source Files\TextUIStates</Filter>
+    </ClCompile>
+    <ClCompile Include="insert_sibling_node_state.cpp">
       <Filter>Source Files\TextUIStates\Insert</Filter>
     </ClCompile>
   </ItemGroup>
