@@ -17,7 +17,8 @@ TextUIState* InsertParentNodeState::run()
 {
     string description;
     description = readLineString();
-    _mindMapModel->insertNewNode(_component, description, InsertNodeModeParent);
+    InsertParentNodeCommand* insertParentNodeCommand = new InsertParentNodeCommand(_mindMapModel, _component, description);
+    _mindMapModel->execute(insertParentNodeCommand);
     _textUIView.printMindMap(_mindMapModel->getMindMap());
     return TextUIStateFactory::createTextUIState(MenuStateInstruction, _mindMapModel);
 }

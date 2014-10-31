@@ -33,7 +33,7 @@ void MindMapModel::tryInsertNewNode(Component* component, InsertNodeMode insertM
 }
 
 // 加入一個節點
-void MindMapModel::insertNode(Component* component, Component* node, InsertNodeMode insertMode)
+Component* MindMapModel::insertNode(Component* component, Component* node, InsertNodeMode insertMode)
 {
     try {
         switch (insertMode) {
@@ -52,15 +52,22 @@ void MindMapModel::insertNode(Component* component, Component* node, InsertNodeM
     } catch (string exception) {
         throw exception;
     }
+    return component;
+}
+
+Component* MindMapModel::createNode(ComponentType componentType, string description)
+{
+    ComponentFactory componentFactory;
+    Component* newNode = componentFactory.createComponent(componentType, _currentId++);
+    newNode->setDescription(description);
+    return newNode;
 }
 
 // 建立並加入一個新結點
-void MindMapModel::insertNewNode(Component* component, string description, InsertNodeMode insertMode)
+Component* MindMapModel::insertNewNode(Component* component, string description, InsertNodeMode insertMode)
 {
-    ComponentFactory factory;
-    Component* newNode = factory.createComponent(ComponentType::ComponentTypeNode, _currentId++);
-    newNode->setDescription(description);
-    insertNode(component, newNode, insertMode);
+    Component* newNode = createNode(ComponentType::ComponentTypeNode, description);
+    return insertNode(component, newNode, insertMode);
 }
 
 // 將MindMap存檔

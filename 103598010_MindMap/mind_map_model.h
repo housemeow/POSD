@@ -9,8 +9,9 @@ public:
     MindMapModel();
     ~MindMapModel();
     void createMindMap(string mindMapName);
-    void insertNewNode(Component* node, string description, InsertNodeMode insertMode);
-    void insertNode(Component* component, Component* node, InsertNodeMode insertMode);
+    Component* insertNewNode(Component* node, string description, InsertNodeMode insertMode);
+    Component* insertNode(Component* component, Component* node, InsertNodeMode insertMode);
+    Component* createNode(ComponentType componentType, string description);
     void tryInsertNewNode(Component* component, InsertNodeMode insertMode);
     void saveMindMap();
     void loadMindMap(string filePath);
