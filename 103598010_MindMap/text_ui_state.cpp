@@ -6,6 +6,7 @@
 TextUIState::TextUIState(MindMapModel* mindMapModel)
 {
     _mindMapModel = mindMapModel;
+    cin = &std::cin;
 }
 
 
@@ -25,7 +26,7 @@ string TextUIState::readLineString(bool printNotify)
     string line;
     if (printNotify)
         _textUIView->printInputNotify();
-    while (getline(cin, line)) {
+    while (getline(*cin, line)) {
         if (!line.empty()) {
             return line;
         }
@@ -39,7 +40,7 @@ int TextUIState::readInt(bool printNotify)
     if (printNotify)
         _textUIView->printInputNotify();
     int integer;
-    cin >> integer;
+    *cin >> integer;
     return integer;
 }
 
@@ -50,6 +51,10 @@ char TextUIState::readChar(bool printNotify)
     if (printNotify)
         _textUIView-> printInputNotify();
     char character;
-    cin >> character;
+    *cin >> character;
     return character;
+}
+void TextUIState::setIStream(istream* istream)
+{
+    cin = istream;
 }

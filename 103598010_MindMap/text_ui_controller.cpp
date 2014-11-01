@@ -11,10 +11,16 @@ TextUIController::TextUIController(MindMapModel* mindMapModel, TextUIView* textU
 {
     _mindMapModel = mindMapModel;
     _textUIView = textUIView;
+    _istream = &cin;
 }
 
 TextUIController::~TextUIController()
 {
+}
+
+void TextUIController::setIStream(istream* istream)
+{
+    _istream = istream;
 }
 
 void TextUIController::run()
@@ -22,6 +28,7 @@ void TextUIController::run()
     TextUIState* state = new MenuState(_mindMapModel);
     do {
         state->setTextUIView(_textUIView);
+        state->setIStream(_istream);
         TextUIState* nextState = state->run();
         delete state;
         state = nextState;

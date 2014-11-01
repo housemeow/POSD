@@ -8,7 +8,9 @@ public:
     TextUIController(MindMapModel* mindMapModel, TextUIView* textUIView);
     ~TextUIController();
     void run();
+    void setIStream(istream* istream);
 private:
     MindMapModel* _mindMapModel;
     TextUIView* _textUIView;
+    istream* _istream;
 };

@@ -11,5 +11,6 @@ public:
     void addParent(Component* component);
     bool isAncientOf(Component* component);
     string getTypeName();
+    Component* getMindMap();
 };
 

@@ -11,9 +11,10 @@ public:
     void unexecute();
 private:
     Component* _component;
-    Component* _parentComponent;
-    Component* _originParentComponent;
+    int _parentComponentId;
+    int _originParentComponentId;
+    Component* _mindMap;
     int _originPosition;
-    list<Component*> _children;
+    list<int> _childrenId;
 };
 

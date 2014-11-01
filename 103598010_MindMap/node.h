@@ -8,5 +8,6 @@ public:
     Node(int id);
     ~Node();
     string getTypeName();
+    Component* getMindMap();
 };
 

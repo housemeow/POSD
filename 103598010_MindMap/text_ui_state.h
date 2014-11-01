@@ -9,11 +9,13 @@ public:
     virtual ~TextUIState();
     virtual TextUIState* run() = 0;
     void setTextUIView(TextUIView* textUIView);
+    void setIStream(istream* istream);
 protected:
     string readLineString(bool printNotify = true);
     int readInt(bool printNotify = true);
     char readChar(bool printNotify = true);
     TextUIView* _textUIView;
     MindMapModel* _mindMapModel;
+    istream* cin;
 };
 

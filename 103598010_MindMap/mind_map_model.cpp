@@ -71,10 +71,11 @@ Component* MindMapModel::insertNewNode(Component* component, string description,
 }
 
 // 將MindMap存檔
-void MindMapModel::saveMindMap()
+void MindMapModel::saveMindMap(string fileName)
 {
     ofstream file;
-    file.open("file__exist.mm");
+    file.open(fileName);
+    //file.open("file__exist.mm");
     ComponentFactory componentFactory;
     Component* saveMindMap = componentFactory.copyMindMap(_mindMap);
     int newId = 0;

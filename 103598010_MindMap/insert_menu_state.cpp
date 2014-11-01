@@ -30,7 +30,7 @@ TextUIState* InsertMenuState::run()
     while (true) {
         _textUIView->printInsertNewNodeMenu();
         char instruction;
-        cin >> instruction;
+        *cin >> instruction;
         InsertNodeMode instructionEnum = (InsertNodeMode)instruction;
         if (instructionEnum != InsertNodeModeParent &&
                 instructionEnum != InsertNodeModeChild &&

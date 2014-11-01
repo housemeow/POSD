@@ -14,7 +14,7 @@ SaveState::~SaveState()
 TextUIState* SaveState::run()
 {
     if (_mindMapModel->getMindMap()) {
-        _mindMapModel->saveMindMap();
+        _mindMapModel->saveMindMap("file__exist.mm");
         _textUIView->printMindMap(_mindMapModel->getMindMap());
         _textUIView->printSaveMindMapSuccess();
     } else {

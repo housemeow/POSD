@@ -13,7 +13,7 @@ public:
     Component* insertNode(Component* component, Component* node, InsertNodeMode insertMode);
     Component* createNode(ComponentType componentType, string description);
     void tryInsertNewNode(Component* component, InsertNodeMode insertMode);
-    void saveMindMap();
+    void saveMindMap(string fileName);
     void loadMindMap(string filePath);
     void undo();
     void redo();

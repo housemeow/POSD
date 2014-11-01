@@ -11,8 +11,10 @@ public:
 private:
     Component* _component;
     Component* _parentComponent;
-    list<Component*> _children;
+    Component* _mindMap;
+    list<int> _childrenId;
     int _id;
     string _description;
+    int _originPosition;
 };
 

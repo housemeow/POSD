@@ -31,3 +31,9 @@ bool Root::isAncientOf(Component* component)
 {
     return true;
 }
+
+
+Component* Root::getMindMap()
+{
+    return this;
+}

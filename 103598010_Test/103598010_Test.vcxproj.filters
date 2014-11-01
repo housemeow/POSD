@@ -35,9 +35,6 @@
     <ClCompile Include="103598010_Test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="component_factory_test.cpp">
-      <Filter>UnitTest</Filter>
-    </ClCompile>
     <ClCompile Include="..\103598010_MindMap\change_parent_command.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -144,6 +141,18 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="integration_test.cpp">
+      <Filter>UnitTest</Filter>
+    </ClCompile>
+    <ClCompile Include="node_test.cpp">
+      <Filter>UnitTest</Filter>
+    </ClCompile>
+    <ClCompile Include="root_test.cpp">
+      <Filter>UnitTest</Filter>
+    </ClCompile>
+    <ClCompile Include="state_test.cpp">
+      <Filter>UnitTest</Filter>
+    </ClCompile>
+    <ClCompile Include="controller_test.cpp">
       <Filter>UnitTest</Filter>
     </ClCompile>
   </ItemGroup>

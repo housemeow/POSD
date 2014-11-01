@@ -10,6 +10,7 @@ public:
     string getDescription();
     void setDescription(string description);
     string getName();
+    virtual Component* getMindMap() = 0;
     Component* getParent();
     void setParent(Component* parent);
     Component* findNode(int id);
