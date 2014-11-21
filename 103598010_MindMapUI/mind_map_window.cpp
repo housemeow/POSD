@@ -1,4 +1,5 @@
 #include "mind_map_window.h"
+#include <qmessagebox.h>
 
 MindMapWindow::MindMapWindow(QWidget* parent)
     : QMainWindow(parent)
@@ -144,4 +145,6 @@ void MindMapWindow::insertParent()
 
 void MindMapWindow::about()
 {
+    QMessageBox message(QMessageBox::Information, "About", "103598010\nKellyang\nVersion 4.0.0", QMessageBox::Ok, NULL);
+    message.exec();
 }
