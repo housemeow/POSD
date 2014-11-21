@@ -28,6 +28,7 @@ private:
     QAction* _createMindMapAction;
     QAction* _openMindMapAction;
     QAction* _saveMindMapAction;
+    QAction* _exitAction;
     QAction* _editNodeAction;
     QAction* _deleteNodeAction;
     QAction* _insertChildAction;
@@ -44,6 +45,7 @@ private slots:
     void createMindMap();
     void openMindMap();
     void saveMindMap();
+    void exit();
     void editNode();
     void deleteNode();
     void insertChild();

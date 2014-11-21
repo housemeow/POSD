@@ -50,6 +50,11 @@ void MindMapWindow::createActions()
     _saveMindMapAction->setIcon(QIcon("Resources\\save.png"));
     _saveMindMapAction->setStatusTip(tr("save a new mind map"));
     connect(_saveMindMapAction, SIGNAL(triggered()), this, SLOT(saveMindMap()));
+    // exit action
+    _exitAction = new QAction(tr("Exit"), this);
+    _exitAction->setIcon(QIcon("Resources\\delete.png"));
+    _exitAction->setStatusTip(tr("Exit"));
+    connect(_exitAction, SIGNAL(triggered()), this, SLOT(exit()));
     // edit node action
     _editNodeAction = new QAction(tr("& Edit"), this);
     _editNodeAction->setIcon(QIcon("Resources\\edit.png"));
@@ -94,7 +99,9 @@ void MindMapWindow::createMenuBar()
     _menuBar = new QMenuBar(this);
     QMenu* fileMenu = _menuBar->addMenu(tr("& File"));
     fileMenu->addAction(_createMindMapAction);
-    _menuBar->setGeometry(0, 0, 600, 20);
+    fileMenu->addAction(_openMindMapAction);
+    fileMenu->addAction(_saveMindMapAction);
+    fileMenu->addAction(_exitAction);
     QMenu* edit = _menuBar->addMenu(tr("& Edit"));
     edit->addAction(_editNodeAction);
     edit->addAction(_deleteNodeAction);
@@ -139,6 +146,11 @@ void MindMapWindow::openMindMap()
         showMessageBox("Exception", exception.what());
     }
     _mindMapView->refresh();
+}
+
+void MindMapWindow::exit()
+{
+    close();
 }
 
 void MindMapWindow::updateUIState()
