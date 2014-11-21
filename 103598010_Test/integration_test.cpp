@@ -65,7 +65,7 @@ protected:
 
     DeleteCommand* createDeleteCommand(int id)
     {
-        return new DeleteCommand(_mindMapModel.getMindMap()->findNode(id));
+        return new DeleteCommand(&_mindMapModel, _mindMapModel.getMindMap()->findNode(id));
     }
 
     ChangeParentCommand* createChangeParentCommand(int id, int newParentId)
@@ -319,6 +319,7 @@ TEST_F(IntegrationTest, testSaveMindMap)
     _mindMapModel.saveMindMap("testdata/save_file.mm");
     _mindMapModel.loadMindMap("testdata/save_file.mm");
     ASSERT_EQ(saveMindMapString, getMindMapString());
+    deleteFile("testdata/save_file.mm");
 }
 
 //Component* findComponent(list<Component*> components, int id);

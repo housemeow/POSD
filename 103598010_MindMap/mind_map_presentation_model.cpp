@@ -30,16 +30,12 @@ void MindMapPresentationModel::createMindMap(string mindMapName)
     _saveMindMapActionEnabled = true;
 }
 
-void MindMapPresentationModel::insertNewNode(Component* node, string description, InsertNodeMode insertMode)
-{
-    _mindMapModel->insertNewNode(node, description, insertMode);
-}
-
 void MindMapPresentationModel::loadMindMap(string filePath)
 {
     _mindMapModel->loadMindMap(filePath);
     setActionsEnabled(false);
-    _listener->updateUIState();
+    if (_listener)
+        _listener->updateUIState();
     _saveMindMapActionEnabled = true;
 }
 
@@ -88,7 +84,7 @@ bool MindMapPresentationModel::getSelected(Component* component)
 void MindMapPresentationModel::clickNode(Component* component)
 {
     _selectedComponent = component;
-    _componentSelections.insert(pair<Component*, bool>(component, true));
+    _componentSelections.insert(pair<Component*, bool>(component, false));
     for (map<Component*, bool>::iterator iterator = _componentSelections.begin(); iterator != _componentSelections.end(); iterator++) {
         if (component == iterator->first) {
             iterator->second = !iterator->second;
@@ -97,7 +93,8 @@ void MindMapPresentationModel::clickNode(Component* component)
             iterator->second = false;
         }
     }
-    _listener->updateUIState();
+    if (_listener)
+        _listener->updateUIState();
 }
 
 void MindMapPresentationModel::setListener(MindMapPresentationModelChangeListener* listener)
@@ -123,7 +120,8 @@ Component* MindMapPresentationModel::getSelectedComponent()
 void MindMapPresentationModel::editDescription(string description)
 {
     _mindMapModel->editDescription(_selectedComponent, description);
-    _listener->updateUIState();
+    if (_listener)
+        _listener->updateUIState();
 }
 
 string MindMapPresentationModel::getSelectedComponentDescription()
@@ -137,8 +135,10 @@ void MindMapPresentationModel::deleteComponent()
     setActionsEnabled(false);
     _selectedComponent = NULL;
     _componentSelections.clear();
-    _listener->updateUIState();
-    _listener->refreshUI();
+    if (_listener) {
+        _listener->updateUIState();
+        _listener->refreshUI();
+    }
 }
 
 void MindMapPresentationModel::saveMindMap(string fileName)
@@ -148,6 +148,7 @@ void MindMapPresentationModel::saveMindMap(string fileName)
 
 void MindMapPresentationModel::doubleClick(Component* component)
 {
+    _componentSelections.insert(pair<Component*, bool>(component, false));
     for (map<Component*, bool>::iterator iterator = _componentSelections.begin(); iterator != _componentSelections.end(); iterator++) {
         if (component == iterator->first) {
             iterator->second = true;
@@ -156,16 +157,20 @@ void MindMapPresentationModel::doubleClick(Component* component)
             iterator->second = false;
         }
     }
-    _listener->doubleClick();
-    _listener->updateUIState();
+    if (_listener) {
+        _listener->doubleClick();
+        _listener->updateUIState();
+    }
 }
 
 void MindMapPresentationModel::insertChild(string description)
 {
     _mindMapModel->insertChildNode(_selectedComponent, description);
     setActionsEnabled(false);
-    _listener->updateUIState();
-    _listener->refreshUI();
+    if (_listener) {
+        _listener->updateUIState();
+        _listener->refreshUI();
+    }
 }
 
 
@@ -173,14 +178,18 @@ void MindMapPresentationModel::insertSibling(string description)
 {
     _mindMapModel->insertSiblingNode(_selectedComponent, description);
     setActionsEnabled(false);
-    _listener->updateUIState();
-    _listener->refreshUI();
+    if (_listener) {
+        _listener->updateUIState();
+        _listener->refreshUI();
+    }
 }
 
 void MindMapPresentationModel::insertParentNode(string description)
 {
     _mindMapModel->insertParentNode(_selectedComponent, description);
     setActionsEnabled(false);
-    _listener->updateUIState();
-    _listener->refreshUI();
+    if (_listener) {
+        _listener->updateUIState();
+        _listener->refreshUI();
+    }
 }

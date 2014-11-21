@@ -13,7 +13,6 @@ public:
     ~MindMapPresentationModel();
     Component* getMindMap();
     void createMindMap(string);
-    void insertNewNode(Component*, string, InsertNodeMode);
     void loadMindMap(string filePath);
     bool getSaveMindMapActionEnabled();
     bool getEditNodeActionEnabled();

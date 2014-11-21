@@ -37,7 +37,7 @@ TEST_F(StateTest, testUndoState)
     ASSERT_EQ("Cant't Undo!\n", ostringstream.str());
     _mindMapModel.createMindMap("Computer");
     _mindMapModel.insertNewNode(_mindMapModel.getMindMap(), "Child", InsertNodeModeChild);
-    _mindMapModel.execute(new DeleteCommand(_mindMapModel.getMindMap()->findNode(1)));
+    _mindMapModel.execute(new DeleteCommand(&_mindMapModel, _mindMapModel.getMindMap()->findNode(1)));
     ostringstream.str("");
     ostringstream.clear();
     undoState->run();
@@ -57,7 +57,7 @@ TEST_F(StateTest, testRedoState)
     ASSERT_EQ("Cant't Redo!\n", ostringstream.str());
     _mindMapModel.createMindMap("Computer");
     _mindMapModel.insertNewNode(_mindMapModel.getMindMap(), "Child", InsertNodeModeChild);
-    _mindMapModel.execute(new DeleteCommand(_mindMapModel.getMindMap()->findNode(1)));
+    _mindMapModel.execute(new DeleteCommand(&_mindMapModel, _mindMapModel.getMindMap()->findNode(1)));
     ostringstream.str("");
     ostringstream.clear();
     _mindMapModel.undo();
