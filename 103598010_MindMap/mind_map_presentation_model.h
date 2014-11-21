@@ -31,6 +31,9 @@ public:
     void deleteComponent();
     void saveMindMap(string fileName);
     void doubleClick(Component* component);
+    void insertChild(string description);
+    void insertSibling(string description);
+    void insertParentNode(string description);
 private:
     void setActionsEnabled(bool enabled);
     map<Component*, bool> _componentSelections;

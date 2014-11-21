@@ -209,3 +209,28 @@ void MindMapModel::deleteComponent(Component* component)
     component->setParent(NULL);
     delete component;
 }
+
+void MindMapModel::insertChildNode(Component* component, string description)
+{
+    Component* childComponent = createNode(ComponentTypeNode, description);
+    component->addChild(childComponent);
+}
+
+void MindMapModel::insertSiblingNode(Component* component, string description)
+{
+    if (component == _mindMap) {
+        throw exception("Root cannot insert sibling!");
+    }
+    Component* siblingComponent = createNode(ComponentTypeNode, description);
+    component->addSibling(siblingComponent);
+}
+
+void MindMapModel::insertParentNode(Component* component, string description)
+{
+    if (component == _mindMap) {
+        throw exception("Root cannot insert parent!");
+    }
+    Component* parentComponent = createNode(ComponentTypeNode, description);
+    component->getParent()->addChild(parentComponent);
+    component->addParent(parentComponent);
+}

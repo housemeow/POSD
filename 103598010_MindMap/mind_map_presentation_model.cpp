@@ -10,6 +10,7 @@ MindMapPresentationModel::MindMapPresentationModel(MindMapModel* mindMapModel)
 {
     _mindMapModel = mindMapModel;
     setActionsEnabled(false);
+    _saveMindMapActionEnabled = false;
     _selectedComponent = NULL;
 }
 
@@ -107,7 +108,6 @@ void MindMapPresentationModel::setListener(MindMapPresentationModelChangeListene
 
 void MindMapPresentationModel::setActionsEnabled(bool enabled)
 {
-    _saveMindMapActionEnabled = enabled;
     _editNodeActionEnabled = enabled;
     _deleteNodeActionEnabled = enabled;
     _insertChildActionEnabled = enabled;
@@ -158,4 +158,29 @@ void MindMapPresentationModel::doubleClick(Component* component)
     }
     _listener->doubleClick();
     _listener->updateUIState();
+}
+
+void MindMapPresentationModel::insertChild(string description)
+{
+    _mindMapModel->insertChildNode(_selectedComponent, description);
+    setActionsEnabled(false);
+    _listener->updateUIState();
+    _listener->refreshUI();
+}
+
+
+void MindMapPresentationModel::insertSibling(string description)
+{
+    _mindMapModel->insertSiblingNode(_selectedComponent, description);
+    setActionsEnabled(false);
+    _listener->updateUIState();
+    _listener->refreshUI();
+}
+
+void MindMapPresentationModel::insertParentNode(string description)
+{
+    _mindMapModel->insertParentNode(_selectedComponent, description);
+    setActionsEnabled(false);
+    _listener->updateUIState();
+    _listener->refreshUI();
 }

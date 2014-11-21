@@ -13,6 +13,7 @@ public:
     Component* insertNewNode(Component* node, string description, InsertNodeMode insertMode);
     Component* insertNode(Component* component, Component* node, InsertNodeMode insertMode);
     Component* createNode(ComponentType componentType, string description);
+    void insertChildNode(Component* component, string description);
     void tryInsertNewNode(Component* component, InsertNodeMode insertMode);
     void saveMindMap(string fileName);
     void loadMindMap(string filePath);
@@ -25,6 +26,8 @@ public:
     Component* getMindMap();
     void editDescription(Component* component, string description);
     void deleteComponent(Component* component);
+    void insertSiblingNode(Component* component, string description);
+    void insertParentNode(Component* component, string description);
 private:
     Component* _mindMap;
     int _currentId;

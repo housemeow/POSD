@@ -20,14 +20,16 @@ InsertParentNodeCommand::~InsertParentNodeCommand()
 
 void InsertParentNodeCommand::execute()
 {
-    _parentComponent = _mindMapModel->createNode(ComponentTypeNode, _description);
-    _component->getParent()->addChild(_parentComponent);
-    _component->addParent(_parentComponent);
+    _mindMapModel->insertParentNode(_component, _description);
 }
 
 void InsertParentNodeCommand::unexecute()
 {
-    _parentComponent->getParent()->addChild(_component);
-    _parentComponent->setParent(NULL);
-    delete _parentComponent;
+    Component* parentComponent = _component->getParent();
+    parentComponent->getParent()->addChild(_component);
+    parentComponent->setParent(NULL);
+    delete parentComponent;
+    //_parentComponent->getParent()->addChild(_component);
+    //_parentComponent->setParent(NULL);
+    //delete _parentComponent;
 }

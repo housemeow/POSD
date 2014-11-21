@@ -10,9 +10,8 @@
 #include "qfiledialog.h"
 
 MindMapWindow::MindMapWindow(MindMapPresentationModel* mindMapPresentationModel, QWidget* parent)
-    : QMainWindow(parent)//, MindMapPresentationModelChangeListener()
+    : QMainWindow(parent)
 {
-    //ui.setupUi(this);
     _mindMapPresentationModel = mindMapPresentationModel;
     _mindMapPresentationModel->setListener(this);
     resize(600, 400);
@@ -197,14 +196,25 @@ void MindMapWindow::deleteNode()
 
 void MindMapWindow::insertChild()
 {
+    _mindMapPresentationModel->insertChild("");
 }
 
 void MindMapWindow::insertSibling()
 {
+    try {
+        _mindMapPresentationModel->insertSibling("");
+    } catch (exception exception) {
+        showMessageBox("Exception", exception.what());
+    }
 }
 
 void MindMapWindow::insertParent()
 {
+    try {
+        _mindMapPresentationModel->insertParentNode("");
+    } catch (exception exception) {
+        showMessageBox("Exception", exception.what());
+    }
 }
 
 void MindMapWindow::about()

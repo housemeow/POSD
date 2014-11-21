@@ -21,8 +21,7 @@ InsertChildNodeCommand::~InsertChildNodeCommand()
 
 void InsertChildNodeCommand::execute()
 {
-    _childComponent = _mindMapModel->createNode(ComponentTypeNode, _description);
-    _component->addChild(_childComponent);
+    _mindMapModel->insertChildNode(_component, _description);
 }
 
 void InsertChildNodeCommand::unexecute()

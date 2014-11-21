@@ -17,8 +17,7 @@ InsertSiblingNodeCommand::~InsertSiblingNodeCommand()
 
 void InsertSiblingNodeCommand::execute()
 {
-    _siblingComponent = _mindMapModel->createNode(ComponentTypeNode, _description);
-    _component->addSibling(_siblingComponent);
+    _mindMapModel->insertSiblingNode(_component, _description);
 }
 
 void InsertSiblingNodeCommand::unexecute()
