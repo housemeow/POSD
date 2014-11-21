@@ -21,8 +21,8 @@ private:
     QAction* _createMindMapAction;
     QAction* _openMindMapAction;
     QAction* _saveMindMapAction;
-    QAction* _editAction;
-    QAction* _deleteAction;
+    QAction* _editNodeAction;
+    QAction* _deleteNodeAction;
     QAction* _insertChildAction;
     QAction* _insertSiblingAction;
     QAction* _insertParentAction;
@@ -30,20 +30,17 @@ private:
 
     QWidget* _centralWidget;
     QMenuBar* _menuBar;
-
-    QMenu* _createMindMapMenu;
-    QMenu* _openMindMapMenu;
-    QMenu* _saveMindMapMenu;
-    QMenu* _editMenu;
-    QMenu* _deleteMenu;
-    QMenu* _insertChildMenu;
-    QMenu* _insertSiblingMenu;
-    QMenu* _insertParentMenu;
-    QMenu* _aboutMenu;
-
     QToolBar* _toolBar;
 private slots:
     void createMindMap();
+    void openMindMap();
+    void saveMindMap();
+    void editNode();
+    void deleteNode();
+    void insertChild();
+    void insertSibling();
+    void insertParent();
+    void about();
 };
 
 #endif // MIND_MAP_WINDOW_H
