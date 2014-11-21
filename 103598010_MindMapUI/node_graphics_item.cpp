@@ -13,8 +13,6 @@ NodeGraphicsItem::NodeGraphicsItem(MindMapPresentationModel* mindMapPresentation
     _mindMapPresentationModel = mindMapPresentationModel;
     _component = component;
     _selected = false;
-    //setFlag(ItemIsMovable);
-    //setFlag(ItemIsFocusable);
     setFlag(ItemIsSelectable);
     _mouseState = MouseState::None;
     _parentNodeGraphicsItem = NULL;

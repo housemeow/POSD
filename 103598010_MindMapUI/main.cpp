@@ -13,16 +13,15 @@ int main(int argc, char* argv[])
          "Choose UI mode:\n"
          "1. GUI window\n"
          "2. Console\n";
-    //cin >> mode;
+    cin >> mode;
+    MindMapModel mindMapModel;
     if (mode == 1) {
         QApplication a(argc, argv);
-        MindMapModel mindMapModel;
         MindMapPresentationModel mindMapPresentationModel(&mindMapModel);
-        MindMapWindow w(&mindMapPresentationModel);
-        w.show();
+        MindMapWindow window(&mindMapPresentationModel);
+        window.show();
         return a.exec();
     } else if (mode == 2) {
-        MindMapModel mindMapModel;
         TextUIView textUIView(cout);
         TextUIController textUIController(&mindMapModel, &textUIView);
         textUIController.run();

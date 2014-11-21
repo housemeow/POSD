@@ -15,7 +15,6 @@ public:
     void createMindMap(string);
     void insertNewNode(Component*, string, InsertNodeMode);
     void loadMindMap(string filePath);
-    bool getLoadMindMapActionEnabled();
     bool getSaveMindMapActionEnabled();
     bool getEditNodeActionEnabled();
     bool getDeleteNodeActionEnabled();

@@ -88,9 +88,9 @@ void MindMapWindow::createCentralWidget()
 {
     _mindMapView = new MindMapView(this, _mindMapPresentationModel);
     setCentralWidget(_mindMapView);
-    _mindMapPresentationModel->createMindMap("hello");
-    _mindMapPresentationModel->insertNewNode(_mindMapPresentationModel->getMindMap(), "something", InsertNodeMode::InsertNodeModeChild);
-    _mindMapView->refresh();
+    //_mindMapPresentationModel->createMindMap("hello");
+    //_mindMapPresentationModel->insertNewNode(_mindMapPresentationModel->getMindMap(), "something", InsertNodeMode::InsertNodeModeChild);
+    //_mindMapView->refresh();
 }
 
 void MindMapWindow::createMenuBar()
