@@ -6,13 +6,14 @@
 class MindMapView: public QGraphicsView
 {
 public:
-    MindMapView(QWidget* window, MindMapPresentatinoModel* mindMapPresentationModel);
+    MindMapView(QWidget* window, MindMapPresentationModel* mindMapPresentationModel);
     ~MindMapView();
     void refresh();
     void addNode(vector<int>& layerCounter, NodeGraphicsItem* parentGraphicsItem, Component* component, int x, int y);
+    void updateSelection();
 private:
     QGraphicsScene* _graphicsScene;
-    MindMapPresentatinoModel* _mindMapPresentationModel;
+    MindMapPresentationModel* _mindMapPresentationModel;
     list<NodeGraphicsItem*> _nodeGraphicsItems;
 };
 

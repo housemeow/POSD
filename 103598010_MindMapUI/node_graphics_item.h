@@ -2,6 +2,7 @@
 
 #include "qgraphicsitem.h"
 #include "component.h"
+#include "mind_map_presentation_model.h"
 
 enum MouseState {
     None,
@@ -13,13 +14,14 @@ class NodeGraphicsItem :
     public QGraphicsItem
 {
 public:
-    NodeGraphicsItem(Component* component);
+    NodeGraphicsItem(MindMapPresentationModel* mindMapPresentationModel, Component* component);
     ~NodeGraphicsItem();
 
     QRectF boundingRect() const;
     void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget);
     void setParentNodeGraphicsItem(NodeGraphicsItem* parentNodeGraphicsItem);
     bool isSelected();
+    void setNodeSelected(bool selected);
     Component* getComponent();
     void click();
     static const int WIDTH;
@@ -34,5 +36,6 @@ private:
     Component* _component;
     MouseState _mouseState;
     NodeGraphicsItem* _parentNodeGraphicsItem;
+    MindMapPresentationModel* _mindMapPresentationModel;
 };
 

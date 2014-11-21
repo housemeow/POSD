@@ -4,16 +4,17 @@
 #include "mind_map_model.h"
 #include "mind_map_presentation_model.h"
 #include "mind_map_window.h"
-#include "qgraphicsview.h""
+#include "qgraphicsview.h"
 #include "node_graphics_item.h"
 #include "mind_map_view.h"
 #include "qfiledialog.h"
 
-MindMapWindow::MindMapWindow(MindMapPresentatinoModel* mindMapPresentationModel, QWidget* parent)
-    : QMainWindow(parent)
+MindMapWindow::MindMapWindow(MindMapPresentationModel* mindMapPresentationModel, QWidget* parent)
+    : QMainWindow(parent)//, MindMapPresentationModelChangeListener()
 {
     //ui.setupUi(this);
     _mindMapPresentationModel = mindMapPresentationModel;
+    _mindMapPresentationModel->setListener(this);
     resize(600, 400);
     createActions();
     createUI();
@@ -29,6 +30,7 @@ void MindMapWindow::createUI()
     createCentralWidget();
     createMenuBar();
     createToolBar();
+    updateUI();
 }
 
 void MindMapWindow::createActions()
@@ -80,9 +82,6 @@ void MindMapWindow::createActions()
 
 void MindMapWindow::createCentralWidget()
 {
-    //_centralWidget = new QWidget(this);
-    //setCentralWidget(_centralWidget);
-    //_mindMapView = new MindMapView(_centralWidget);
     _mindMapView = new MindMapView(this, _mindMapPresentationModel);
     setCentralWidget(_mindMapView);
     _mindMapPresentationModel->createMindMap("hello");
@@ -134,15 +133,23 @@ void MindMapWindow::openMindMap()
 {
     QString fileName = QFileDialog::getOpenFileName(this,
                        tr("Open mind map"), ".", tr("Image Files (*.mm)"));
-    try
-    {
+    try {
         _mindMapPresentationModel->loadMindMap(fileName.toUtf8().constData());
-    }
-    catch (exception exception)
-    {
+    } catch (exception exception) {
         showMessageBox("Exception", exception.what());
     }
     _mindMapView->refresh();
+}
+
+void MindMapWindow::updateUI()
+{
+    _saveMindMapAction->setEnabled(_mindMapPresentationModel->getLoadMindMapActionEnabled());
+    _editNodeAction->setEnabled(_mindMapPresentationModel->getEditNodeActionEnabled());
+    _deleteNodeAction->setEnabled(_mindMapPresentationModel->getDeleteNodeActionEnabled());
+    _insertChildAction->setEnabled(_mindMapPresentationModel->getInsertChildActionEnabled());
+    _insertSiblingAction->setEnabled(_mindMapPresentationModel->getInsertSiblingActionEnabled());
+    _insertParentAction->setEnabled(_mindMapPresentationModel->getInsertParentActionEnabled());
+    _mindMapView->updateSelection();
 }
 
 void MindMapWindow::saveMindMap()

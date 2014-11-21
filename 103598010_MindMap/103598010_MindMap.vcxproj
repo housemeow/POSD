@@ -107,6 +107,7 @@
     <ClInclude Include="menu_state.h" />
     <ClInclude Include="mind_map_model.h" />
     <ClInclude Include="mind_map_presentation_model.h" />
+    <ClInclude Include="mind_map_presentation_model_change_listener.h" />
     <ClInclude Include="node.h" />
     <ClInclude Include="redo_state.h" />
     <ClInclude Include="root.h" />

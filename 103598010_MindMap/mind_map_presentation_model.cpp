@@ -6,31 +6,108 @@
 
 using namespace std;
 
-MindMapPresentatinoModel::MindMapPresentatinoModel(MindMapModel* mindMapModel)
+MindMapPresentationModel::MindMapPresentationModel(MindMapModel* mindMapModel)
 {
     _mindMapModel = mindMapModel;
+    setActionsEnabled(false);
+    _selectedComponent = NULL;
 }
 
-MindMapPresentatinoModel::~MindMapPresentatinoModel()
+MindMapPresentationModel::~MindMapPresentationModel()
 {
 }
 
-Component* MindMapPresentatinoModel::getMindMap()
+Component* MindMapPresentationModel::getMindMap()
 {
     return _mindMapModel->getMindMap();
 }
 
-void MindMapPresentatinoModel::createMindMap(string mindMapName)
+void MindMapPresentationModel::createMindMap(string mindMapName)
 {
     _mindMapModel->createMindMap(mindMapName);
+    setActionsEnabled(false);
 }
 
-void MindMapPresentatinoModel::insertNewNode(Component* node, string description, InsertNodeMode insertMode)
+void MindMapPresentationModel::insertNewNode(Component* node, string description, InsertNodeMode insertMode)
 {
     _mindMapModel->insertNewNode(node, description, insertMode);
 }
 
-void MindMapPresentatinoModel::loadMindMap(string filePath)
+void MindMapPresentationModel::loadMindMap(string filePath)
 {
     _mindMapModel->loadMindMap(filePath);
+    setActionsEnabled(false);
+}
+
+bool MindMapPresentationModel::getLoadMindMapActionEnabled()
+{
+    return _loadMindMapActionEnabled;
+}
+
+bool MindMapPresentationModel::getEditNodeActionEnabled()
+{
+    return _editNodeActionEnabled;
+}
+
+bool MindMapPresentationModel::getDeleteNodeActionEnabled()
+{
+    return _deleteNodeActionEnabled;
+}
+
+bool MindMapPresentationModel::getInsertChildActionEnabled()
+{
+    return _insertChildActionEnabled;
+}
+
+bool MindMapPresentationModel::getInsertSiblingActionEnabled()
+{
+    return _insertSiblingActionEnabled;
+}
+
+bool MindMapPresentationModel::getInsertParentActionEnabled()
+{
+    return _insertParentActionEnabled;
+}
+
+
+bool MindMapPresentationModel::getSelected(Component* component)
+{
+    map<Component*, bool>::iterator find = _componentSelections.find(component);
+    if (find != _componentSelections.end()) {
+        return _componentSelections[component];
+    } else {
+        _componentSelections.insert(pair<Component*, bool>(component, false));
+        return false;
+    }
+}
+
+void MindMapPresentationModel::clickNode(Component* component)
+{
+    _selectedComponent = component;
+    _componentSelections.insert(pair<Component*, bool>(component, true));
+    for (map<Component*, bool>::iterator iterator = _componentSelections.begin(); iterator != _componentSelections.end(); iterator++) {
+        if (component == iterator->first) {
+            iterator->second = !iterator->second;
+            setActionsEnabled(iterator->second);
+        } else {
+            iterator->second = false;
+        }
+    }
+    _listener->updateUI();
+}
+
+void MindMapPresentationModel::setListener(MindMapPresentationModelChangeListener* listener)
+{
+    _listener = listener;
+}
+
+
+void MindMapPresentationModel::setActionsEnabled(bool enabled)
+{
+    _loadMindMapActionEnabled = enabled;
+    _editNodeActionEnabled = enabled;
+    _deleteNodeActionEnabled = enabled;
+    _insertChildActionEnabled = enabled;
+    _insertSiblingActionEnabled = enabled;
+    _insertParentActionEnabled = enabled;
 }

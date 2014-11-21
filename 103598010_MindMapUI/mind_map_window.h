@@ -4,22 +4,24 @@
 #include "ui_mind_map_window.h"
 #include "mind_map_presentation_model.h"
 #include "mind_map_view.h"
+#include "mind_map_presentation_model_change_listener.h"
 
-class MindMapWindow : public QMainWindow
+class MindMapWindow : public QMainWindow, MindMapPresentationModelChangeListener
 {
     Q_OBJECT
 
 public:
-    MindMapWindow(MindMapPresentatinoModel* mindMapPresentationModel, QWidget* parent = 0);
+    MindMapWindow(MindMapPresentationModel* mindMapPresentationModel, QWidget* parent = 0);
     ~MindMapWindow();
     void showMessageBox(QString title, QString description);
 private:
-    MindMapPresentatinoModel* _mindMapPresentationModel;
+    MindMapPresentationModel* _mindMapPresentationModel;
     void createActions();
     void createUI();
     void createCentralWidget();
     void createMenuBar();
     void createToolBar();
+    void updateUI();
 
     QAction* _createMindMapAction;
     QAction* _openMindMapAction;

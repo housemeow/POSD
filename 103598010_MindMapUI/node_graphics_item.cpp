@@ -2,13 +2,15 @@
 #include <qpainter.h>
 #include <qtimer.h>
 #include <qapplication.h>
+#include "mind_map_presentation_model.h"
 
 const int NodeGraphicsItem::WIDTH = 80;
 const int NodeGraphicsItem::HEIGHT = 40;
 const int NodeGraphicsItem::PADDING = 20;
 
-NodeGraphicsItem::NodeGraphicsItem(Component* component)
+NodeGraphicsItem::NodeGraphicsItem(MindMapPresentationModel* mindMapPresentationModel, Component* component)
 {
+    _mindMapPresentationModel = mindMapPresentationModel;
     _component = component;
     _selected = false;
     //setFlag(ItemIsMovable);
@@ -42,15 +44,14 @@ void NodeGraphicsItem::paint(QPainter* painter, const QStyleOptionGraphicsItem* 
 {
     QRectF rect = boundingRect();
     if (_selected) {
-        QPen pen(Qt::red, 5);
-        painter->setPen(pen);
+        painter->setPen(QPen(Qt::red, 5));
     } else {
-        QPen pen(Qt::black, 3);
-        painter->setPen(pen);
+        painter->setPen(QPen(Qt::black, 3));
     }
     painter->drawRect(rect);
     painter->drawText(rect, Qt::AlignCenter, QString::fromStdString(_component->getDescription()));
     if (_parentNodeGraphicsItem) {
+        painter->setPen(QPen(Qt::black, 3));
         QRectF sceneRect = sceneBoundingRect();
         QRectF parentSceneRect = _parentNodeGraphicsItem->sceneBoundingRect();
         qreal x = 0;
@@ -70,7 +71,7 @@ bool NodeGraphicsItem::isSelected()
 
 void NodeGraphicsItem::click()
 {
-    _selected = !_selected;
+    _mindMapPresentationModel->clickNode(_component);
 }
 
 
@@ -91,4 +92,9 @@ void NodeGraphicsItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent* event)
 {
     _selected = true;
     update();
+}
+
+void NodeGraphicsItem::setNodeSelected(bool selected)
+{
+    _selected = selected;
 }

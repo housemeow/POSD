@@ -17,7 +17,7 @@ int main(int argc, char* argv[])
     if (mode == 1) {
         QApplication a(argc, argv);
         MindMapModel mindMapModel;
-        MindMapPresentatinoModel mindMapPresentationModel(&mindMapModel);
+        MindMapPresentationModel mindMapPresentationModel(&mindMapModel);
         MindMapWindow w(&mindMapPresentationModel);
         w.show();
         return a.exec();

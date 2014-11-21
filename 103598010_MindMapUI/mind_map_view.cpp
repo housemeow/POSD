@@ -8,7 +8,7 @@
 using namespace std;
 
 
-MindMapView::MindMapView(QWidget* window, MindMapPresentatinoModel* mindMapPresentationModel)
+MindMapView::MindMapView(QWidget* window, MindMapPresentationModel* mindMapPresentationModel)
 {
     _graphicsScene = new QGraphicsScene(this);
     _mindMapPresentationModel = mindMapPresentationModel;
@@ -21,6 +21,7 @@ MindMapView::~MindMapView()
 
 void MindMapView::refresh()
 {
+    _nodeGraphicsItems.clear();
     _graphicsScene->clear();
     viewport()->update();
     vector<int> layerCounter;
@@ -36,7 +37,7 @@ void MindMapView::addNode(vector<int>& layerCounter, NodeGraphicsItem* parentGra
             ++layerCounter[xIndex];
         }
         yIndex = layerCounter[xIndex];
-        NodeGraphicsItem* nodeGraphicsItem = new NodeGraphicsItem(component);
+        NodeGraphicsItem* nodeGraphicsItem = new NodeGraphicsItem(_mindMapPresentationModel, component);
         _nodeGraphicsItems.push_back(nodeGraphicsItem);
         if (parentGraphicsItem) {
             nodeGraphicsItem->setParentNodeGraphicsItem(parentGraphicsItem);
@@ -50,4 +51,14 @@ void MindMapView::addNode(vector<int>& layerCounter, NodeGraphicsItem* parentGra
             addNode(layerCounter, nodeGraphicsItem, child, xIndex + 1, yIndex);
         }
     }
+}
+
+
+void MindMapView::updateSelection()
+{
+    for (list<NodeGraphicsItem*>::iterator iterator = _nodeGraphicsItems.begin(); iterator != _nodeGraphicsItems.end(); iterator++) {
+        NodeGraphicsItem* nodeGraphicsNode = *iterator;
+        nodeGraphicsNode->setNodeSelected(_mindMapPresentationModel->getSelected(nodeGraphicsNode->getComponent()));
+    }
+    viewport()->update();
 }
