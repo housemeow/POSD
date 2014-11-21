@@ -189,3 +189,8 @@ Component* MindMapModel::getMindMap()
 {
     return _mindMap;
 }
+
+void MindMapModel::editDescription(Component* component, string description)
+{
+    component->setDescription(description);
+}

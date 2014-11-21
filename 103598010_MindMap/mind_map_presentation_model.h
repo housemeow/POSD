@@ -24,6 +24,9 @@ public:
     bool getSelected(Component*);
     void clickNode(Component*);
     void setListener(MindMapPresentationModelChangeListener* listener);
+    Component* getSelectedComponent();
+    void editDescription(string description);
+    string getSelectedComponentDescription();
 private:
     void setActionsEnabled(bool enabled);
     map<Component*, bool> _componentSelections;

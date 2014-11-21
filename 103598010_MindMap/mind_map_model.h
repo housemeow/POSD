@@ -23,6 +23,7 @@ public:
     ComponentType getComponentType(int id);
     void readComponentData(string line, int& id, string& description, string& children);
     Component* getMindMap();
+    void editDescription(Component* component, string description);
 private:
     Component* _mindMap;
     int _currentId;

@@ -37,6 +37,7 @@ void MindMapPresentationModel::loadMindMap(string filePath)
 {
     _mindMapModel->loadMindMap(filePath);
     setActionsEnabled(false);
+    _listener->updateUI();
 }
 
 bool MindMapPresentationModel::getLoadMindMapActionEnabled()
@@ -110,4 +111,20 @@ void MindMapPresentationModel::setActionsEnabled(bool enabled)
     _insertChildActionEnabled = enabled;
     _insertSiblingActionEnabled = enabled;
     _insertParentActionEnabled = enabled;
+}
+
+Component* MindMapPresentationModel::getSelectedComponent()
+{
+    return _selectedComponent;
+}
+
+void MindMapPresentationModel::editDescription(string description)
+{
+    _mindMapModel->editDescription(_selectedComponent, description);
+    _listener->updateUI();
+}
+
+string MindMapPresentationModel::getSelectedComponentDescription()
+{
+    return _selectedComponent->getDescription();
 }

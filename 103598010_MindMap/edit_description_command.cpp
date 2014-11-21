@@ -1,9 +1,11 @@
 #include "stdafx.h"
 #include "edit_description_command.h"
 #include "component.h"
+#include "mind_map_model.h"
 
-EditDescriptionCommand::EditDescriptionCommand(Component* component, string description)
+EditDescriptionCommand::EditDescriptionCommand(MindMapModel* mindMapModel, Component* component, string description)
 {
+    _mindMapModel = mindMapModel;
     _component = component;
     _previousDescription = component->getDescription();
     _description = description;
@@ -20,7 +22,7 @@ EditDescriptionCommand::~EditDescriptionCommand()
 
 void EditDescriptionCommand::execute()
 {
-    _component->setDescription(_description);
+    _mindMapModel->editDescription(_component, _description);
 }
 
 void EditDescriptionCommand::unexecute()

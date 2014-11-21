@@ -159,11 +159,12 @@ void MindMapWindow::saveMindMap()
 void MindMapWindow::editNode()
 {
     bool ok;
-    QString text = QInputDialog::getText(this, tr("Input Dialog"),
-                                         tr("Please input your description"), QLineEdit::Normal,
-                                         "ab", &ok);
-    if (ok && !text.isEmpty())
-        this->setWindowTitle(text);
+    QString description = QInputDialog::getText(this, tr("Input Dialog"),
+                          tr("Please input your description"), QLineEdit::Normal,
+                          QString::fromStdString(_mindMapPresentationModel->getSelectedComponentDescription()), &ok);
+    if (ok && !description.isEmpty()) {
+        _mindMapPresentationModel->editDescription(description.toUtf8().constData());
+    }
 }
 
 void MindMapWindow::deleteNode()

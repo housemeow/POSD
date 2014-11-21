@@ -16,7 +16,7 @@ TextUIState* EditDescriptionState::run()
 {
     _textUIView->printEnterDescription();
     string description = readLineString();
-    EditDescriptionCommand* editDescriptionCommand = new EditDescriptionCommand(_component, description);
+    EditDescriptionCommand* editDescriptionCommand = new EditDescriptionCommand(_mindMapModel, _component, description);
     _mindMapModel->execute(editDescriptionCommand);
     return TextUIStateFactory::createTextUIState(MenuStateInstruction, _mindMapModel);
 }
