@@ -18,7 +18,7 @@ TextUIState* DeleteNodeState::run()
     if (_component == _mindMapModel->getMindMap()) {
         _textUIView->printCannotDeleteRoot();
     } else {
-        DeleteCommand* deleteCommand = new DeleteCommand(_component);
+        DeleteCommand* deleteCommand = new DeleteCommand(_mindMapModel, _component);
         _mindMapModel->execute(deleteCommand);
         _textUIView->printMindMap(_mindMapModel->getMindMap());
     }

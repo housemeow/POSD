@@ -37,7 +37,7 @@ void MindMapPresentationModel::loadMindMap(string filePath)
 {
     _mindMapModel->loadMindMap(filePath);
     setActionsEnabled(false);
-    _listener->updateUI();
+    _listener->updateUIState();
 }
 
 bool MindMapPresentationModel::getLoadMindMapActionEnabled()
@@ -94,7 +94,7 @@ void MindMapPresentationModel::clickNode(Component* component)
             iterator->second = false;
         }
     }
-    _listener->updateUI();
+    _listener->updateUIState();
 }
 
 void MindMapPresentationModel::setListener(MindMapPresentationModelChangeListener* listener)
@@ -121,10 +121,20 @@ Component* MindMapPresentationModel::getSelectedComponent()
 void MindMapPresentationModel::editDescription(string description)
 {
     _mindMapModel->editDescription(_selectedComponent, description);
-    _listener->updateUI();
+    _listener->updateUIState();
 }
 
 string MindMapPresentationModel::getSelectedComponentDescription()
 {
     return _selectedComponent->getDescription();
+}
+
+void MindMapPresentationModel::deleteComponent()
+{
+    _mindMapModel->deleteComponent(_selectedComponent);
+    setActionsEnabled(false);
+    _selectedComponent = NULL;
+    _componentSelections.clear();
+    _listener->updateUIState();
+    _listener->refreshUI();
 }

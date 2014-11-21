@@ -1,9 +1,11 @@
 #include "stdafx.h"
 #include "delete_command.h"
 #include "component_factory.h"
+#include "mind_map_model.h"
 
-DeleteCommand::DeleteCommand(Component* component)
+DeleteCommand::DeleteCommand(MindMapModel* mindMapModel, Component* component)
 {
+    _mindMapModel = mindMapModel;
     _component = component;
     _mindMap = component->getMindMap();
     _parentComponent = component->getParent();
@@ -27,12 +29,7 @@ DeleteCommand::~DeleteCommand()
 
 void DeleteCommand::execute()
 {
-    for (list<int>::const_iterator componentIterator = _childrenId.begin(); componentIterator != _childrenId.end(); ++componentIterator) {
-        int id = *componentIterator;
-        _component->getParent()->addChild(_mindMap->findNode(id));
-    }
-    _component->setParent(NULL);
-    delete _component;
+    _mindMapModel->deleteComponent(_component);
 }
 
 void DeleteCommand::unexecute()

@@ -27,6 +27,7 @@ public:
     Component* getSelectedComponent();
     void editDescription(string description);
     string getSelectedComponentDescription();
+    void deleteComponent();
 private:
     void setActionsEnabled(bool enabled);
     map<Component*, bool> _componentSelections;

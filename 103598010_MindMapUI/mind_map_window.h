@@ -21,7 +21,8 @@ private:
     void createCentralWidget();
     void createMenuBar();
     void createToolBar();
-    void updateUI();
+    void updateUIState();
+    void refreshUI();
 
     QAction* _createMindMapAction;
     QAction* _openMindMapAction;

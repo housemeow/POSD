@@ -24,6 +24,7 @@ public:
     void readComponentData(string line, int& id, string& description, string& children);
     Component* getMindMap();
     void editDescription(Component* component, string description);
+    void deleteComponent(Component* component);
 private:
     Component* _mindMap;
     int _currentId;

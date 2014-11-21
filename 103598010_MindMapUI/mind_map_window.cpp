@@ -30,7 +30,7 @@ void MindMapWindow::createUI()
     createCentralWidget();
     createMenuBar();
     createToolBar();
-    updateUI();
+    updateUIState();
 }
 
 void MindMapWindow::createActions()
@@ -141,7 +141,7 @@ void MindMapWindow::openMindMap()
     _mindMapView->refresh();
 }
 
-void MindMapWindow::updateUI()
+void MindMapWindow::updateUIState()
 {
     _saveMindMapAction->setEnabled(_mindMapPresentationModel->getLoadMindMapActionEnabled());
     _editNodeAction->setEnabled(_mindMapPresentationModel->getEditNodeActionEnabled());
@@ -169,6 +169,11 @@ void MindMapWindow::editNode()
 
 void MindMapWindow::deleteNode()
 {
+    try {
+        _mindMapPresentationModel->deleteComponent();
+    } catch (exception exception) {
+        showMessageBox("Exception", exception.what());
+    }
 }
 
 void MindMapWindow::insertChild()
@@ -192,4 +197,9 @@ void MindMapWindow::showMessageBox(QString title, QString description)
 {
     QMessageBox message(QMessageBox::Information, title, description, QMessageBox::Ok, NULL);
     message.exec();
+}
+
+void MindMapWindow::refreshUI()
+{
+    _mindMapView->refresh();
 }

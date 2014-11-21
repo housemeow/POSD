@@ -194,3 +194,17 @@ void MindMapModel::editDescription(Component* component, string description)
 {
     component->setDescription(description);
 }
+
+void MindMapModel::deleteComponent(Component* component)
+{
+    if (component == _mindMap) {
+        throw exception("You cannot delete root!");
+    }
+    list<Component*> children = component->getNodeList();
+    for (list<Component*>::const_iterator componentIterator = children.begin(); componentIterator != children.end(); ++componentIterator) {
+        Component* child = *componentIterator;
+        component->getParent()->addChild(child);
+    }
+    component->setParent(NULL);
+    delete component;
+}

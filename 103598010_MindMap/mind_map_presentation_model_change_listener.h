@@ -2,6 +2,7 @@
 class MindMapPresentationModelChangeListener
 {
 public:
-    virtual void updateUI() = 0;
+    virtual void updateUIState() = 0;
+    virtual void refreshUI() = 0;
 };
 
