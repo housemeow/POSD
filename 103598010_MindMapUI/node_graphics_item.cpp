@@ -90,7 +90,7 @@ void NodeGraphicsItem::mouseReleaseEvent(QGraphicsSceneMouseEvent* event)
 
 void NodeGraphicsItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent* event)
 {
-    _selected = true;
+    _mindMapPresentationModel->doubleClick(_component);
     update();
 }
 

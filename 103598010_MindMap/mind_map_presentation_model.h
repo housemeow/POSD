@@ -16,6 +16,7 @@ public:
     void insertNewNode(Component*, string, InsertNodeMode);
     void loadMindMap(string filePath);
     bool getLoadMindMapActionEnabled();
+    bool getSaveMindMapActionEnabled();
     bool getEditNodeActionEnabled();
     bool getDeleteNodeActionEnabled();
     bool getInsertChildActionEnabled();
@@ -28,11 +29,13 @@ public:
     void editDescription(string description);
     string getSelectedComponentDescription();
     void deleteComponent();
+    void saveMindMap(string fileName);
+    void doubleClick(Component* component);
 private:
     void setActionsEnabled(bool enabled);
     map<Component*, bool> _componentSelections;
     MindMapModel* _mindMapModel;
-    bool _loadMindMapActionEnabled;
+    bool _saveMindMapActionEnabled;
     bool _editNodeActionEnabled;
     bool _deleteNodeActionEnabled;
     bool _insertChildActionEnabled;

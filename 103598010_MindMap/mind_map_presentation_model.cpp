@@ -26,6 +26,7 @@ void MindMapPresentationModel::createMindMap(string mindMapName)
 {
     _mindMapModel->createMindMap(mindMapName);
     setActionsEnabled(false);
+    _saveMindMapActionEnabled = true;
 }
 
 void MindMapPresentationModel::insertNewNode(Component* node, string description, InsertNodeMode insertMode)
@@ -38,11 +39,12 @@ void MindMapPresentationModel::loadMindMap(string filePath)
     _mindMapModel->loadMindMap(filePath);
     setActionsEnabled(false);
     _listener->updateUIState();
+    _saveMindMapActionEnabled = true;
 }
 
-bool MindMapPresentationModel::getLoadMindMapActionEnabled()
+bool MindMapPresentationModel::getSaveMindMapActionEnabled()
 {
-    return _loadMindMapActionEnabled;
+    return _saveMindMapActionEnabled;
 }
 
 bool MindMapPresentationModel::getEditNodeActionEnabled()
@@ -105,7 +107,7 @@ void MindMapPresentationModel::setListener(MindMapPresentationModelChangeListene
 
 void MindMapPresentationModel::setActionsEnabled(bool enabled)
 {
-    _loadMindMapActionEnabled = enabled;
+    _saveMindMapActionEnabled = enabled;
     _editNodeActionEnabled = enabled;
     _deleteNodeActionEnabled = enabled;
     _insertChildActionEnabled = enabled;
@@ -137,4 +139,23 @@ void MindMapPresentationModel::deleteComponent()
     _componentSelections.clear();
     _listener->updateUIState();
     _listener->refreshUI();
+}
+
+void MindMapPresentationModel::saveMindMap(string fileName)
+{
+    _mindMapModel->saveMindMap(fileName);
+}
+
+void MindMapPresentationModel::doubleClick(Component* component)
+{
+    for (map<Component*, bool>::iterator iterator = _componentSelections.begin(); iterator != _componentSelections.end(); iterator++) {
+        if (component == iterator->first) {
+            iterator->second = true;
+            setActionsEnabled(iterator->second);
+        } else {
+            iterator->second = false;
+        }
+    }
+    _listener->doubleClick();
+    _listener->updateUIState();
 }

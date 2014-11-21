@@ -143,7 +143,7 @@ void MindMapWindow::openMindMap()
 
 void MindMapWindow::updateUIState()
 {
-    _saveMindMapAction->setEnabled(_mindMapPresentationModel->getLoadMindMapActionEnabled());
+    _saveMindMapAction->setEnabled(_mindMapPresentationModel->getSaveMindMapActionEnabled());
     _editNodeAction->setEnabled(_mindMapPresentationModel->getEditNodeActionEnabled());
     _deleteNodeAction->setEnabled(_mindMapPresentationModel->getDeleteNodeActionEnabled());
     _insertChildAction->setEnabled(_mindMapPresentationModel->getInsertChildActionEnabled());
@@ -154,6 +154,13 @@ void MindMapWindow::updateUIState()
 
 void MindMapWindow::saveMindMap()
 {
+    QString fileName = QFileDialog::getSaveFileName(this,
+                       tr("Save mind map"), ".", tr("Image Files (*.mm)"));
+    try {
+        _mindMapPresentationModel->saveMindMap(fileName.toUtf8().constData());
+    } catch (exception exception) {
+        showMessageBox("Exception", exception.what());
+    }
 }
 
 void MindMapWindow::editNode()
@@ -202,4 +209,9 @@ void MindMapWindow::showMessageBox(QString title, QString description)
 void MindMapWindow::refreshUI()
 {
     _mindMapView->refresh();
+}
+
+void MindMapWindow::doubleClick()
+{
+    editNode();
 }

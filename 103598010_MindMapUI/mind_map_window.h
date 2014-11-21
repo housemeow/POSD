@@ -23,6 +23,7 @@ private:
     void createToolBar();
     void updateUIState();
     void refreshUI();
+    void doubleClick();
 
     QAction* _createMindMapAction;
     QAction* _openMindMapAction;
