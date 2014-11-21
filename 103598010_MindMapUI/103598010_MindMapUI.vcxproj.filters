@@ -161,6 +161,15 @@
     <ClCompile Include="..\103598010_MindMap\undo_state.cpp">
       <Filter>References</Filter>
     </ClCompile>
+    <ClCompile Include="mind_map_view.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="node_graphics_item.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\103598010_MindMap\mind_map_presentation_model.cpp">
+      <Filter>References</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="mind_map_window.h">
@@ -176,6 +185,12 @@
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_mind_map_window.h">
       <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mind_map_view.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="node_graphics_item.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

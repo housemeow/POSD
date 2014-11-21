@@ -171,6 +171,9 @@
     <ClInclude Include="text_ui_state_factory.h">
       <Filter>Header Files\TextUIStates</Filter>
     </ClInclude>
+    <ClInclude Include="mind_map_presentation_model.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -283,6 +286,9 @@
     </ClCompile>
     <ClCompile Include="insert_sibling_node_state.cpp">
       <Filter>Source Files\TextUIStates\Insert</Filter>
+    </ClCompile>
+    <ClCompile Include="mind_map_presentation_model.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

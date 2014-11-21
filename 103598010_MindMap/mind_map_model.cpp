@@ -7,6 +7,7 @@ using namespace std;
 
 MindMapModel::MindMapModel()
 {
+    _currentId = 0;
     _mindMap = NULL;
 }
 

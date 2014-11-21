@@ -1,8 +1,6 @@
 #include "stdafx.h"
 #include "component.h"
 
-using namespace std;
-
 Component::Component(int id)
 {
     _id = id;

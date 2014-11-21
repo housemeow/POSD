@@ -98,7 +98,7 @@
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
       <AdditionalLibraryDirectories>$(QTDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -164,6 +164,7 @@
     <ClCompile Include="..\103598010_MindMap\load_state.cpp" />
     <ClCompile Include="..\103598010_MindMap\menu_state.cpp" />
     <ClCompile Include="..\103598010_MindMap\mind_map_model.cpp" />
+    <ClCompile Include="..\103598010_MindMap\mind_map_presentation_model.cpp" />
     <ClCompile Include="..\103598010_MindMap\node.cpp" />
     <ClCompile Include="..\103598010_MindMap\redo_state.cpp" />
     <ClCompile Include="..\103598010_MindMap\root.cpp" />
@@ -198,7 +199,9 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="mind_map_view.cpp" />
     <ClCompile Include="mind_map_window.cpp" />
+    <ClCompile Include="node_graphics_item.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="mind_map_window.h">
@@ -243,6 +246,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_mind_map_window.h" />
+    <ClInclude Include="mind_map_view.h" />
+    <ClInclude Include="node_graphics_item.h" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="mind_map_window.qrc">

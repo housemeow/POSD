@@ -2,6 +2,7 @@
 #include "component.h"
 #include "command_manager.h"
 #include "command.h"
+#include "enumeration.h"
 
 class MindMapModel
 {

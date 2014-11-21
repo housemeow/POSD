@@ -106,6 +106,7 @@
     <ClInclude Include="load_state.h" />
     <ClInclude Include="menu_state.h" />
     <ClInclude Include="mind_map_model.h" />
+    <ClInclude Include="mind_map_presentation_model.h" />
     <ClInclude Include="node.h" />
     <ClInclude Include="redo_state.h" />
     <ClInclude Include="root.h" />
@@ -146,6 +147,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="menu_state.cpp" />
     <ClCompile Include="mind_map_model.cpp" />
+    <ClCompile Include="mind_map_presentation_model.cpp" />
     <ClCompile Include="node.cpp" />
     <ClCompile Include="redo_state.cpp" />
     <ClCompile Include="root.cpp" />
