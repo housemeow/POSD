@@ -79,6 +79,21 @@ void MindMapWindow::createActions()
     _insertParentAction->setIcon(QIcon("Resources\\insertParent.png"));
     _insertParentAction->setStatusTip(tr("Insert a parent"));
     connect(_insertParentAction, SIGNAL(triggered()), this, SLOT(insertParent()));
+    // cut action
+    _cutAction = new QAction(tr("Cut"), this);
+    _cutAction->setIcon(QIcon("Resources\\cut.png"));
+    _cutAction->setStatusTip(tr("Cut"));
+    connect(_cutAction, SIGNAL(triggered()), this, SLOT(cut()));
+    // copy action
+    _copyAction = new QAction(tr("Copy"), this);
+    _copyAction->setIcon(QIcon("Resources\\copy.png"));
+    _copyAction->setStatusTip(tr("Copy"));
+    connect(_copyAction, SIGNAL(triggered()), this, SLOT(copy()));
+    // paste action
+    _pasteAction = new QAction(tr("Paste"), this);
+    _pasteAction->setIcon(QIcon("Resources\\paste.png"));
+    _pasteAction->setStatusTip(tr("Paste"));
+    connect(_pasteAction, SIGNAL(triggered()), this, SLOT(paste()));
     // about action
     _aboutAction = new QAction("About", this);
     connect(_aboutAction, SIGNAL(triggered()), this, SLOT(about()));
@@ -107,6 +122,9 @@ void MindMapWindow::createMenuBar()
     edit->addAction(_insertChildAction);
     edit->addAction(_insertSiblingAction);
     edit->addAction(_insertParentAction);
+    edit->addAction(_cutAction);
+    edit->addAction(_copyAction);
+    edit->addAction(_pasteAction);
     QMenu* help = _menuBar->addMenu("& Help");
     help->addAction(_aboutAction);
     this->setMenuBar(_menuBar);
@@ -160,6 +178,9 @@ void MindMapWindow::updateUIState()
     _insertChildAction->setEnabled(_mindMapPresentationModel->getInsertChildActionEnabled());
     _insertSiblingAction->setEnabled(_mindMapPresentationModel->getInsertSiblingActionEnabled());
     _insertParentAction->setEnabled(_mindMapPresentationModel->getInsertParentActionEnabled());
+    _cutAction->setEnabled(_mindMapPresentationModel->getCutActionEnabled());
+    _copyAction->setEnabled(_mindMapPresentationModel->getCopyActionEnabled());
+    _pasteAction->setEnabled(_mindMapPresentationModel->getPasteActionEnabled());
     _mindMapView->updateSelection();
 }
 
@@ -236,4 +257,19 @@ void MindMapWindow::refreshUI()
 void MindMapWindow::doubleClick()
 {
     editNode();
+}
+
+void MindMapWindow::cut()
+{
+    _mindMapPresentationModel->cut();
+}
+
+void MindMapWindow::copy()
+{
+    _mindMapPresentationModel->copy();
+}
+
+void MindMapWindow::paste()
+{
+    _mindMapPresentationModel->paste();
 }

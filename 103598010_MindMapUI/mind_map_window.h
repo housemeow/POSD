@@ -34,6 +34,9 @@ private:
     QAction* _insertChildAction;
     QAction* _insertSiblingAction;
     QAction* _insertParentAction;
+    QAction* _cutAction;
+    QAction* _copyAction;
+    QAction* _pasteAction;
     QAction* _aboutAction;
 
     QWidget* _centralWidget;
@@ -51,6 +54,9 @@ private slots:
     void insertChild();
     void insertSibling();
     void insertParent();
+    void cut();
+    void copy();
+    void paste();
     void about();
 };
 

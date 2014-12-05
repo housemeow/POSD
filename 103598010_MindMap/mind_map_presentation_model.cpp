@@ -12,6 +12,7 @@ MindMapPresentationModel::MindMapPresentationModel(MindMapModel* mindMapModel)
     setActionsEnabled(false);
     _saveMindMapActionEnabled = false;
     _selectedComponent = NULL;
+    _clipboardComponent = NULL;
 }
 
 MindMapPresentationModel::~MindMapPresentationModel()
@@ -34,8 +35,7 @@ void MindMapPresentationModel::loadMindMap(string filePath)
 {
     _mindMapModel->loadMindMap(filePath);
     setActionsEnabled(false);
-    if (_listener)
-        _listener->updateUIState();
+    updateUIState();
     _saveMindMapActionEnabled = true;
 }
 
@@ -69,6 +69,20 @@ bool MindMapPresentationModel::getInsertParentActionEnabled()
     return _insertParentActionEnabled;
 }
 
+bool MindMapPresentationModel::getCutActionEnabled()
+{
+    return _cutActionEnabled;
+}
+
+bool MindMapPresentationModel::getCopyActionEnabled()
+{
+    return _copyActionEnabled;
+}
+
+bool MindMapPresentationModel::getPasteActionEnabled()
+{
+    return _pasteActionEnabled;
+}
 
 bool MindMapPresentationModel::getSelected(Component* component)
 {
@@ -83,6 +97,9 @@ bool MindMapPresentationModel::getSelected(Component* component)
 
 void MindMapPresentationModel::clickNode(Component* component)
 {
+    bool isRoot = component == _mindMapModel->getMindMap();
+    _cutActionEnabled = !isRoot;
+    _copyActionEnabled = !isRoot;
     _selectedComponent = component;
     _componentSelections.insert(pair<Component*, bool>(component, false));
     for (map<Component*, bool>::iterator iterator = _componentSelections.begin(); iterator != _componentSelections.end(); iterator++) {
@@ -93,8 +110,7 @@ void MindMapPresentationModel::clickNode(Component* component)
             iterator->second = false;
         }
     }
-    if (_listener)
-        _listener->updateUIState();
+    updateUIState();
 }
 
 void MindMapPresentationModel::setListener(MindMapPresentationModelChangeListener* listener)
@@ -120,8 +136,7 @@ Component* MindMapPresentationModel::getSelectedComponent()
 void MindMapPresentationModel::editDescription(string description)
 {
     _mindMapModel->editDescription(_selectedComponent, description);
-    if (_listener)
-        _listener->updateUIState();
+    updateUIState();
 }
 
 string MindMapPresentationModel::getSelectedComponentDescription()
@@ -135,10 +150,8 @@ void MindMapPresentationModel::deleteComponent()
     setActionsEnabled(false);
     _selectedComponent = NULL;
     _componentSelections.clear();
-    if (_listener) {
-        _listener->updateUIState();
-        _listener->refreshUI();
-    }
+    updateUIState();
+    refreshUI();
 }
 
 void MindMapPresentationModel::saveMindMap(string fileName)
@@ -157,20 +170,16 @@ void MindMapPresentationModel::doubleClick(Component* component)
             iterator->second = false;
         }
     }
-    if (_listener) {
-        _listener->doubleClick();
-        _listener->updateUIState();
-    }
+    doubleClick();
+    updateUIState();
 }
 
 void MindMapPresentationModel::insertChild(string description)
 {
     _mindMapModel->insertChildNode(_selectedComponent, description);
     setActionsEnabled(false);
-    if (_listener) {
-        _listener->updateUIState();
-        _listener->refreshUI();
-    }
+    updateUIState();
+    refreshUI();
 }
 
 
@@ -178,18 +187,55 @@ void MindMapPresentationModel::insertSibling(string description)
 {
     _mindMapModel->insertSiblingNode(_selectedComponent, description);
     setActionsEnabled(false);
-    if (_listener) {
-        _listener->updateUIState();
-        _listener->refreshUI();
-    }
+    updateUIState();
+    refreshUI();
 }
 
 void MindMapPresentationModel::insertParentNode(string description)
 {
     _mindMapModel->insertParentNode(_selectedComponent, description);
     setActionsEnabled(false);
+    updateUIState();
+    refreshUI();
+}
+
+
+void MindMapPresentationModel::cut()
+{
+    _clipboardComponent = _mindMapModel->getMindMap();
+    _pasteActionEnabled = true;
+    updateUIState();
+}
+
+void MindMapPresentationModel::copy()
+{
+    _clipboardComponent = _mindMapModel->getMindMap();
+    _pasteActionEnabled = true;
+    updateUIState();
+}
+
+void MindMapPresentationModel::paste()
+{
+}
+
+
+void MindMapPresentationModel::updateUIState()
+{
     if (_listener) {
         _listener->updateUIState();
+    }
+}
+
+void MindMapPresentationModel::refreshUI()
+{
+    if (_listener) {
         _listener->refreshUI();
+    }
+}
+
+void MindMapPresentationModel::doubleClick()
+{
+    if (_listener) {
+        _listener->doubleClick();
     }
 }

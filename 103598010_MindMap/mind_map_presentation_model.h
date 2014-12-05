@@ -20,6 +20,9 @@ public:
     bool getInsertChildActionEnabled();
     bool getInsertSiblingActionEnabled();
     bool getInsertParentActionEnabled();
+    bool getCutActionEnabled();
+    bool getCopyActionEnabled();
+    bool getPasteActionEnabled();
     bool getSelected(Component*);
     void clickNode(Component*);
     void setListener(MindMapPresentationModelChangeListener* listener);
@@ -32,6 +35,12 @@ public:
     void insertChild(string description);
     void insertSibling(string description);
     void insertParentNode(string description);
+    void cut();
+    void copy();
+    void paste();
+    void updateUIState();
+    void refreshUI();
+    void doubleClick();
 private:
     void setActionsEnabled(bool enabled);
     map<Component*, bool> _componentSelections;
@@ -42,7 +51,11 @@ private:
     bool _insertChildActionEnabled;
     bool _insertSiblingActionEnabled;
     bool _insertParentActionEnabled;
+    bool _cutActionEnabled;
+    bool _copyActionEnabled;
+    bool _pasteActionEnabled;
     MindMapPresentationModelChangeListener* _listener;
     Component* _selectedComponent;
+    Component* _clipboardComponent;
 };
 
