@@ -97,15 +97,20 @@ bool MindMapPresentationModel::getSelected(Component* component)
 
 void MindMapPresentationModel::clickNode(Component* component)
 {
-    bool isRoot = component == _mindMapModel->getMindMap();
-    _cutActionEnabled = !isRoot;
-    _copyActionEnabled = !isRoot;
+    _cutActionEnabled = false;
+    _copyActionEnabled = false;
+    _pasteActionEnabled = false;
     _selectedComponent = component;
     _componentSelections.insert(pair<Component*, bool>(component, false));
     for (map<Component*, bool>::iterator iterator = _componentSelections.begin(); iterator != _componentSelections.end(); iterator++) {
         if (component == iterator->first) {
             iterator->second = !iterator->second;
             setActionsEnabled(iterator->second);
+            bool selected = iterator->second;
+            bool isRoot = component == _mindMapModel->getMindMap();
+            _cutActionEnabled = selected && !isRoot;
+            _copyActionEnabled = selected && !isRoot;
+            _pasteActionEnabled = selected && _clipboardComponent != NULL;
         } else {
             iterator->second = false;
         }
@@ -126,6 +131,9 @@ void MindMapPresentationModel::setActionsEnabled(bool enabled)
     _insertChildActionEnabled = enabled;
     _insertSiblingActionEnabled = enabled;
     _insertParentActionEnabled = enabled;
+    _cutActionEnabled = enabled;
+    _copyActionEnabled = enabled;
+    _pasteActionEnabled = enabled;
 }
 
 Component* MindMapPresentationModel::getSelectedComponent()
@@ -202,20 +210,33 @@ void MindMapPresentationModel::insertParentNode(string description)
 
 void MindMapPresentationModel::cut()
 {
-    _clipboardComponent = _mindMapModel->getMindMap();
-    _pasteActionEnabled = true;
+    delete _clipboardComponent;
+    _clipboardComponent = _selectedComponent->clone();
+    _mindMapModel->deleteComponentTree(_selectedComponent);
+    setActionsEnabled(false);
+    _selectedComponent = NULL;
+    _componentSelections.clear();
     updateUIState();
+    refreshUI();
 }
 
 void MindMapPresentationModel::copy()
 {
-    _clipboardComponent = _mindMapModel->getMindMap();
+    delete _clipboardComponent;
+    _clipboardComponent = _selectedComponent->clone();
     _pasteActionEnabled = true;
     updateUIState();
 }
 
 void MindMapPresentationModel::paste()
 {
+    Component* component = _clipboardComponent->clone();
+    _selectedComponent->getNodeList().push_back(component);
+    setActionsEnabled(false);
+    _selectedComponent = NULL;
+    _componentSelections.clear();
+    updateUIState();
+    refreshUI();
 }
 
 

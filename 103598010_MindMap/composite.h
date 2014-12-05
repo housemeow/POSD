@@ -12,5 +12,6 @@ public:
     void addSibling(Component* component);
     void addParent(Component* component);
     bool isAncientOf(Component* component);
+    Component* clone();
 };
 

@@ -4,6 +4,8 @@
 #include "root.h"
 #include "node.h"
 
+int ComponentFactory::_currentId = 0;
+
 ComponentFactory::ComponentFactory()
 {
 }
@@ -27,6 +29,10 @@ Component* ComponentFactory::createComponent(ComponentType componentType, int id
     return component;
 }
 
+Component* ComponentFactory::createComponent(ComponentType componentType)
+{
+    return createComponent(componentType, _currentId++);
+}
 
 Component* ComponentFactory::copyMindMap(Component* component)
 {
@@ -41,4 +47,19 @@ Component* ComponentFactory::copyMindMap(Component* component)
         return newComponent;
     }
     return NULL;
+}
+
+int ComponentFactory::getCurrentId()
+{
+    return _currentId;
+}
+
+void ComponentFactory::setCurrentId(int currentId)
+{
+    _currentId = currentId;
+}
+
+void ComponentFactory::resetCurrentId()
+{
+    _currentId = 0;
 }

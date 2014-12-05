@@ -26,11 +26,11 @@ public:
     Component* getMindMap();
     void editDescription(Component* component, string description);
     void deleteComponent(Component* component);
+    void deleteComponentTree(Component* component);
     void insertSiblingNode(Component* component, string description);
     void insertParentNode(Component* component, string description);
 private:
     Component* _mindMap;
-    int _currentId;
     CommandManager _commandManager;
 };
 

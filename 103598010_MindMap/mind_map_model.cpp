@@ -7,7 +7,7 @@ using namespace std;
 
 MindMapModel::MindMapModel()
 {
-    _currentId = 0;
+    ComponentFactory::resetCurrentId();
     _mindMap = NULL;
 }
 
@@ -23,7 +23,7 @@ void MindMapModel::createMindMap(string mindMapName)
         delete _mindMap;
     }
     ComponentFactory factory;
-    _mindMap = factory.createComponent(ComponentType::ComponentTypeRoot, _currentId++);
+    _mindMap = factory.createComponent(ComponentType::ComponentTypeRoot);
     _mindMap->setDescription(mindMapName);
 }
 
@@ -59,7 +59,7 @@ Component* MindMapModel::insertNode(Component* component, Component* node, Inser
 Component* MindMapModel::createNode(ComponentType componentType, string description)
 {
     ComponentFactory componentFactory;
-    Component* newNode = componentFactory.createComponent(componentType, _currentId++);
+    Component* newNode = componentFactory.createComponent(componentType);
     newNode->setDescription(description);
     return newNode;
 }
@@ -81,13 +81,14 @@ void MindMapModel::saveMindMap(string fileName)
     ComponentFactory componentFactory;
     Component* saveMindMap = componentFactory.copyMindMap(_mindMap);
     int newId = 0;
-    for (int id = 0; id < _currentId; id++) {
+    int currentId = componentFactory.getCurrentId();
+    for (int id = 0; id < currentId; id++) {
         Component* component = saveMindMap->findNode(id);
         if (component) {
             component->setId(newId++);
         }
     }
-    for (int id = 0; id < _currentId; id++) {
+    for (int id = 0; id < currentId; id++) {
         Component* component = saveMindMap->findNode(id);
         if (component) {
             file << id << " \"" << component->getDescription() << "\"";
@@ -117,7 +118,8 @@ void MindMapModel::loadMindMap(string filePath)
         string description;
         string childrenString;
         readComponentData(line, id, description, childrenString);
-        _currentId = id + 1;
+        ComponentFactory componentFactory;
+        componentFactory.setCurrentId(id + 1);
         stringstream childrenStringStream(childrenString);
         ComponentFactory factory;
         int child;
@@ -207,6 +209,21 @@ void MindMapModel::deleteComponent(Component* component)
         component->getParent()->addChild(child);
     }
     component->setParent(NULL);
+    delete component;
+}
+
+void MindMapModel::deleteComponentTree(Component* component)
+{
+    if (component == _mindMap) {
+        throw exception("You cannot delete root!");
+    }
+    list<Component*> children = component->getNodeList();
+    for (list<Component*>::const_iterator componentIterator = children.begin(); componentIterator != children.end(); ++componentIterator) {
+        Component* child = *componentIterator;
+        deleteComponentTree(child);
+    }
+    component->setParent(NULL);
+    component->getNodeList().clear();
     delete component;
 }
 

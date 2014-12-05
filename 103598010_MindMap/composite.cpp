@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "composite.h"
+#include "component_factory.h"
 
 Composite::Composite(int id): Component(id)
 {
@@ -43,4 +44,18 @@ bool Composite::isAncientOf(Component* component)
         return isAncientOf(component->getParent());
     }
     return false;
+}
+
+Component* Composite::clone()
+{
+    ComponentFactory componentFactory;
+    Component* component = componentFactory.createComponent(ComponentTypeNode);
+    component->setDescription(getDescription());
+    list<Component*> children = getNodeList();
+    for (list<Component*>::iterator iterator = children.begin(); iterator != children.end(); iterator++) {
+        Component* child = *iterator;
+        Component* clondChild = child->clone();
+        component->getNodeList().push_back(clondChild);
+    }
+    return component;
 }

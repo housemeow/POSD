@@ -9,6 +9,9 @@ Component::Component(int id)
 
 Component::~Component()
 {
+    for (list<Component*>::iterator iterator = _children.begin(); iterator != _children.end(); iterator++) {
+        delete *iterator;
+    }
 }
 
 int Component::getId()
