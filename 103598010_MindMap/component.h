@@ -19,7 +19,7 @@ public:
     Component* findNode(int id);
     std::list<Component*>& getNodeList();
     virtual void addChild(Component* component) = 0;
-    virtual void addSibling(Component* component) = 0;
+    virtual void addSibling(Component* component, Component* insertPosition) = 0;
     virtual void addParent(Component* component) = 0;
     virtual bool isAncientOf(Component* component) = 0;
     virtual Component* clone() = 0;

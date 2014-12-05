@@ -10,7 +10,7 @@ Root::~Root()
 }
 
 // Root無法新增臨節點
-void Root::addSibling(Component* component)
+void Root::addSibling(Component* component, Component* insertPosition)
 {
     throw exception("Root can't insert sibling node");
 }

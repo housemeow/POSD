@@ -20,10 +20,16 @@ void Composite::addChild(Component* component)
 }
 
 // 新增一個臨節點
-void Composite::addSibling(Component* component)
+void Composite::addSibling(Component* component, Component* insertPosition)
 {
     if (component) {
-        _parent->addChild(component);
+        component->setParent(this);
+        for (list<Component*>::iterator iterator = _children.begin(); iterator != _children.end(); iterator++) {
+            if (*iterator == insertPosition) {
+                _children.insert(iterator, component);
+                break;
+            }
+        }
     }
 }
 

@@ -161,5 +161,8 @@
     <ClCompile Include="..\103598010_MindMap\mind_map_presentation_model.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="component_factory_test.cpp">
+      <Filter>UnitTest</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

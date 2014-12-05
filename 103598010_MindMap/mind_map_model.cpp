@@ -45,7 +45,7 @@ Component* MindMapModel::insertNode(Component* component, Component* node, Inser
                 component->addChild(node);
                 break;
             case InsertNodeMode::InsertNodeModeSibling:
-                component->addSibling(node);
+                component->addSibling(node, component);
                 break;
             default:
                 break;
@@ -239,7 +239,7 @@ void MindMapModel::insertSiblingNode(Component* component, string description)
         throw exception("Root cannot insert sibling!");
     }
     Component* siblingComponent = createNode(ComponentTypeNode, description);
-    component->addSibling(siblingComponent);
+    component->addSibling(siblingComponent, component);
 }
 
 void MindMapModel::insertParentNode(Component* component, string description)

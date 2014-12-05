@@ -331,6 +331,7 @@ TEST_F(IntegrationTest, testFindComponent)
     ASSERT_EQ(directXComponent, _mindMapModel.findComponent(osNodeList, 1));
     ASSERT_EQ(NULL, _mindMapModel.findComponent(osNodeList, 8));
 }
+
 //void readComponentData(string line, int& id, string& description, string& children);
 TEST_F(IntegrationTest, testReadComponentData)
 {
@@ -341,4 +342,13 @@ TEST_F(IntegrationTest, testReadComponentData)
     ASSERT_EQ(0, id);
     ASSERT_EQ("Computer", description);
     ASSERT_EQ(" 2 7", children);
+}
+
+//void MindMapModel::deleteComponentTree(Component* component)
+TEST_F(IntegrationTest, testReadComponentData)
+{
+    _mindMapModel.createMindMap("root");
+    _mindMapModel.insertChildNode(_mindMapModel.getMindMap(), "node");
+    _mindMapModel.deleteComponentTree(*_mindMapModel.getMindMap()->getNodeList().begin());
+    ASSERT_EQ(0, _mindMapModel.getMindMap()->getNodeList().size());
 }

@@ -126,6 +126,7 @@
     <ClCompile Include="..\103598010_MindMap\text_ui_view.cpp" />
     <ClCompile Include="..\103598010_MindMap\undo_state.cpp" />
     <ClCompile Include="103598010_Test.cpp" />
+    <ClCompile Include="component_factory_test.cpp" />
     <ClCompile Include="controller_test.cpp" />
     <ClCompile Include="node_test.cpp" />
     <ClCompile Include="integration_test.cpp" />
