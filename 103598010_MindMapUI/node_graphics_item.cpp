@@ -14,8 +14,6 @@ NodeGraphicsItem::NodeGraphicsItem(MindMapPresentationModel* mindMapPresentation
     _component = component;
     _selected = false;
     setFlag(ItemIsSelectable);
-    _mouseState = MouseState::None;
-    _parentNodeGraphicsItem = NULL;
 }
 
 NodeGraphicsItem::~NodeGraphicsItem()
@@ -25,11 +23,6 @@ NodeGraphicsItem::~NodeGraphicsItem()
 Component* NodeGraphicsItem::getComponent()
 {
     return _component;
-}
-
-void NodeGraphicsItem::setParentNodeGraphicsItem(NodeGraphicsItem* parentNodeGraphicsItem)
-{
-    _parentNodeGraphicsItem = parentNodeGraphicsItem;
 }
 
 
@@ -48,18 +41,18 @@ void NodeGraphicsItem::paint(QPainter* painter, const QStyleOptionGraphicsItem* 
     }
     painter->drawRect(rect);
     painter->drawText(rect, Qt::AlignCenter, QString::fromStdString(_component->getDescription()));
-    if (_parentNodeGraphicsItem) {
-        painter->setPen(QPen(Qt::black, 3));
-        QRectF sceneRect = sceneBoundingRect();
-        QRectF parentSceneRect = _parentNodeGraphicsItem->sceneBoundingRect();
-        qreal x = 0;
-        qreal y = HEIGHT / 2;
-        qreal parentOffsetX = parentSceneRect.right() - sceneRect.left();
-        qreal middleY = (sceneRect.top() + sceneRect.bottom()) / 2;
-        qreal parentMiddleY = (parentSceneRect.top() + parentSceneRect.bottom()) / 2;
-        qreal parentOffsetY = parentMiddleY - middleY;
-        painter->drawLine(x, y, x + parentOffsetX, y + parentOffsetY);
-    }
+    /*  if (_parentNodeGraphicsItem) {
+          painter->setPen(QPen(Qt::black, 3));
+          QRectF sceneRect = sceneBoundingRect();
+          QRectF parentSceneRect = _parentNodeGraphicsItem->sceneBoundingRect();
+          qreal x = 0;
+          qreal y = HEIGHT / 2;
+          qreal parentOffsetX = parentSceneRect.right() - sceneRect.left();
+          qreal middleY = (sceneRect.top() + sceneRect.bottom()) / 2;
+          qreal parentMiddleY = (parentSceneRect.top() + parentSceneRect.bottom()) / 2;
+          qreal parentOffsetY = parentMiddleY - middleY;
+          painter->drawLine(x, y, x + parentOffsetX, y + parentOffsetY);
+      }*/
 }
 
 bool NodeGraphicsItem::isSelected()

@@ -9,7 +9,7 @@ public:
     MindMapView(QWidget* window, MindMapPresentationModel* mindMapPresentationModel);
     ~MindMapView();
     void refresh();
-    void addNode(vector<int>& layerCounter, NodeGraphicsItem* parentGraphicsItem, Component* component, int x, int y);
+    int draw(Component* component, int x, int& y);
     void updateSelection();
 private:
     QGraphicsScene* _graphicsScene;

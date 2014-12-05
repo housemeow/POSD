@@ -212,6 +212,7 @@ void MindMapPresentationModel::cut()
 {
     delete _clipboardComponent;
     _clipboardComponent = _selectedComponent->clone();
+    _clipboardComponent->setParent(NULL);
     _mindMapModel->deleteComponentTree(_selectedComponent);
     setActionsEnabled(false);
     _selectedComponent = NULL;
@@ -224,6 +225,7 @@ void MindMapPresentationModel::copy()
 {
     delete _clipboardComponent;
     _clipboardComponent = _selectedComponent->clone();
+    _clipboardComponent->setParent(NULL);
     _pasteActionEnabled = true;
     updateUIState();
 }
@@ -231,7 +233,7 @@ void MindMapPresentationModel::copy()
 void MindMapPresentationModel::paste()
 {
     Component* component = _clipboardComponent->clone();
-    _selectedComponent->getNodeList().push_back(component);
+    _selectedComponent->addChild(component);
     setActionsEnabled(false);
     _selectedComponent = NULL;
     _componentSelections.clear();

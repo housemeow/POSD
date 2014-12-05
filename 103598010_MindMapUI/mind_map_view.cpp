@@ -25,34 +25,45 @@ void MindMapView::refresh()
     _graphicsScene->clear();
     viewport()->update();
     vector<int> layerCounter;
-    addNode(layerCounter, NULL, _mindMapPresentationModel->getMindMap(), 0, 0);
+    int y = 0;
+    draw(_mindMapPresentationModel->getMindMap(), 0, y);
 }
 
-void MindMapView::addNode(vector<int>& layerCounter, NodeGraphicsItem* parentGraphicsItem, Component* component, int xIndex, int yIndex)
+int MindMapView::draw(Component* component, int xIndex, int& yIndex)
 {
-    if (component != NULL) {
-        if (layerCounter.size() == xIndex) {
-            layerCounter.push_back(0);
-        } else {
-            ++layerCounter[xIndex];
-        }
-        yIndex = layerCounter[xIndex];
-        NodeGraphicsItem* nodeGraphicsItem = new NodeGraphicsItem(_mindMapPresentationModel, component);
-        _nodeGraphicsItems.push_back(nodeGraphicsItem);
-        if (parentGraphicsItem) {
-            nodeGraphicsItem->setParentNodeGraphicsItem(parentGraphicsItem);
-        }
-        int x = xIndex * (NodeGraphicsItem::WIDTH + NodeGraphicsItem::PADDING);
+    int middleY = 0;
+    int x = xIndex * (NodeGraphicsItem::WIDTH + NodeGraphicsItem::PADDING);
+    list<Component*> children = component->getNodeList();
+    list<int> childrenMiddleY;
+    // traversal
+    for (list<Component*>::iterator iterator = children.begin(); iterator != children.end(); iterator++) {
+        Component* child = *iterator;
+        int childMiddleY = draw(child, xIndex + 1, yIndex);
+        childrenMiddleY.push_back(childMiddleY);
+    }
+    // create self GraphicsItem
+    NodeGraphicsItem* nodeGraphicsItem = new NodeGraphicsItem(_mindMapPresentationModel, component);
+    if (children.size() == 0) {
         int y = yIndex * (NodeGraphicsItem::HEIGHT + NodeGraphicsItem::PADDING);
-        nodeGraphicsItem->setPos(x, y);
-        _graphicsScene->addItem(nodeGraphicsItem);
-        for (list<Component*>::iterator iterator = component->getNodeList().begin(), end = component->getNodeList().end(); iterator != end; ++iterator) {
-            Component* child = *iterator;
-            addNode(layerCounter, nodeGraphicsItem, child, xIndex + 1, yIndex);
+        middleY = y + NodeGraphicsItem::HEIGHT / 2;
+        yIndex++;
+    } else {
+        // calc average line
+        for (list<int>::iterator iterator = childrenMiddleY.begin(); iterator != childrenMiddleY.end(); iterator++) {
+            middleY += ((float) * iterator) / childrenMiddleY.size();
+        }
+        // create line between self and child
+        for (list<int>::iterator iterator = childrenMiddleY.begin(); iterator != childrenMiddleY.end(); iterator++) {
+            int rightX = x + NodeGraphicsItem::WIDTH;
+            QGraphicsLineItem* line = new QGraphicsLineItem(rightX, middleY, rightX + NodeGraphicsItem::PADDING, *iterator);
+            _graphicsScene->addItem(line);
         }
     }
+    nodeGraphicsItem->setPos(x, middleY - NodeGraphicsItem::HEIGHT / 2);
+    _nodeGraphicsItems.push_back(nodeGraphicsItem);
+    _graphicsScene->addItem(nodeGraphicsItem);
+    return middleY;
 }
-
 
 void MindMapView::updateSelection()
 {

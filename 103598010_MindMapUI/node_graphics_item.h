@@ -19,7 +19,7 @@ public:
 
     QRectF boundingRect() const;
     void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget);
-    void setParentNodeGraphicsItem(NodeGraphicsItem* parentNodeGraphicsItem);
+    //void setParentNodeGraphicsItem(NodeGraphicsItem* parentNodeGraphicsItem);
     bool isSelected();
     void setNodeSelected(bool selected);
     Component* getComponent();
@@ -34,8 +34,6 @@ protected:
 private:
     bool _selected;
     Component* _component;
-    MouseState _mouseState;
-    NodeGraphicsItem* _parentNodeGraphicsItem;
     MindMapPresentationModel* _mindMapPresentationModel;
 };
 

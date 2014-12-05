@@ -54,8 +54,8 @@ Component* Composite::clone()
     list<Component*> children = getNodeList();
     for (list<Component*>::iterator iterator = children.begin(); iterator != children.end(); iterator++) {
         Component* child = *iterator;
-        Component* clondChild = child->clone();
-        component->getNodeList().push_back(clondChild);
+        Component* cloneChild = child->clone();
+        component->addChild(cloneChild);
     }
     return component;
 }
