@@ -10,6 +10,7 @@ class ComponentFactoryTest : public ::testing::Test
 protected:
     virtual void SetUp()
     {
+        _factory.resetCurrentId();
     }
 
     virtual void TearDown()
@@ -36,7 +37,7 @@ TEST_F(ComponentFactoryTest, copyMindMap)
 TEST_F(ComponentFactoryTest, createComponent)
 {
     Component* nodeComponent = _factory.createComponent(ComponentType::ComponentTypeNode);
-    Component* rootComponent = _factory.createComponent(ComponentType::ComponentTypeNode);
+    Component* rootComponent = _factory.createComponent(ComponentType::ComponentTypeRoot);
     ASSERT_EQ(0, nodeComponent->getId());
     ASSERT_EQ(1, rootComponent->getId());
     ASSERT_EQ("Root", rootComponent->getTypeName());

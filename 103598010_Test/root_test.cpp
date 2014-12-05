@@ -50,7 +50,7 @@ TEST_F(RootTest, testAddSibling)
 {
     Node* siblingNode = new Node(2);
     try {
-        _root->addSibling(siblingNode);
+        _root->addSibling(siblingNode, _root);
         FAIL();
     } catch (exception exception) {
         ASSERT_EQ("Root can't insert sibling node", string(exception.what()));

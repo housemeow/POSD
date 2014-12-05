@@ -56,7 +56,7 @@ TEST_F(NodeTest, testAddSibling)
     Node* parentNode = new Node(2);
     parentNode->addChild(_node);
     Node* siblingNode = new Node(3);
-    _node->addSibling(siblingNode);
+    _node->addSibling(siblingNode, _node);
     ASSERT_EQ(2, parentNode->getNodeList().size());
     ASSERT_EQ(parentNode, siblingNode->getParent());
 }

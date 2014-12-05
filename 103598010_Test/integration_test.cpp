@@ -249,21 +249,23 @@ The mind map Computer is displayed as follows:\n\
 ¡@¡@¡U¡@¡U¡@¡Ï¡ÐDirectX(Node, ID: 5)\n\
 ¡@¡@¡U¡@¡U¡@¡Ï¡ÐMicrosoft Office(Node, ID: 6)\n\
 ¡@¡@¡U¡@¡U¡@¡Ï¡ÐTaskManager(Node, ID: 10)\n\
+¡@¡@¡U¡@¡Ï¡ÐOSX(Node, ID: 11)\n\
 ¡@¡@¡U¡@¡Ï¡ÐIOS(Node, ID: 3)\n\
 ¡@¡@¡U¡@¡Ï¡ÐLinux(Node, ID: 4)\n\
-¡@¡@¡U¡@¡Ï¡ÐOSX(Node, ID: 11)\n\
 ¡@¡@¡Ï¡ÐNetwork(Node, ID: 7)\n\
 ¡@¡@¡@¡@¡Ï¡ÐWireless(Node, ID: 8)\n\
 ¡@¡@¡@¡@¡Ï¡ÐCable(Node, ID: 9)\n";
     ASSERT_EQ(expectInsertOSXMindMapString, getMindMapString());
     _mindMapModel.insertNewNode(windowsComponent, "Microsoft", InsertNodeModeParent);
+    string str = getMindMapString();
+    cout << str << endl;
     string expectInsertMicrosoftMindMapString = "\
 The mind map Computer is displayed as follows:\n\
 ¡Ï¡ÐComputer(Root, ID: 0)\n\
 ¡@¡@¡Ï¡ÐOS(Node, ID: 2)\n\
+¡@¡@¡U¡@¡Ï¡ÐOSX(Node, ID: 11)\n\
 ¡@¡@¡U¡@¡Ï¡ÐIOS(Node, ID: 3)\n\
 ¡@¡@¡U¡@¡Ï¡ÐLinux(Node, ID: 4)\n\
-¡@¡@¡U¡@¡Ï¡ÐOSX(Node, ID: 11)\n\
 ¡@¡@¡U¡@¡Ï¡ÐMicrosoft(Node, ID: 12)\n\
 ¡@¡@¡U¡@¡@¡@¡Ï¡Ðwindows(Node, ID: 1)\n\
 ¡@¡@¡U¡@¡@¡@¡@¡@¡Ï¡ÐDirectX(Node, ID: 5)\n\
@@ -345,7 +347,7 @@ TEST_F(IntegrationTest, testReadComponentData)
 }
 
 //void MindMapModel::deleteComponentTree(Component* component)
-TEST_F(IntegrationTest, testReadComponentData)
+TEST_F(IntegrationTest, deleteComponentTree)
 {
     _mindMapModel.createMindMap("root");
     _mindMapModel.insertChildNode(_mindMapModel.getMindMap(), "node");

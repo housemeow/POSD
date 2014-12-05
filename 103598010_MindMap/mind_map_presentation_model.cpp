@@ -215,6 +215,7 @@ void MindMapPresentationModel::cut()
     _clipboardComponent->setParent(NULL);
     _mindMapModel->deleteComponentTree(_selectedComponent);
     setActionsEnabled(false);
+    _pasteActionEnabled = true;
     _selectedComponent = NULL;
     _componentSelections.clear();
     updateUIState();

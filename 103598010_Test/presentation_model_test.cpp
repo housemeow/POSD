@@ -58,8 +58,8 @@ TEST_F(PresentationModelTest, selectNode)
     ASSERT_EQ(true, mindMapPresentationModel.getInsertSiblingActionEnabled());
     ASSERT_EQ(true, mindMapPresentationModel.getInsertParentActionEnabled());
     ASSERT_EQ(true, mindMapPresentationModel.getSelected(_mindMapModel.getMindMap()));
-    ASSERT_EQ(true, mindMapPresentationModel.getCutActionEnabled());
-    ASSERT_EQ(true, mindMapPresentationModel.getCopyActionEnabled());
+    ASSERT_EQ(false, mindMapPresentationModel.getCutActionEnabled());
+    ASSERT_EQ(false, mindMapPresentationModel.getCopyActionEnabled());
     ASSERT_EQ(false, mindMapPresentationModel.getPasteActionEnabled());
 }
 
@@ -156,8 +156,8 @@ TEST_F(PresentationModelTest, copyNode)
     mindMapPresentationModel.clickNode(*(_mindMapModel.getMindMap()->getNodeList().begin()));
     mindMapPresentationModel.insertSibling("AOE");
     mindMapPresentationModel.copy();
-    ASSERT_EQ(true, mindMapPresentationModel.getCutActionEnabled());
-    ASSERT_EQ(true, mindMapPresentationModel.getCopyActionEnabled());
+    ASSERT_EQ(false, mindMapPresentationModel.getCutActionEnabled());
+    ASSERT_EQ(false, mindMapPresentationModel.getCopyActionEnabled());
     ASSERT_EQ(true, mindMapPresentationModel.getPasteActionEnabled());
 }
 
@@ -170,8 +170,8 @@ TEST_F(PresentationModelTest, cutNode)
     mindMapPresentationModel.clickNode(*(_mindMapModel.getMindMap()->getNodeList().begin()));
     mindMapPresentationModel.insertSibling("AOE");
     mindMapPresentationModel.cut();
-    ASSERT_EQ(true, mindMapPresentationModel.getCutActionEnabled());
-    ASSERT_EQ(true, mindMapPresentationModel.getCopyActionEnabled());
+    ASSERT_EQ(false, mindMapPresentationModel.getCutActionEnabled());
+    ASSERT_EQ(false, mindMapPresentationModel.getCopyActionEnabled());
     ASSERT_EQ(true, mindMapPresentationModel.getPasteActionEnabled());
 }
 

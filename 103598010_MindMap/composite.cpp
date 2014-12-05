@@ -23,13 +23,15 @@ void Composite::addChild(Component* component)
 void Composite::addSibling(Component* component, Component* insertPosition)
 {
     if (component) {
-        component->setParent(this);
-        for (list<Component*>::iterator iterator = _children.begin(); iterator != _children.end(); iterator++) {
-            if (*iterator == insertPosition) {
-                _children.insert(iterator, component);
+        component->setParent(_parent);
+        list<Component*>::iterator iterator;
+        for (iterator = _parent->getNodeList().begin(); iterator != _parent->getNodeList().end(); iterator++) {
+            if (*iterator == this) {
                 break;
             }
         }
+        ++iterator;
+        _parent->getNodeList().insert(iterator, component);
     }
 }
 
