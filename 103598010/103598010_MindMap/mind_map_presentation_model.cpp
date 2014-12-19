@@ -15,6 +15,10 @@ MindMapPresentationModel::MindMapPresentationModel(MindMapModel* mindMapModel)
     _clipboardComponent = NULL;
 }
 
+MindMapPresentationModel::MindMapPresentationModel()
+{
+}
+
 MindMapPresentationModel::~MindMapPresentationModel()
 {
 }
@@ -128,10 +132,6 @@ void MindMapPresentationModel::clickNode(Component* component)
     updateUIState();
 }
 
-void MindMapPresentationModel::setListener(MindMapPresentationModelChangeListener* listener)
-{
-    _listener = listener;
-}
 
 
 void MindMapPresentationModel::setActionsEnabled(bool enabled)
@@ -188,7 +188,7 @@ void MindMapPresentationModel::doubleClick(Component* component)
             iterator->second = false;
         }
     }
-    doubleClick();
+    triggerDoubleClick();
     updateUIState();
 }
 
@@ -263,25 +263,4 @@ void MindMapPresentationModel::redo()
     _mindMapModel->redo();
     updateUIState();
     refreshUI();
-}
-
-void MindMapPresentationModel::updateUIState()
-{
-    if (_listener) {
-        _listener->updateUIState();
-    }
-}
-
-void MindMapPresentationModel::refreshUI()
-{
-    if (_listener) {
-        _listener->refreshUI();
-    }
-}
-
-void MindMapPresentationModel::doubleClick()
-{
-    if (_listener) {
-        _listener->doubleClick();
-    }
 }

@@ -4,9 +4,9 @@
 #include "ui_mind_map_window.h"
 #include "mind_map_presentation_model.h"
 #include "mind_map_view.h"
-#include "mind_map_presentation_model_change_listener.h"
+#include "mind_map_presentation_model_change_observer.h"
 
-class MindMapWindow : public QMainWindow, MindMapPresentationModelChangeListener
+class MindMapWindow : public QMainWindow, MindMapPresentationModelChangeObserver
 {
     Q_OBJECT
 

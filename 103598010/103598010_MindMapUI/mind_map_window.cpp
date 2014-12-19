@@ -13,7 +13,7 @@ MindMapWindow::MindMapWindow(MindMapPresentationModel* mindMapPresentationModel,
     : QMainWindow(parent)
 {
     _mindMapPresentationModel = mindMapPresentationModel;
-    _mindMapPresentationModel->setListener(this);
+    _mindMapPresentationModel->setObserver(this);
     resize(600, 400);
     createActions();
     createUI();

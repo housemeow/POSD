@@ -174,7 +174,10 @@
     <ClInclude Include="mind_map_presentation_model.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="mind_map_presentation_model_change_listener.h">
+    <ClInclude Include="mind_map_presentation_model_change_observer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mind_map_presentation_model_change_subject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -291,6 +294,9 @@
       <Filter>Source Files\TextUIStates\Insert</Filter>
     </ClCompile>
     <ClCompile Include="mind_map_presentation_model.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mind_map_presentation_model_change_subject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

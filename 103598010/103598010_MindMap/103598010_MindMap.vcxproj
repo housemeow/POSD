@@ -107,7 +107,8 @@
     <ClInclude Include="menu_state.h" />
     <ClInclude Include="mind_map_model.h" />
     <ClInclude Include="mind_map_presentation_model.h" />
-    <ClInclude Include="mind_map_presentation_model_change_listener.h" />
+    <ClInclude Include="mind_map_presentation_model_change_observer.h" />
+    <ClInclude Include="mind_map_presentation_model_change_subject.h" />
     <ClInclude Include="node.h" />
     <ClInclude Include="redo_state.h" />
     <ClInclude Include="root.h" />
@@ -149,6 +150,7 @@
     <ClCompile Include="menu_state.cpp" />
     <ClCompile Include="mind_map_model.cpp" />
     <ClCompile Include="mind_map_presentation_model.cpp" />
+    <ClCompile Include="mind_map_presentation_model_change_subject.cpp" />
     <ClCompile Include="node.cpp" />
     <ClCompile Include="redo_state.cpp" />
     <ClCompile Include="root.cpp" />

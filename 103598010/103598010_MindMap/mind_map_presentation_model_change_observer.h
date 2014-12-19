@@ -1,5 +1,5 @@
 #pragma once
-class MindMapPresentationModelChangeListener
+class MindMapPresentationModelChangeObserver
 {
 public:
     virtual void updateUIState() = 0;

@@ -2,14 +2,15 @@
 #include "mind_map_model.h"
 #include <string>
 #include <map>
-#include "mind_map_presentation_model_change_listener.h"
+#include "mind_map_presentation_model_change_subject.h"
 
 using namespace std;
 
-class MindMapPresentationModel
+class MindMapPresentationModel: public MindMapPresentationModelChangeSubject
 {
 public:
     MindMapPresentationModel(MindMapModel* mindMapModel);
+    MindMapPresentationModel();
     ~MindMapPresentationModel();
     Component* getMindMap();
     void createMindMap(string);
@@ -27,7 +28,6 @@ public:
     bool getRedoActionEnabled();
     bool getSelected(Component*);
     void clickNode(Component*);
-    void setListener(MindMapPresentationModelChangeListener* listener);
     Component* getSelectedComponent();
     void editDescription(string description);
     string getSelectedComponentDescription();
@@ -42,9 +42,6 @@ public:
     void paste();
     void undo();
     void redo();
-    void updateUIState();
-    void refreshUI();
-    void doubleClick();
 private:
     void setActionsEnabled(bool enabled);
     map<Component*, bool> _componentSelections;
@@ -58,7 +55,6 @@ private:
     bool _cutActionEnabled;
     bool _copyActionEnabled;
     bool _pasteActionEnabled;
-    MindMapPresentationModelChangeListener* _listener;
     Component* _selectedComponent;
     Component* _clipboardComponent;
 };
