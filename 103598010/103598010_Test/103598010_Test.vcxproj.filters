@@ -164,5 +164,17 @@
     <ClCompile Include="component_factory_test.cpp">
       <Filter>UnitTest</Filter>
     </ClCompile>
+    <ClCompile Include="..\103598010_MindMap\mind_map_presentation_model_change_subject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="observer_test.cpp">
+      <Filter>UnitTest</Filter>
+    </ClCompile>
+    <ClCompile Include="component_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="command_manager_test.cpp">
+      <Filter>UnitTest</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

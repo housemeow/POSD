@@ -116,6 +116,7 @@
     <ClCompile Include="..\103598010_MindMap\menu_state.cpp" />
     <ClCompile Include="..\103598010_MindMap\mind_map_model.cpp" />
     <ClCompile Include="..\103598010_MindMap\mind_map_presentation_model.cpp" />
+    <ClCompile Include="..\103598010_MindMap\mind_map_presentation_model_change_subject.cpp" />
     <ClCompile Include="..\103598010_MindMap\node.cpp" />
     <ClCompile Include="..\103598010_MindMap\redo_state.cpp" />
     <ClCompile Include="..\103598010_MindMap\root.cpp" />
@@ -126,10 +127,13 @@
     <ClCompile Include="..\103598010_MindMap\text_ui_view.cpp" />
     <ClCompile Include="..\103598010_MindMap\undo_state.cpp" />
     <ClCompile Include="103598010_Test.cpp" />
+    <ClCompile Include="command_manager_test.cpp" />
     <ClCompile Include="component_factory_test.cpp" />
+    <ClCompile Include="component_test.cpp" />
     <ClCompile Include="controller_test.cpp" />
     <ClCompile Include="node_test.cpp" />
     <ClCompile Include="integration_test.cpp" />
+    <ClCompile Include="observer_test.cpp" />
     <ClCompile Include="presentation_model_test.cpp" />
     <ClCompile Include="root_test.cpp" />
     <ClCompile Include="state_test.cpp" />

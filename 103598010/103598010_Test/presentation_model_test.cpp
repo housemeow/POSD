@@ -188,3 +188,71 @@ TEST_F(PresentationModelTest, pasteNode)
     mindMapPresentationModel.paste();
     ASSERT_EQ(2, mindMapPresentationModel.getMindMap()->getNodeList().size());
 }
+
+TEST_F(PresentationModelTest, testGetUndoActionEnabled)
+{
+    MindMapPresentationModel mindMapPresentationModel(&_mindMapModel);
+    ASSERT_EQ(false, mindMapPresentationModel.getUndoActionEnabled());
+    mindMapPresentationModel.createMindMap("root");
+    mindMapPresentationModel.clickNode(_mindMapModel.getMindMap());
+    mindMapPresentationModel.insertChild("child");
+    ASSERT_EQ(true, mindMapPresentationModel.getUndoActionEnabled());
+}
+
+TEST_F(PresentationModelTest, testGetRedoActionEnabled)
+{
+    MindMapPresentationModel mindMapPresentationModel(&_mindMapModel);
+    ASSERT_EQ(false, mindMapPresentationModel.getRedoActionEnabled());
+    mindMapPresentationModel.createMindMap("root");
+    mindMapPresentationModel.clickNode(_mindMapModel.getMindMap());
+    mindMapPresentationModel.insertChild("child");
+    mindMapPresentationModel.undo();
+    ASSERT_EQ(true, mindMapPresentationModel.getRedoActionEnabled());
+}
+
+TEST_F(PresentationModelTest, testGetSelected)
+{
+    MindMapPresentationModel mindMapPresentationModel(&_mindMapModel);
+    mindMapPresentationModel.createMindMap("root");
+    mindMapPresentationModel.clickNode(_mindMapModel.getMindMap());
+    mindMapPresentationModel.insertChild("child");
+    ASSERT_FALSE(mindMapPresentationModel.getSelected(_mindMapModel.getMindMap()->getNodeList().back()));
+}
+
+TEST_F(PresentationModelTest, testEditDescription)
+{
+    MindMapPresentationModel mindMapPresentationModel(&_mindMapModel);
+    mindMapPresentationModel.createMindMap("root");
+    mindMapPresentationModel.clickNode(_mindMapModel.getMindMap());
+    mindMapPresentationModel.editDescription("new");
+    ASSERT_EQ("new", _mindMapModel.getMindMap()->getDescription());
+}
+
+TEST_F(PresentationModelTest, testGetSelectedDescription)
+{
+    MindMapPresentationModel mindMapPresentationModel(&_mindMapModel);
+    mindMapPresentationModel.createMindMap("root");
+    mindMapPresentationModel.clickNode(_mindMapModel.getMindMap());
+    ASSERT_EQ("root", mindMapPresentationModel.getSelectedComponentDescription());
+}
+
+TEST_F(PresentationModelTest, testUndo)
+{
+    MindMapPresentationModel mindMapPresentationModel(&_mindMapModel);
+    mindMapPresentationModel.createMindMap("root");
+    mindMapPresentationModel.clickNode(_mindMapModel.getMindMap());
+    mindMapPresentationModel.editDescription("new");
+    mindMapPresentationModel.undo();
+    ASSERT_EQ("root", _mindMapModel.getMindMap()->getDescription());
+}
+
+TEST_F(PresentationModelTest, testRedo)
+{
+    MindMapPresentationModel mindMapPresentationModel(&_mindMapModel);
+    mindMapPresentationModel.createMindMap("root");
+    mindMapPresentationModel.clickNode(_mindMapModel.getMindMap());
+    mindMapPresentationModel.editDescription("new");
+    mindMapPresentationModel.undo();
+    mindMapPresentationModel.redo();
+    ASSERT_EQ("new", _mindMapModel.getMindMap()->getDescription());
+}

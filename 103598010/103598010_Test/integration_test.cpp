@@ -350,7 +350,7 @@ TEST_F(IntegrationTest, testReadComponentData)
 TEST_F(IntegrationTest, deleteComponentTree)
 {
     _mindMapModel.createMindMap("root");
-    _mindMapModel.insertChildNode(_mindMapModel.getMindMap(), "node");
+    _mindMapModel.insertChildNode(_mindMapModel.getMindMap()->getId(), "node");
     _mindMapModel.deleteComponentTree(*_mindMapModel.getMindMap()->getNodeList().begin());
     ASSERT_EQ(0, _mindMapModel.getMindMap()->getNodeList().size());
 }

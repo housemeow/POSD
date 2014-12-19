@@ -4,12 +4,6 @@
 class MindMapPresentationModelChangeSubject
 {
 public:
-    //void updateUIState();
-    //void refreshUI();
-    //void triggerDoubleClick();
-    //void setObserver(MindMapPresentationModelChangeObserver* observer);
-
-
     void setObserver(MindMapPresentationModelChangeObserver* observer)
     {
         _observer = observer;
