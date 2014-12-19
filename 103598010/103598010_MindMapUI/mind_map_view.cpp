@@ -32,7 +32,7 @@ void MindMapView::refresh()
 int MindMapView::draw(Component* component, int xIndex, int& yIndex)
 {
     int middleY = 0;
-    int x = xIndex * (NodeGraphicsItem::WIDTH + NodeGraphicsItem::PADDING);
+    int x = xIndex * (NodeGraphicsItem::MAX_WIDTH + NodeGraphicsItem::PADDING);
     list<Component*> children = component->getNodeList();
     list<int> childrenMiddleY;
     // traversal
@@ -44,8 +44,8 @@ int MindMapView::draw(Component* component, int xIndex, int& yIndex)
     // create self GraphicsItem
     NodeGraphicsItem* nodeGraphicsItem = new NodeGraphicsItem(_mindMapPresentationModel, component);
     if (children.size() == 0) {
-        int y = yIndex * (NodeGraphicsItem::HEIGHT + NodeGraphicsItem::PADDING);
-        middleY = y + NodeGraphicsItem::HEIGHT / 2;
+        int y = yIndex * (NodeGraphicsItem::MAX_HEIGHT + NodeGraphicsItem::PADDING);
+        middleY = y + NodeGraphicsItem::MAX_HEIGHT / 2;
         yIndex++;
     } else {
         // calc average line
@@ -54,12 +54,13 @@ int MindMapView::draw(Component* component, int xIndex, int& yIndex)
         }
         // create line between self and child
         for (list<int>::iterator iterator = childrenMiddleY.begin(); iterator != childrenMiddleY.end(); iterator++) {
-            int rightX = x + NodeGraphicsItem::WIDTH;
-            QGraphicsLineItem* line = new QGraphicsLineItem(rightX, middleY, rightX + NodeGraphicsItem::PADDING, *iterator);
+            int rightX = x + nodeGraphicsItem->boundingRect().right();
+            int leftX = x + nodeGraphicsItem->boundingRect().left();
+            QGraphicsLineItem* line = new QGraphicsLineItem(rightX, middleY, leftX + NodeGraphicsItem::MAX_WIDTH + NodeGraphicsItem::PADDING, *iterator);
             _graphicsScene->addItem(line);
         }
     }
-    nodeGraphicsItem->setPos(x, middleY - NodeGraphicsItem::HEIGHT / 2);
+    nodeGraphicsItem->setPos(x, middleY - NodeGraphicsItem::MAX_HEIGHT / 2);
     _nodeGraphicsItems.push_back(nodeGraphicsItem);
     _graphicsScene->addItem(nodeGraphicsItem);
     return middleY;
