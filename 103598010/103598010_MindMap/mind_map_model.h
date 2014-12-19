@@ -13,7 +13,10 @@ public:
     Component* insertNewNode(Component* node, string description, InsertNodeMode insertMode);
     Component* insertNode(Component* component, Component* node, InsertNodeMode insertMode);
     Component* createNode(ComponentType componentType, string description);
-    void insertChildNode(Component* component, string description);
+    Component* createNode(int id, ComponentType componentType, string description);
+    void changeParentCommand(Component* component, Component* parentComponent);
+    void insertChildNodeCommand(Component* component, string description);
+    Component* insertChildNode(int componentId, string description);
     void tryInsertNewNode(Component* component, InsertNodeMode insertMode);
     void saveMindMap(string fileName);
     void loadMindMap(string filePath);
@@ -25,10 +28,14 @@ public:
     void readComponentData(string line, int& id, string& description, string& children);
     Component* getMindMap();
     void editDescription(Component* component, string description);
-    void deleteComponent(Component* component);
+    void deleteComponentCommand(Component* component);
     void deleteComponentTree(Component* component);
-    void insertSiblingNode(Component* component, string description);
+    Component* insertSiblingNode(Component* component, string description);
+    void insertSiblingNodeCommand(Component* component, string description);
     void insertParentNode(Component* component, string description);
+    void insertParentNodeCommand(Component* component, string description);
+    int getUndoCount();
+    int getRedoCount();
 private:
     Component* _mindMap;
     CommandManager _commandManager;

@@ -84,6 +84,16 @@ bool MindMapPresentationModel::getPasteActionEnabled()
     return _pasteActionEnabled;
 }
 
+bool MindMapPresentationModel::getUndoActionEnabled()
+{
+    return _mindMapModel->getUndoCount() > 0;
+}
+
+bool MindMapPresentationModel::getRedoActionEnabled()
+{
+    return _mindMapModel->getRedoCount() > 0;
+}
+
 bool MindMapPresentationModel::getSelected(Component* component)
 {
     map<Component*, bool>::iterator find = _componentSelections.find(component);
@@ -154,7 +164,7 @@ string MindMapPresentationModel::getSelectedComponentDescription()
 
 void MindMapPresentationModel::deleteComponent()
 {
-    _mindMapModel->deleteComponent(_selectedComponent);
+    _mindMapModel->deleteComponentCommand(_selectedComponent);
     setActionsEnabled(false);
     _selectedComponent = NULL;
     _componentSelections.clear();
@@ -184,7 +194,7 @@ void MindMapPresentationModel::doubleClick(Component* component)
 
 void MindMapPresentationModel::insertChild(string description)
 {
-    _mindMapModel->insertChildNode(_selectedComponent, description);
+    _mindMapModel->insertChildNodeCommand(_selectedComponent, description);
     setActionsEnabled(false);
     updateUIState();
     refreshUI();
@@ -193,7 +203,7 @@ void MindMapPresentationModel::insertChild(string description)
 
 void MindMapPresentationModel::insertSibling(string description)
 {
-    _mindMapModel->insertSiblingNode(_selectedComponent, description);
+    _mindMapModel->insertSiblingNodeCommand(_selectedComponent, description);
     setActionsEnabled(false);
     updateUIState();
     refreshUI();
@@ -201,7 +211,7 @@ void MindMapPresentationModel::insertSibling(string description)
 
 void MindMapPresentationModel::insertParentNode(string description)
 {
-    _mindMapModel->insertParentNode(_selectedComponent, description);
+    _mindMapModel->insertParentNodeCommand(_selectedComponent, description);
     setActionsEnabled(false);
     updateUIState();
     refreshUI();
@@ -241,7 +251,19 @@ void MindMapPresentationModel::paste()
     updateUIState();
     refreshUI();
 }
+void MindMapPresentationModel::undo()
+{
+    _mindMapModel->undo();
+    updateUIState();
+    refreshUI();
+}
 
+void MindMapPresentationModel::redo()
+{
+    _mindMapModel->redo();
+    updateUIState();
+    refreshUI();
+}
 
 void MindMapPresentationModel::updateUIState()
 {

@@ -6,7 +6,7 @@ class EditDescriptionCommand :
     public Command
 {
 public:
-    EditDescriptionCommand(MindMapModel* mindMapModel, Component* component, string description);
+    EditDescriptionCommand(Component* component, string description);
     EditDescriptionCommand();
     ~EditDescriptionCommand();
     void execute();

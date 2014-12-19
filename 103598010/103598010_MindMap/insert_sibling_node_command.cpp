@@ -17,12 +17,13 @@ InsertSiblingNodeCommand::~InsertSiblingNodeCommand()
 
 void InsertSiblingNodeCommand::execute()
 {
-    _mindMapModel->insertSiblingNode(_component, _description);
+    _siblingComponent = _mindMapModel->insertSiblingNode(_component, _description);
 }
 
 void InsertSiblingNodeCommand::unexecute()
 {
     _siblingComponent->setParent(NULL);
     delete _siblingComponent;
+    _siblingComponent = NULL;
 }
 

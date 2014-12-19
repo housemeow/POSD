@@ -38,6 +38,8 @@ private:
     QAction* _copyAction;
     QAction* _pasteAction;
     QAction* _aboutAction;
+    QAction* _undoAction;
+    QAction* _redoAction;
 
     QWidget* _centralWidget;
     QMenuBar* _menuBar;
@@ -58,6 +60,8 @@ private slots:
     void copy();
     void paste();
     void about();
+    void undo();
+    void redo();
 };
 
 #endif // MIND_MAP_WINDOW_H

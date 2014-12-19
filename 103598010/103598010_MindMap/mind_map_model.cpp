@@ -2,6 +2,12 @@
 #include "mind_map_model.h"
 #include "component_factory.h"
 #include "command.h"
+#include "change_parent_command.h"
+#include "delete_command.h"
+#include "edit_description_command.h"
+#include "insert_child_node_command.h"
+#include "insert_parent_node_command.h"
+#include "insert_sibling_node_command.h"
 
 using namespace std;
 
@@ -25,6 +31,7 @@ void MindMapModel::createMindMap(string mindMapName)
     ComponentFactory factory;
     _mindMap = factory.createComponent(ComponentType::ComponentTypeRoot);
     _mindMap->setDescription(mindMapName);
+    _commandManager.clear();
 }
 
 // 嘗試加入一個空節點，如果不成功會拋出exception
@@ -187,6 +194,12 @@ void MindMapModel::readComponentData(string line, int& id, string& description, 
     idStringStream >> id;
 }
 
+
+void MindMapModel::changeParentCommand(Component* component, Component* parentComponent)
+{
+    execute(new ChangeParentCommand(component, parentComponent));
+}
+
 // 取得當前的MindMap根節點
 Component* MindMapModel::getMindMap()
 {
@@ -195,21 +208,15 @@ Component* MindMapModel::getMindMap()
 
 void MindMapModel::editDescription(Component* component, string description)
 {
-    component->setDescription(description);
+    EditDescriptionCommand* editDescriptionCommand = new EditDescriptionCommand(component, description);
+    execute(editDescriptionCommand);
 }
 
-void MindMapModel::deleteComponent(Component* component)
+void MindMapModel::deleteComponentCommand(Component* component)
 {
-    if (component == _mindMap) {
-        throw exception("You cannot delete root!");
-    }
-    list<Component*> children = component->getNodeList();
-    for (list<Component*>::const_iterator componentIterator = children.begin(); componentIterator != children.end(); ++componentIterator) {
-        Component* child = *componentIterator;
-        component->getParent()->addChild(child);
-    }
-    component->setParent(NULL);
-    delete component;
+    DeleteCommand* deleteCommand = new DeleteCommand(component);
+    execute(deleteCommand);
+    _commandManager.clearRedo();
 }
 
 void MindMapModel::deleteComponentTree(Component* component)
@@ -227,19 +234,40 @@ void MindMapModel::deleteComponentTree(Component* component)
     delete component;
 }
 
-void MindMapModel::insertChildNode(Component* component, string description)
+void MindMapModel::insertChildNodeCommand(Component* component, string description)
 {
-    Component* childComponent = createNode(ComponentTypeNode, description);
-    component->addChild(childComponent);
+    execute(new InsertChildNodeCommand(this, component, description));
+    _commandManager.clearRedo();
 }
 
-void MindMapModel::insertSiblingNode(Component* component, string description)
+Component* MindMapModel::insertChildNode(int componentId, string description)
+{
+    Component* component = _mindMap->findNode(componentId);
+    Component* childComponent = createNode(ComponentTypeNode, description);
+    component->addChild(childComponent);
+    return childComponent;
+}
+
+void MindMapModel::insertSiblingNodeCommand(Component* component, string description)
+{
+    execute(new InsertSiblingNodeCommand(this, component, description));
+    _commandManager.clearRedo();
+}
+
+Component* MindMapModel::insertSiblingNode(Component* component, string description)
 {
     if (component == _mindMap) {
         throw exception("Root cannot insert sibling!");
     }
     Component* siblingComponent = createNode(ComponentTypeNode, description);
     component->addSibling(siblingComponent, component);
+    return siblingComponent;
+}
+
+void MindMapModel::insertParentNodeCommand(Component* component, string description)
+{
+    execute(new InsertParentNodeCommand(this, component, description));
+    _commandManager.clearRedo();
 }
 
 void MindMapModel::insertParentNode(Component* component, string description)
@@ -250,4 +278,14 @@ void MindMapModel::insertParentNode(Component* component, string description)
     Component* parentComponent = createNode(ComponentTypeNode, description);
     component->getParent()->addChild(parentComponent);
     component->addParent(parentComponent);
+}
+
+int MindMapModel::getUndoCount()
+{
+    return _commandManager.getUndoCount();
+}
+
+int MindMapModel::getRedoCount()
+{
+    return _commandManager.getRedoCount();
 }

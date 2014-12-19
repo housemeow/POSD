@@ -3,9 +3,8 @@
 #include "component_factory.h"
 #include "mind_map_model.h"
 
-DeleteCommand::DeleteCommand(MindMapModel* mindMapModel, Component* component)
+DeleteCommand::DeleteCommand(Component* component)
 {
-    _mindMapModel = mindMapModel;
     _component = component;
     _mindMap = component->getMindMap();
     _parentComponent = component->getParent();
@@ -29,7 +28,16 @@ DeleteCommand::~DeleteCommand()
 
 void DeleteCommand::execute()
 {
-    _mindMapModel->deleteComponent(_component);
+    if (_component == _mindMap) {
+        throw exception("You cannot delete root!");
+    }
+    list<Component*> children = _component->getNodeList();
+    for (list<Component*>::const_iterator componentIterator = children.begin(); componentIterator != children.end(); ++componentIterator) {
+        Component* child = *componentIterator;
+        _component->getParent()->addChild(child);
+    }
+    _component->setParent(NULL);
+    delete _component;
 }
 
 void DeleteCommand::unexecute()

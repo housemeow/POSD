@@ -5,7 +5,7 @@
 
 InsertChildNodeCommand::InsertChildNodeCommand(MindMapModel* mindMapModel, Component* component, string description)
 {
-    _component = component;
+    _componentId = component->getId();
     _description = description;
     _mindMapModel = mindMapModel;
 }
@@ -21,11 +21,13 @@ InsertChildNodeCommand::~InsertChildNodeCommand()
 
 void InsertChildNodeCommand::execute()
 {
-    _mindMapModel->insertChildNode(_component, _description);
+    Component* childrenComponet = _mindMapModel->insertChildNode(_componentId, _description);
+    _childComponentId =  childrenComponet->getId();
 }
 
 void InsertChildNodeCommand::unexecute()
 {
-    _childComponent->setParent(NULL);
-    delete _childComponent;
+    Component* childrenComponent = _mindMapModel->getMindMap()->findNode(_childComponentId);
+    childrenComponent->setParent(NULL);
+    delete childrenComponent;
 }

@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "change_parent_state.h"
 #include "menu_state.h"
-#include "change_parent_command.h"
 
 ChangeParentState::ChangeParentState(MindMapModel* mindMapModel, Component* component) : TextUIState(mindMapModel)
 {
@@ -30,8 +29,7 @@ TextUIState* ChangeParentState::run()
         _textUIView->printNodeIsNotExist();
         return new ChangeParentState(_mindMapModel, _component);
     }
-    ChangeParentCommand* changeParentCommand = new ChangeParentCommand(_component, parentComponent);
-    _mindMapModel->execute(changeParentCommand);
+    _mindMapModel->changeParentCommand(_component, parentComponent);
     _textUIView->printMindMap(_mindMapModel->getMindMap());
     return new MenuState(_mindMapModel);
 }

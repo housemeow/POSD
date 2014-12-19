@@ -10,8 +10,8 @@ public:
     void execute();
     void unexecute();
 private:
-    Component* _component;
-    Component* _childComponent;
+    int _componentId;
+    int _childComponentId;
     string _description;
     MindMapModel* _mindMapModel;
 };

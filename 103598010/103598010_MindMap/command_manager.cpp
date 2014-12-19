@@ -9,42 +9,65 @@ CommandManager::CommandManager()
 
 CommandManager::~CommandManager()
 {
-    while (!undoStack.empty()) {
-        delete undoStack.top();
-        undoStack.pop();
+    while (!_undoStack.empty()) {
+        delete _undoStack.top();
+        _undoStack.pop();
     }
-    while (!redoStack.empty()) {
-        delete redoStack.top();
-        redoStack.pop();
+    while (!_redoStack.empty()) {
+        delete _redoStack.top();
+        _redoStack.pop();
     }
 }
 
 void CommandManager::execute(Command* command)
 {
     command->execute();
-    undoStack.push(command);
+    _undoStack.push(command);
 }
 
 void CommandManager::undo()
 {
-    if (undoStack.empty()) {
+    if (_undoStack.empty()) {
         throw exception("Cant't Undo!");
     } else {
-        Command* command = undoStack.top();
-        undoStack.pop();
+        Command* command = _undoStack.top();
+        _undoStack.pop();
         command->unexecute();
-        redoStack.push(command);
+        _redoStack.push(command);
     }
 }
 
 void CommandManager::redo()
 {
-    if (redoStack.empty()) {
+    if (_redoStack.empty()) {
         throw exception("Cant't Redo!");
     } else {
-        Command* command = redoStack.top();
-        redoStack.pop();
+        Command* command = _redoStack.top();
+        _redoStack.pop();
         command->execute();
-        undoStack.push(command);
+        _undoStack.push(command);
     }
+}
+
+void CommandManager::clear()
+{
+    while (!_undoStack.empty())
+        _undoStack.pop();
+    clearRedo();
+}
+
+void CommandManager::clearRedo()
+{
+    while (!_redoStack.empty())
+        _redoStack.pop();
+}
+
+int CommandManager::getUndoCount()
+{
+    return _undoStack.size();
+}
+
+int CommandManager::getRedoCount()
+{
+    return _redoStack.size();
 }

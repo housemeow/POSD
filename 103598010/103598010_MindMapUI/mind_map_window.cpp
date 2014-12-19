@@ -97,6 +97,16 @@ void MindMapWindow::createActions()
     // about action
     _aboutAction = new QAction("About", this);
     connect(_aboutAction, SIGNAL(triggered()), this, SLOT(about()));
+    // undo action
+    _undoAction = new QAction(tr("Undo"), this);
+    _undoAction->setIcon(QIcon("Resources\\undo.png"));
+    _undoAction->setStatusTip(tr("Undo"));
+    connect(_undoAction, SIGNAL(triggered()), this, SLOT(undo()));
+    // redo action
+    _redoAction = new QAction(tr("Redo"), this);
+    _redoAction->setIcon(QIcon("Resources\\redo.png"));
+    _redoAction->setStatusTip(tr("Redo"));
+    connect(_redoAction, SIGNAL(triggered()), this, SLOT(redo()));
 }
 
 void MindMapWindow::createCentralWidget()
@@ -144,12 +154,15 @@ void MindMapWindow::createToolBar()
     _toolBar->addAction(_insertChildAction);
     _toolBar->addAction(_insertSiblingAction);
     _toolBar->addAction(_insertParentAction);
+    _toolBar->addAction(_undoAction);
+    _toolBar->addAction(_redoAction);
 }
 
 void MindMapWindow::createMindMap()
 {
     _mindMapPresentationModel->createMindMap("");
     _mindMapView->refresh();
+    updateUIState();
 }
 
 
@@ -163,6 +176,7 @@ void MindMapWindow::openMindMap()
         showMessageBox("Exception", exception.what());
     }
     _mindMapView->refresh();
+    updateUIState();
 }
 
 void MindMapWindow::exit()
@@ -181,6 +195,8 @@ void MindMapWindow::updateUIState()
     _cutAction->setEnabled(_mindMapPresentationModel->getCutActionEnabled());
     _copyAction->setEnabled(_mindMapPresentationModel->getCopyActionEnabled());
     _pasteAction->setEnabled(_mindMapPresentationModel->getPasteActionEnabled());
+    _undoAction->setEnabled(_mindMapPresentationModel->getUndoActionEnabled());
+    _redoAction->setEnabled(_mindMapPresentationModel->getRedoActionEnabled());
     _mindMapView->updateSelection();
 }
 
@@ -272,4 +288,14 @@ void MindMapWindow::copy()
 void MindMapWindow::paste()
 {
     _mindMapPresentationModel->paste();
+}
+
+void MindMapWindow::undo()
+{
+    _mindMapPresentationModel->undo();
+}
+
+void MindMapWindow::redo()
+{
+    _mindMapPresentationModel->redo();
 }

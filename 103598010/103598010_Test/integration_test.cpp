@@ -65,7 +65,7 @@ protected:
 
     DeleteCommand* createDeleteCommand(int id)
     {
-        return new DeleteCommand(&_mindMapModel, _mindMapModel.getMindMap()->findNode(id));
+        return new DeleteCommand(_mindMapModel.getMindMap()->findNode(id));
     }
 
     ChangeParentCommand* createChangeParentCommand(int id, int newParentId)

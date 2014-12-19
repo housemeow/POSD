@@ -23,6 +23,8 @@ public:
     bool getCutActionEnabled();
     bool getCopyActionEnabled();
     bool getPasteActionEnabled();
+    bool getUndoActionEnabled();
+    bool getRedoActionEnabled();
     bool getSelected(Component*);
     void clickNode(Component*);
     void setListener(MindMapPresentationModelChangeListener* listener);
@@ -38,6 +40,8 @@ public:
     void cut();
     void copy();
     void paste();
+    void undo();
+    void redo();
     void updateUIState();
     void refreshUI();
     void doubleClick();
