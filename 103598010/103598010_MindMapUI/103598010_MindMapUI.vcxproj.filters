@@ -179,6 +179,9 @@
     <ClCompile Include="..\103598010_MindMap\text_ui_display_visitor.cpp">
       <Filter>References</Filter>
     </ClCompile>
+    <ClCompile Include="gui_display_visitor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="mind_map_window.h">
@@ -199,6 +202,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="node_graphics_item.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gui_display_visitor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

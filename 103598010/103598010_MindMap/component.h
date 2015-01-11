@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include "component_visitor.h"
+#include <list>
 
 using namespace std;
 
@@ -20,7 +21,7 @@ public:
     Component* getParent();
     void setParent(Component* parent);
     Component* findNode(int id);
-    std::list<Component*>& getNodeList();
+    list<Component*>& getNodeList();
     virtual void addChild(Component* component) = 0;
     virtual void addSibling(Component* component, Component* insertPosition) = 0;
     virtual void addParent(Component* component) = 0;
