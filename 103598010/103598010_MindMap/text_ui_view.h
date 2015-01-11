@@ -10,7 +10,6 @@ public:
     ~TextUIView();
     void printMenu();
     void printMindMap(Component* component);
-    void getMindMapString(Component* component, stringstream& stringStream, bool needVerticleLine);
     void printInputNotify();
     void printCreateMindMapMessage();
     void printMindMapNotExist();

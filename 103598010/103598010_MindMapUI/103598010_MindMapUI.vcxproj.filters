@@ -176,6 +176,9 @@
     <ClCompile Include="..\103598010_MindMap\component_visitor.cpp">
       <Filter>References</Filter>
     </ClCompile>
+    <ClCompile Include="..\103598010_MindMap\text_ui_display_visitor.cpp">
+      <Filter>References</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="mind_map_window.h">

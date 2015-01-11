@@ -178,6 +178,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\103598010_MindMap\text_ui_controller.cpp" />
+    <ClCompile Include="..\103598010_MindMap\text_ui_display_visitor.cpp" />
     <ClCompile Include="..\103598010_MindMap\text_ui_state.cpp" />
     <ClCompile Include="..\103598010_MindMap\text_ui_state_factory.cpp" />
     <ClCompile Include="..\103598010_MindMap\text_ui_view.cpp" />

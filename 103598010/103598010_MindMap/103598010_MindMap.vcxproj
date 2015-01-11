@@ -115,6 +115,7 @@
     <ClInclude Include="root.h" />
     <ClInclude Include="save_state.h" />
     <ClInclude Include="save_visitor.h" />
+    <ClInclude Include="text_ui_display_visitor.h" />
     <ClInclude Include="text_ui_state.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -159,6 +160,7 @@
     <ClCompile Include="root.cpp" />
     <ClCompile Include="save_state.cpp" />
     <ClCompile Include="save_visitor.cpp" />
+    <ClCompile Include="text_ui_display_visitor.cpp" />
     <ClCompile Include="text_ui_state.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
