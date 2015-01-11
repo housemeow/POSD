@@ -21,3 +21,9 @@ Component* Node::getMindMap()
         return NULL;
     return _parent->getMindMap();
 }
+
+// visitor pattern ГXАн
+void Node::accept(ComponentVisitor* componentVisitor)
+{
+    componentVisitor->visit(this);
+}

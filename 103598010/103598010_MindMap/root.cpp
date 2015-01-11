@@ -37,3 +37,9 @@ Component* Root::getMindMap()
 {
     return this;
 }
+
+// visitor pattern ГXАн
+void Root::accept(ComponentVisitor* componentVisitor)
+{
+    componentVisitor->visit(this);
+}

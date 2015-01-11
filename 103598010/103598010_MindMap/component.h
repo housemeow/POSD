@@ -1,7 +1,10 @@
 #pragma once
 #include <string>
+#include "component_visitor.h"
 
 using namespace std;
+
+class ComponentVisitor;
 
 class Component
 {
@@ -24,6 +27,7 @@ public:
     virtual bool isAncientOf(Component* component) = 0;
     virtual Component* clone() = 0;
     virtual string getTypeName() = 0;
+    virtual void accept(ComponentVisitor* componentVisitor) = 0;
 protected:
     list<Component*> _children;
     Component* _parent;

@@ -8,6 +8,7 @@
 #include "insert_child_node_command.h"
 #include "insert_parent_node_command.h"
 #include "insert_sibling_node_command.h"
+#include "save_visitor.h"
 
 using namespace std;
 
@@ -81,33 +82,35 @@ Component* MindMapModel::insertNewNode(Component* component, string description,
 // 將MindMap存檔
 void MindMapModel::saveMindMap(string fileName)
 {
-    ofstream file(fileName, ofstream::out);
-    if (!file) {
-        throw exception("Path is invalid!!");
-    }
-    ComponentFactory componentFactory;
-    Component* saveMindMap = componentFactory.copyMindMap(_mindMap);
-    int newId = 0;
-    int currentId = componentFactory.getCurrentId();
-    for (int id = 0; id < currentId; id++) {
-        Component* component = saveMindMap->findNode(id);
-        if (component) {
-            component->setId(newId++);
-        }
-    }
-    for (int id = 0; id < currentId; id++) {
-        Component* component = saveMindMap->findNode(id);
-        if (component) {
-            file << id << " \"" << component->getDescription() << "\"";
-            for (ComponentIterator iterator = component->getNodeList().begin(), end = component->getNodeList().end(); iterator != end; ++iterator) {
-                Component* child = *iterator;
-                file << " " << child->getId();
-            }
-            file << endl;
-        }
-    }
-    delete saveMindMap;
-    file.close();
+    SaveVisitor saveVisitor(fileName);
+    _mindMap->accept(&saveVisitor);
+    /*   ofstream file(fileName, ofstream::out);
+       if (!file) {
+           throw exception("Path is invalid!!");
+       }
+       ComponentFactory componentFactory;
+       Component* saveMindMap = componentFactory.copyMindMap(_mindMap);
+       int newId = 0;
+       int currentId = componentFactory.getCurrentId();
+       for (int id = 0; id < currentId; id++) {
+           Component* component = saveMindMap->findNode(id);
+           if (component) {
+               component->setId(newId++);
+           }
+       }
+       for (int id = 0; id < currentId; id++) {
+           Component* component = saveMindMap->findNode(id);
+           if (component) {
+               file << id << " \"" << component->getDescription() << "\"";
+               for (ComponentIterator iterator = component->getNodeList().begin(), end = component->getNodeList().end(); iterator != end; ++iterator) {
+                   Component* child = *iterator;
+                   file << " " << child->getId();
+               }
+               file << endl;
+           }
+       }
+       delete saveMindMap;
+       file.close();*/
 }
 
 void MindMapModel::loadMindMap(string filePath)

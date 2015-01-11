@@ -144,6 +144,7 @@
     <ClCompile Include="..\103598010_MindMap\command_manager.cpp" />
     <ClCompile Include="..\103598010_MindMap\component.cpp" />
     <ClCompile Include="..\103598010_MindMap\component_factory.cpp" />
+    <ClCompile Include="..\103598010_MindMap\component_visitor.cpp" />
     <ClCompile Include="..\103598010_MindMap\composite.cpp" />
     <ClCompile Include="..\103598010_MindMap\create_mind_map_state.cpp" />
     <ClCompile Include="..\103598010_MindMap\delete_command.cpp" />
@@ -169,6 +170,7 @@
     <ClCompile Include="..\103598010_MindMap\redo_state.cpp" />
     <ClCompile Include="..\103598010_MindMap\root.cpp" />
     <ClCompile Include="..\103598010_MindMap\save_state.cpp" />
+    <ClCompile Include="..\103598010_MindMap\save_visitor.cpp" />
     <ClCompile Include="..\103598010_MindMap\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

@@ -170,6 +170,12 @@
     <ClCompile Include="..\103598010_MindMap\mind_map_presentation_model.cpp">
       <Filter>References</Filter>
     </ClCompile>
+    <ClCompile Include="..\103598010_MindMap\save_visitor.cpp">
+      <Filter>References</Filter>
+    </ClCompile>
+    <ClCompile Include="..\103598010_MindMap\component_visitor.cpp">
+      <Filter>References</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="mind_map_window.h">

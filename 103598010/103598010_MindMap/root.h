@@ -1,5 +1,8 @@
 #pragma once
 #include "composite.h"
+#include "component_visitor.h"
+
+class ComponentVisitor;
 
 class Root :
     public Composite
@@ -12,5 +15,6 @@ public:
     bool isAncientOf(Component* component);
     string getTypeName();
     Component* getMindMap();
+    void accept(ComponentVisitor* componentVisitor);
 };
 
