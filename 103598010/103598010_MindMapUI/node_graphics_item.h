@@ -12,7 +12,7 @@ enum MouseState {
 };
 
 class NodeGraphicsItem :
-    public QGraphicsItem
+    public QGraphicsItemGroup
 {
 public:
     NodeGraphicsItem(MindMapPresentationModel* mindMapPresentationModel, Component* component);

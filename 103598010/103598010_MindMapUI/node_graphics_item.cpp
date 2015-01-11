@@ -18,6 +18,7 @@ NodeGraphicsItem::NodeGraphicsItem(MindMapPresentationModel* mindMapPresentation
 
 NodeGraphicsItem::~NodeGraphicsItem()
 {
+    _component = NULL;
 }
 
 Component* NodeGraphicsItem::getComponent()
@@ -27,7 +28,9 @@ Component* NodeGraphicsItem::getComponent()
 
 QRectF NodeGraphicsItem::boundingRect() const
 {
-    return QRectF(0, 0, _component->getWidth(), _component->getHeight());
+    if (_component != NULL)
+        return QRectF(0, 0, _component->getWidth(), _component->getHeight());
+    return QRectF(0, 0, 0, 0);
 }
 
 void NodeGraphicsItem::paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget)
@@ -41,30 +44,35 @@ void NodeGraphicsItem::paint(QPainter* painter, const QStyleOptionGraphicsItem* 
     painter->drawRect(rect);
     painter->drawText(rect, Qt::AlignCenter, QString::fromStdString(_component->getBreakLineString()));// getString()));
 }
+
 bool NodeGraphicsItem::isSelected()
 {
     return _selected;
 }
+
 void NodeGraphicsItem::click()
 {
     _mindMapPresentationModel->clickNode(_component);
 }
+
 void NodeGraphicsItem::mousePressEvent(QGraphicsSceneMouseEvent* event)
 {
     update();
     click();
     QGraphicsItem::mousePressEvent(event);
 }
+
 void NodeGraphicsItem::mouseReleaseEvent(QGraphicsSceneMouseEvent* event)
 {
     update();
     QGraphicsItem::mouseReleaseEvent(event);
 }
+
 void NodeGraphicsItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent* event)
 {
     _mindMapPresentationModel->doubleClick(_component);
-    update();
 }
+
 void NodeGraphicsItem::setNodeSelected(bool selected)
 {
     _selected = selected;

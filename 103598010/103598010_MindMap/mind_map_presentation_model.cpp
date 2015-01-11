@@ -155,6 +155,7 @@ void MindMapPresentationModel::editDescription(string description)
 {
     _mindMapModel->editDescription(_selectedComponent, description);
     updateUIState();
+    refreshUI();
 }
 
 string MindMapPresentationModel::getSelectedComponentDescription()

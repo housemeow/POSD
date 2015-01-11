@@ -29,7 +29,6 @@ void MindMapView::refresh()
     _mindMapPresentationModel->getMindMap()->accept(&guiDisplayVisitor);
 }
 
-
 void MindMapView::updateSelection()
 {
     for (list<NodeGraphicsItem*>::iterator iterator = _nodeGraphicsItems.begin(); iterator != _nodeGraphicsItems.end(); iterator++) {

@@ -26,12 +26,14 @@ void GUIDisplayVisitor::visit(Component* component)
 {
     vector<int> layerCounter;
     int y = 0;
-    draw(_mindMapPresentationModel->getMindMap(), 0, y);
+    draw(component, 0, y);
+    //draw(_mindMapPresentationModel->getMindMap(), 0, y);
 }
 int GUIDisplayVisitor::draw(Component* component, int xIndex, int& yIndex)
 {
-    int middleY = 0;
     int x = xIndex * (Component::MAX_WIDTH_PIXEL + Component::PADDING);
+    int y = yIndex * (Component::MAX_HEIGHT_PIXEL + Component::PADDING);
+    int middleY = y + component->getHeight() / 2;
     list<Component*> children = component->getNodeList();
     list<int> childrenMiddleY;
     // traversal
@@ -43,11 +45,10 @@ int GUIDisplayVisitor::draw(Component* component, int xIndex, int& yIndex)
     // create self GraphicsItem
     NodeGraphicsItem* nodeGraphicsItem = new NodeGraphicsItem(_mindMapPresentationModel, component);
     if (children.size() == 0) {
-        int y = yIndex * (Component::MAX_HEIGHT_PIXEL + Component::PADDING);
-        middleY = y + component->getHeight() / 2;// Component::MAX_HEIGHT_PIXEL / 2;
         yIndex++;
     } else {
         // calc average line
+        middleY = 0;
         for (list<int>::iterator iterator = childrenMiddleY.begin(); iterator != childrenMiddleY.end(); iterator++) {
             middleY += ((float) * iterator) / childrenMiddleY.size();
         }
@@ -59,8 +60,8 @@ int GUIDisplayVisitor::draw(Component* component, int xIndex, int& yIndex)
             _graphicsScene->addItem(line);
         }
     }
-    nodeGraphicsItem->setPos(x, middleY - Component::MAX_HEIGHT_PIXEL / 2);
+    nodeGraphicsItem->setPos(x, middleY - component->getHeight() / 2);
     _nodeGraphicsItems.push_back(nodeGraphicsItem);
     _graphicsScene->addItem(nodeGraphicsItem);
-    return middleY;
+    return middleY;// y + component->getHeight() / 2;
 }
