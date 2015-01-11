@@ -30,7 +30,4 @@ void InsertParentNodeCommand::unexecute()
     parentComponent->setParent(NULL);
     delete parentComponent;
     parentComponent = NULL;
-    //_parentComponent->getParent()->addChild(_component);
-    //_parentComponent->setParent(NULL);
-    //delete _parentComponent;
 }

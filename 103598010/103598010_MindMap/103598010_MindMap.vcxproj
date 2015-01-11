@@ -85,6 +85,7 @@
     <ClInclude Include="command.h" />
     <ClInclude Include="command_manager.h" />
     <ClInclude Include="component.h" />
+    <ClInclude Include="component_decorator.h" />
     <ClInclude Include="component_factory.h" />
     <ClInclude Include="component_visitor.h" />
     <ClInclude Include="composite.h" />
@@ -104,6 +105,7 @@
     <ClInclude Include="insert_parent_node_state.h" />
     <ClInclude Include="insert_sibling_node_command.h" />
     <ClInclude Include="insert_sibling_node_state.h" />
+    <ClInclude Include="i_graphics.h" />
     <ClInclude Include="load_state.h" />
     <ClInclude Include="menu_state.h" />
     <ClInclude Include="mind_map_model.h" />
@@ -130,6 +132,7 @@
     <ClCompile Include="command.cpp" />
     <ClCompile Include="command_manager.cpp" />
     <ClCompile Include="component.cpp" />
+    <ClCompile Include="component_decorator.cpp" />
     <ClCompile Include="component_factory.cpp" />
     <ClCompile Include="component_visitor.cpp" />
     <ClCompile Include="composite.cpp" />
@@ -149,6 +152,7 @@
     <ClCompile Include="insert_parent_node_state.cpp" />
     <ClCompile Include="insert_sibling_node_command.cpp" />
     <ClCompile Include="insert_sibling_node_state.cpp" />
+    <ClCompile Include="i_graphics.cpp" />
     <ClCompile Include="load_state.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="menu_state.cpp" />

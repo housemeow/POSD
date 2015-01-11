@@ -2,6 +2,8 @@
 #include <string>
 #include "component_visitor.h"
 #include <list>
+#include <vector>
+#include "i_graphics.h"
 
 using namespace std;
 
@@ -15,7 +17,7 @@ public:
     int getId();
     void setId(int id);
     string getDescription();
-    void setDescription(string description);
+    virtual void setDescription(string description);
     string getName();
     virtual Component* getMindMap() = 0;
     Component* getParent();
@@ -29,11 +31,30 @@ public:
     virtual Component* clone() = 0;
     virtual string getTypeName() = 0;
     virtual void accept(ComponentVisitor* componentVisitor) = 0;
+    virtual void draw(IGraphics* graphics);
+    string getBreakLineString() const;
+    string getConcatenationString(vector<string> strings) const;
+    virtual int getWidth();
+    virtual int getHeight();
+    int getLineCount(string str) const;
+    virtual int getX();
+    virtual void setX(int x);
+    virtual int getY();
+    virtual void setY(int y);
+    static const int MAX_WIDTH_PIXEL;
+    static const int CHARARATER_WIDTH_PIXEL;
+    static const int MAX_HEIGHT_PIXEL;
+    static const int LINE_HEIGHT_PIXEL;
+    static const int MAX_WIDTH_CHARACTER;
+    static const int MAX_LINE;
+    static const int PADDING;
 protected:
+    Component() {}
     list<Component*> _children;
     Component* _parent;
 private:
     int _id;
     string _description;
+    int _x;
+    int _y;
 };
-

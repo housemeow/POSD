@@ -189,6 +189,12 @@
     <ClInclude Include="text_ui_display_visitor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="component_decorator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="i_graphics.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -315,6 +321,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="text_ui_display_visitor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="component_decorator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="i_graphics.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

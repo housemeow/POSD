@@ -35,6 +35,7 @@ void MindMapView::updateSelection()
     for (list<NodeGraphicsItem*>::iterator iterator = _nodeGraphicsItems.begin(); iterator != _nodeGraphicsItems.end(); iterator++) {
         NodeGraphicsItem* nodeGraphicsNode = *iterator;
         nodeGraphicsNode->setNodeSelected(_mindMapPresentationModel->getSelected(nodeGraphicsNode->getComponent()));
+        nodeGraphicsNode->update();
     }
     viewport()->update();
 }
