@@ -138,6 +138,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\103598010_MindMap\add_rectangle_style_command.cpp" />
     <ClCompile Include="..\103598010_MindMap\change_parent_command.cpp" />
     <ClCompile Include="..\103598010_MindMap\change_parent_state.cpp" />
     <ClCompile Include="..\103598010_MindMap\command.cpp" />

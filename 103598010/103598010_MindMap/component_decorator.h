@@ -21,6 +21,7 @@ public:
     void setParent(Component* parent);
     Component* findNode(int id);
     list<Component*>& getNodeList();
+    Component* getComponent();
 
 protected:
     Component* _component;

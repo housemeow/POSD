@@ -55,6 +55,12 @@
     <Filter Include="Source Files\TextUIStates\Insert">
       <UniqueIdentifier>{8c6e6e64-8330-44dc-a1d3-761dd6c27db3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Decorators">
+      <UniqueIdentifier>{fd3b9e4a-a03f-42ac-8647-0b6bae062392}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Decorators">
+      <UniqueIdentifier>{ce0cc197-8372-4ade-b98e-4552259d4cd3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -189,20 +195,23 @@
     <ClInclude Include="text_ui_display_visitor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="component_decorator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="i_graphics.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="rectangle_decorator.h">
+    <ClInclude Include="add_rectangle_style_command.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="component_decorator.h">
+      <Filter>Header Files\Decorators</Filter>
     </ClInclude>
     <ClInclude Include="ellipse_decorator.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Decorators</Filter>
     </ClInclude>
     <ClInclude Include="triangle_decorator.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Decorators</Filter>
+    </ClInclude>
+    <ClInclude Include="rectangle_decorator.h">
+      <Filter>Header Files\Decorators</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -332,20 +341,23 @@
     <ClCompile Include="text_ui_display_visitor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="component_decorator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="i_graphics.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="rectangle_decorator.cpp">
+    <ClCompile Include="add_rectangle_style_command.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="component_decorator.cpp">
+      <Filter>Source Files\Decorators</Filter>
     </ClCompile>
     <ClCompile Include="ellipse.decorator.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Decorators</Filter>
+    </ClCompile>
+    <ClCompile Include="rectangle_decorator.cpp">
+      <Filter>Source Files\Decorators</Filter>
     </ClCompile>
     <ClCompile Include="triangle_decorator.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Decorators</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

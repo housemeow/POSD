@@ -80,6 +80,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="add_rectangle_style_command.h" />
     <ClInclude Include="change_parent_command.h" />
     <ClInclude Include="change_parent_state.h" />
     <ClInclude Include="command.h" />
@@ -130,6 +131,7 @@
     <ClInclude Include="undo_state.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="add_rectangle_style_command.cpp" />
     <ClCompile Include="change_parent_command.cpp" />
     <ClCompile Include="change_parent_state.cpp" />
     <ClCompile Include="command.cpp" />

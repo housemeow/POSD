@@ -18,6 +18,11 @@ void ComponentDecorator::draw(IGraphics* graphics)
     _component->draw(graphics);
 }
 
+Component* ComponentDecorator::getComponent()
+{
+    return _component;
+}
+
 string ComponentDecorator::getDescription()
 {
     return _component->getDescription();

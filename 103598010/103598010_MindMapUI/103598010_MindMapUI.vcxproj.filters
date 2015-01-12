@@ -200,6 +200,9 @@
     <ClCompile Include="..\103598010_MindMap\ellipse.decorator.cpp">
       <Filter>References</Filter>
     </ClCompile>
+    <ClCompile Include="..\103598010_MindMap\add_rectangle_style_command.cpp">
+      <Filter>References</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="mind_map_window.h">

@@ -301,6 +301,10 @@ void MindMapPresentationModel::redo()
 void MindMapPresentationModel::addRectangleStyle()
 {
     _mindMapModel->addRectangleStyleCommand(_selectedComponent);
+    _selectedComponent = NULL;
+    setActionsEnabled(false);
+    updateUIState();
+    refreshUI();
 }
 
 void MindMapPresentationModel::addTriangleStyle()

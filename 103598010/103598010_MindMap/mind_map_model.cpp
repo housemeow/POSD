@@ -8,6 +8,7 @@
 #include "insert_child_node_command.h"
 #include "insert_parent_node_command.h"
 #include "insert_sibling_node_command.h"
+#include "add_rectangle_style_command.h"
 #include "save_visitor.h"
 #include "rectangle_decorator.h"
 #include "ellipse_decorator.h"
@@ -154,7 +155,7 @@ void MindMapModel::loadMindMap(string filePath)
     }
     for (list<Component*>::iterator componentIterator = components.begin(); componentIterator != components.end(); ++componentIterator) {
         Component* component = *componentIterator;
-        ComponentDecorator* componentDecorator = new EllipseDecorator(new TriangleDecorator(new RectangleDecorator(component)));
+        ComponentDecorator* componentDecorator = new RectangleDecorator(component);
         if (component->getParent() != NULL) {
             component->getParent()->replace(component, componentDecorator);
         } else {
@@ -286,6 +287,8 @@ void MindMapModel::insertParentNodeCommand(Component* component, string descript
 
 void MindMapModel::addRectangleStyleCommand(Component* component)
 {
+    execute(new AddRectangleStyleCommand(component));
+    _commandManager.clearRedo();
 }
 
 void MindMapModel::addTriangleStyleCommand(Component* component)
