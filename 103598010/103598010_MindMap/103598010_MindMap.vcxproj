@@ -172,7 +172,9 @@
     <ClCompile Include="mind_map_presentation_model.cpp" />
     <ClCompile Include="mind_map_presentation_model_change_subject.cpp" />
     <ClCompile Include="node.cpp" />
-    <ClCompile Include="rectangle_decorator.cpp" />
+    <ClCompile Include="rectangle_decorator.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="redo_state.cpp" />
     <ClCompile Include="root.cpp" />
     <ClCompile Include="save_state.cpp" />

@@ -19,7 +19,8 @@ protected:
 TEST_F(TextUIControllerTest, testRun)
 {
     MindMapModel mindMapModel;
-    TextUIView textUIView(cout);
+    ostringstream oss;
+    TextUIView textUIView(oss);
     istringstream istringstream("9\n");
     TextUIController textUIController(&mindMapModel, &textUIView);
     textUIController.setIStream(&istringstream);

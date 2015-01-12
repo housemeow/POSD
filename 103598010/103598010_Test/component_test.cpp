@@ -5,6 +5,27 @@
 #include "node.h"
 #include "root.h"
 
+class MockGraphics : public IGraphics
+{
+public:
+    void drawText(string text, int x, int y, int width, int height)
+    {
+        throw string("drawText");
+    }
+    void drawRectangle(int x1, int y1, int x2, int y2)
+    {
+        throw string("drawRectangle");
+    }
+    void drawEllipse(int x1, int y1, int x2, int y2)
+    {
+        throw string("drawEllipse");
+    }
+    void drawTriangle(int x1, int y1, int x2, int y2)
+    {
+        throw string("drawTriangle");
+    }
+};
+
 class ComponentTest : public ::testing::Test
 {
 protected:
@@ -40,4 +61,38 @@ TEST_F(ComponentTest, testGetMindMap)
 {
     Component* node = new Node(1);
     ASSERT_EQ(NULL, node->getMindMap());
+}
+
+TEST_F(ComponentTest, testCollapse)
+{
+    Component* node = new Node(1);
+    node->setCollapse(true);
+    ASSERT_TRUE(node->isCollapse());
+}
+
+TEST_F(ComponentTest, testFindNode)
+{
+    Component* node = new Node(1);
+    ASSERT_TRUE(NULL == node->findNode(2));
+}
+
+TEST_F(ComponentTest, testDraw)
+{
+    Component* node = new Node(1);
+    MockGraphics graphics;
+    try {
+        node->draw(&graphics);
+        FAIL();
+    } catch (string str) {
+        ASSERT_EQ("drawText", str);
+    }
+}
+
+TEST_F(ComponentTest, testBreakLine)
+{
+    Component* node = new Node(1);
+    node->setDescription("hello");
+    ASSERT_EQ("hello", node->getBreakLineString());
+    node->setDescription("Hell Hell Hell Hell Hell Hell Hell Hell ");
+    ASSERT_EQ("Hell Hell Hell Hell Hell\nHell Hell Hell", node->getBreakLineString());
 }

@@ -26,14 +26,6 @@ TEST_F(ComponentFactoryTest, resetCurrentId)
     ASSERT_EQ(0, _factory.getCurrentId());
 }
 
-TEST_F(ComponentFactoryTest, copyMindMap)
-{
-    Component* component = new Node(1);
-    component->setDescription("hello");
-    Component* copyComponent = _factory.copyMindMap(component);
-    ASSERT_EQ(component->getDescription(), copyComponent->getDescription());
-}
-
 TEST_F(ComponentFactoryTest, createComponent)
 {
     Component* nodeComponent = _factory.createComponent(ComponentType::ComponentTypeNode);
@@ -59,6 +51,6 @@ TEST_F(ComponentFactoryTest, clone)
 {
     Component* nodeComponent = _factory.createComponent(ComponentType::ComponentTypeNode);
     Component* cloneNodeComponent = nodeComponent->clone();
-    ASSERT_EQ(1, cloneNodeComponent->getId());
+    ASSERT_EQ(0, cloneNodeComponent->getId());
     ASSERT_EQ("Node", cloneNodeComponent->getTypeName());
 }

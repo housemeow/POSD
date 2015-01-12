@@ -89,20 +89,27 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\103598010_MindMap\add_ellipse_style_command.cpp" />
+    <ClCompile Include="..\103598010_MindMap\add_rectangle_style_command.cpp" />
+    <ClCompile Include="..\103598010_MindMap\add_triangle_style_command.cpp" />
     <ClCompile Include="..\103598010_MindMap\change_parent_command.cpp" />
     <ClCompile Include="..\103598010_MindMap\change_parent_state.cpp" />
     <ClCompile Include="..\103598010_MindMap\command.cpp" />
     <ClCompile Include="..\103598010_MindMap\command_manager.cpp" />
     <ClCompile Include="..\103598010_MindMap\component.cpp" />
+    <ClCompile Include="..\103598010_MindMap\component_decorator.cpp" />
     <ClCompile Include="..\103598010_MindMap\component_factory.cpp" />
+    <ClCompile Include="..\103598010_MindMap\component_visitor.cpp" />
     <ClCompile Include="..\103598010_MindMap\composite.cpp" />
     <ClCompile Include="..\103598010_MindMap\create_mind_map_state.cpp" />
+    <ClCompile Include="..\103598010_MindMap\decorator_factory.cpp" />
     <ClCompile Include="..\103598010_MindMap\delete_command.cpp" />
     <ClCompile Include="..\103598010_MindMap\delete_node_state.cpp" />
     <ClCompile Include="..\103598010_MindMap\display_mind_map_state.cpp" />
     <ClCompile Include="..\103598010_MindMap\edit_description_command.cpp" />
     <ClCompile Include="..\103598010_MindMap\edit_description_state.cpp" />
     <ClCompile Include="..\103598010_MindMap\edit_menu_state.cpp" />
+    <ClCompile Include="..\103598010_MindMap\ellipse.decorator.cpp" />
     <ClCompile Include="..\103598010_MindMap\enumeration.cpp" />
     <ClCompile Include="..\103598010_MindMap\exit_state.cpp" />
     <ClCompile Include="..\103598010_MindMap\insert_child_node_command.cpp" />
@@ -112,35 +119,56 @@
     <ClCompile Include="..\103598010_MindMap\insert_parent_node_state.cpp" />
     <ClCompile Include="..\103598010_MindMap\insert_sibling_node_command.cpp" />
     <ClCompile Include="..\103598010_MindMap\insert_sibling_node_state.cpp" />
+    <ClCompile Include="..\103598010_MindMap\i_graphics.cpp" />
     <ClCompile Include="..\103598010_MindMap\load_state.cpp" />
     <ClCompile Include="..\103598010_MindMap\menu_state.cpp" />
     <ClCompile Include="..\103598010_MindMap\mind_map_model.cpp" />
     <ClCompile Include="..\103598010_MindMap\mind_map_presentation_model.cpp" />
     <ClCompile Include="..\103598010_MindMap\mind_map_presentation_model_change_subject.cpp" />
     <ClCompile Include="..\103598010_MindMap\node.cpp" />
+    <ClCompile Include="..\103598010_MindMap\rectangle_decorator.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="..\103598010_MindMap\redo_state.cpp" />
     <ClCompile Include="..\103598010_MindMap\root.cpp" />
     <ClCompile Include="..\103598010_MindMap\save_state.cpp" />
+    <ClCompile Include="..\103598010_MindMap\save_visitor.cpp" />
     <ClCompile Include="..\103598010_MindMap\text_ui_controller.cpp" />
+    <ClCompile Include="..\103598010_MindMap\text_ui_display_visitor.cpp" />
     <ClCompile Include="..\103598010_MindMap\text_ui_state.cpp" />
     <ClCompile Include="..\103598010_MindMap\text_ui_state_factory.cpp" />
     <ClCompile Include="..\103598010_MindMap\text_ui_view.cpp" />
+    <ClCompile Include="..\103598010_MindMap\triangle_decorator.cpp" />
     <ClCompile Include="..\103598010_MindMap\undo_state.cpp" />
     <ClCompile Include="103598010_Test.cpp" />
+    <ClCompile Include="add_ellipse_style_command_test.cpp" />
+    <ClCompile Include="add_rectangle_style_command_test.cpp" />
+    <ClCompile Include="add_triangle_style_command_test.cpp" />
     <ClCompile Include="command_manager_test.cpp" />
     <ClCompile Include="component_factory_test.cpp" />
     <ClCompile Include="component_test.cpp" />
     <ClCompile Include="controller_test.cpp" />
+    <ClCompile Include="decorator_factory_test.cpp" />
+    <ClCompile Include="ellipse_decorator_test.cpp" />
+    <ClCompile Include="i_graphics_test.cpp" />
+    <ClCompile Include="menu_state_test.cpp" />
     <ClCompile Include="node_test.cpp" />
     <ClCompile Include="integration_test.cpp" />
     <ClCompile Include="observer_test.cpp" />
     <ClCompile Include="presentation_model_test.cpp" />
+    <ClCompile Include="rectangle_decorator_test.cpp" />
     <ClCompile Include="root_test.cpp" />
     <ClCompile Include="state_test.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="triangle_decorator_test.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="component_visitor_test.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

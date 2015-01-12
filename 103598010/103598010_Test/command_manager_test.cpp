@@ -38,3 +38,14 @@ TEST_F(CommandManagerTest, resetCurrentId)
         SUCCEED();
     }
 }
+
+TEST_F(CommandManagerTest, testRedo)
+{
+    Component* component = new Root(1);
+    EditDescriptionCommand command(component, "new");
+    _manager.execute(&command);
+    _manager.undo();
+    _manager.clearRedo();
+    ASSERT_EQ(0, _manager.getRedoCount());
+    ASSERT_EQ(0, _manager.getUndoCount());
+}

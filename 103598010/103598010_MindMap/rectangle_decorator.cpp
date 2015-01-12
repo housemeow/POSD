@@ -1,6 +1,5 @@
 #include "rectangle_decorator.h"
 
-
 const string RectangleDecorator::NAME = "Rectangle";
 
 RectangleDecorator::RectangleDecorator(Component* component) : ComponentDecorator(component)
