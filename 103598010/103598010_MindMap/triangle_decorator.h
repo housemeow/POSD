@@ -4,6 +4,7 @@ class TriangleDecorator :
     public ComponentDecorator
 {
 public:
+    static const string NAME;
     TriangleDecorator(Component* component);
     ~TriangleDecorator();
     int getX();

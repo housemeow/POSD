@@ -32,7 +32,6 @@ bool Root::isAncientOf(Component* component)
     return true;
 }
 
-
 Component* Root::getMindMap()
 {
     return this;
@@ -42,4 +41,13 @@ Component* Root::getMindMap()
 void Root::accept(ComponentVisitor* componentVisitor)
 {
     componentVisitor->visit(this);
+}
+
+Component* Root::clone()
+{
+    Root* newRoot = new Root(getId());
+    newRoot->setDescription(getDescription());
+    for (list<Component*>::iterator iterator = getNodeList().begin(); iterator != getNodeList().end(); iterator++)
+        newRoot->getNodeList().push_back((*iterator)->clone());
+    return newRoot;
 }

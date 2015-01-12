@@ -53,17 +53,3 @@ bool Composite::isAncientOf(Component* component)
     }
     return false;
 }
-
-Component* Composite::clone()
-{
-    ComponentFactory componentFactory;
-    Component* component = componentFactory.createComponent(ComponentTypeNode);
-    component->setDescription(getDescription());
-    list<Component*> children = getNodeList();
-    for (list<Component*>::iterator iterator = children.begin(); iterator != children.end(); iterator++) {
-        Component* child = *iterator;
-        Component* cloneChild = child->clone();
-        component->addChild(cloneChild);
-    }
-    return component;
-}

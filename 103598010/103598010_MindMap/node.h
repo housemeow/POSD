@@ -13,5 +13,6 @@ public:
     string getTypeName();
     Component* getMindMap();
     void accept(ComponentVisitor* componentVisitor);
+    Component* clone();
 };
 

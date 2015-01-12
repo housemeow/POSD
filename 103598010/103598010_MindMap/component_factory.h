@@ -8,7 +8,7 @@ public:
     ~ComponentFactory();
     Component* createComponent(ComponentType componentType, int id);
     Component* createComponent(ComponentType componentType);
-    Component* copyMindMap(Component* component);
+    //Component* copyMindMap(Component* component);
     int getCurrentId();
     void setCurrentId(int currentId);
     static void resetCurrentId();

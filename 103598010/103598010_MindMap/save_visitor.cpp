@@ -28,7 +28,7 @@ void SaveVisitor::visit(Component* component)
         throw exception("Path is invalid!!");
     }
     ComponentFactory componentFactory;
-    Component* saveMindMap = componentFactory.copyMindMap(component);
+    Component* saveMindMap = component->clone();// componentFactory.copyMindMap(component);
     int newId = 0;
     int currentId = componentFactory.getCurrentId();
     for (int id = 0; id < currentId; id++) {
@@ -45,6 +45,7 @@ void SaveVisitor::visit(Component* component)
                 Component* child = *iterator;
                 file << " " << child->getId();
             }
+            file << "," << component->getDecoratorName();
             file << endl;
         }
     }

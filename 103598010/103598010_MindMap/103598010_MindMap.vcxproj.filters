@@ -219,6 +219,9 @@
     <ClInclude Include="add_triangle_style_command.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="decorator_factory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -369,6 +372,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="add_triangle_style_command.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="decorator_factory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

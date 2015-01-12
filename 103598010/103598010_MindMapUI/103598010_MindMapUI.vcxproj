@@ -151,6 +151,7 @@
     <ClCompile Include="..\103598010_MindMap\component_visitor.cpp" />
     <ClCompile Include="..\103598010_MindMap\composite.cpp" />
     <ClCompile Include="..\103598010_MindMap\create_mind_map_state.cpp" />
+    <ClCompile Include="..\103598010_MindMap\decorator_factory.cpp" />
     <ClCompile Include="..\103598010_MindMap\delete_command.cpp" />
     <ClCompile Include="..\103598010_MindMap\delete_node_state.cpp" />
     <ClCompile Include="..\103598010_MindMap\display_mind_map_state.cpp" />

@@ -13,6 +13,11 @@ ComponentDecorator::~ComponentDecorator()
 {
 }
 
+string ComponentDecorator::getDecoratorName()
+{
+    return getTypeName() + " " + _component->getDecoratorName();
+}
+
 void ComponentDecorator::draw(IGraphics* graphics)
 {
     _component->draw(graphics);
@@ -69,14 +74,15 @@ Component* ComponentDecorator::getParent()
     return _component->getParent();
 }
 
+void ComponentDecorator::setId(int id)
+{
+    Component::setId(id);
+    _component->setId(id);
+}
+
 void ComponentDecorator::setParent(Component* parent)
 {
     _component->setParent(parent);
-}
-
-Component* ComponentDecorator::findNode(int id)
-{
-    return _component->findNode(id);
 }
 
 list<Component*>& ComponentDecorator::getNodeList()

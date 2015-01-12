@@ -1,5 +1,8 @@
 #include "rectangle_decorator.h"
 
+
+const string RectangleDecorator::NAME = "Rectangle";
+
 RectangleDecorator::RectangleDecorator(Component* component) : ComponentDecorator(component)
 {
 }
@@ -52,5 +55,5 @@ Component* RectangleDecorator::clone()
 }
 string RectangleDecorator::getTypeName()
 {
-    return "rectangle";
+    return NAME;
 }

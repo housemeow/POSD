@@ -15,7 +15,7 @@ public:
     Component(int id);
     virtual ~Component();
     int getId();
-    void setId(int id);
+    virtual void setId(int id);
     virtual string getDescription();
     virtual Component* getMindMap() = 0;
     virtual void addChild(Component* component) = 0;
@@ -24,6 +24,7 @@ public:
     virtual bool isAncientOf(Component* component) = 0;
     virtual void accept(ComponentVisitor* componentVisitor);
     virtual void setDescription(string description);
+    virtual string getDecoratorName();
     virtual Component* clone() = 0;
     virtual string getTypeName() = 0;
     virtual string getName();

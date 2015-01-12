@@ -4,6 +4,7 @@ class EllipseDecorator :
     public ComponentDecorator
 {
 public:
+    static const string NAME;
     EllipseDecorator(Component* component);
     ~EllipseDecorator();
     int getX();

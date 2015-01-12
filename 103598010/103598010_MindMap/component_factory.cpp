@@ -34,20 +34,20 @@ Component* ComponentFactory::createComponent(ComponentType componentType)
     return createComponent(componentType, _currentId++);
 }
 
-Component* ComponentFactory::copyMindMap(Component* component)
-{
-    if (component != NULL) {
-        // create component
-        Component* newComponent = new Node(component->getId());
-        newComponent->setDescription(component->getDescription());
-        list<Component*> componentList = component->getNodeList();
-        for (list<Component*>::const_iterator child = componentList.begin(); child != componentList.end(); child++) {
-            newComponent->addChild(copyMindMap(*child));
-        }
-        return newComponent;
-    }
-    return NULL;
-}
+//Component* ComponentFactory::copyMindMap(Component* component)
+//{
+//    if (component != NULL) {
+//        // create component
+//        Component* newComponent = component->clone();// new Node(component->getId());
+//        //newComponent->setDescription(component->getDescription());
+//        list<Component*> componentList = component->getNodeList();
+//        for (list<Component*>::const_iterator child = componentList.begin(); child != componentList.end(); child++) {
+//            newComponent->addChild(copyMindMap(*child));
+//        }
+//        return newComponent;
+//    }
+//    return NULL;
+//}
 
 int ComponentFactory::getCurrentId()
 {

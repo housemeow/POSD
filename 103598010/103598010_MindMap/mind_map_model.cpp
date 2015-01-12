@@ -12,9 +12,9 @@
 #include "add_ellipse_style_command.h"
 #include "add_triangle_style_command.h"
 #include "save_visitor.h"
-#include "rectangle_decorator.h"
-#include "ellipse_decorator.h"
-#include "triangle_decorator.h"
+#include "decorator_factory.h"
+#include <unordered_map>
+
 
 using namespace std;
 
@@ -90,37 +90,11 @@ void MindMapModel::saveMindMap(string fileName)
 {
     SaveVisitor saveVisitor(fileName);
     _mindMap->accept(&saveVisitor);
-    /*   ofstream file(fileName, ofstream::out);
-       if (!file) {
-           throw exception("Path is invalid!!");
-       }
-       ComponentFactory componentFactory;
-       Component* saveMindMap = componentFactory.copyMindMap(_mindMap);
-       int newId = 0;
-       int currentId = componentFactory.getCurrentId();
-       for (int id = 0; id < currentId; id++) {
-           Component* component = saveMindMap->findNode(id);
-           if (component) {
-               component->setId(newId++);
-           }
-       }
-       for (int id = 0; id < currentId; id++) {
-           Component* component = saveMindMap->findNode(id);
-           if (component) {
-               file << id << " \"" << component->getDescription() << "\"";
-               for (ComponentIterator iterator = component->getNodeList().begin(), end = component->getNodeList().end(); iterator != end; ++iterator) {
-                   Component* child = *iterator;
-                   file << " " << child->getId();
-               }
-               file << endl;
-           }
-       }
-       delete saveMindMap;
-       file.close();*/
 }
 
 void MindMapModel::loadMindMap(string filePath)
 {
+    _commandManager.clear();
     if (_mindMap != NULL) {
         delete _mindMap;
     }
@@ -131,14 +105,17 @@ void MindMapModel::loadMindMap(string filePath)
     string line;
     list<Component*> components;
     multimap<Component*, int> componentChildren;
+    unordered_multimap<Component*, string> decorators;
     while (getline(ifstream, line)) {
         stringstream splitterStringStream(line);
         int id;
         string description;
         string childrenString;
-        readComponentData(line, id, description, childrenString);
+        string decoratorString;
+        readComponentData(line, id, description, childrenString, decoratorString);
         ComponentFactory componentFactory;
         componentFactory.setCurrentId(id + 1);
+        // read children
         stringstream childrenStringStream(childrenString);
         ComponentFactory factory;
         int child;
@@ -146,7 +123,13 @@ void MindMapModel::loadMindMap(string filePath)
         component->setDescription(description);
         components.push_back(component);
         while (childrenStringStream >> child) {
-            componentChildren.insert(std::pair<Component*, int>(component, child));
+            componentChildren.insert({ component, child });
+        }
+        // read decoratorsnString);
+        stringstream decoratorStringStream(decoratorString);
+        string decorator;
+        while (decoratorStringStream >> decorator) {
+            decorators.insert({ component, decorator });
         }
     }
     for (list<Component*>::iterator componentIterator = components.begin(); componentIterator != components.end(); ++componentIterator) {
@@ -157,12 +140,18 @@ void MindMapModel::loadMindMap(string filePath)
     }
     for (list<Component*>::iterator componentIterator = components.begin(); componentIterator != components.end(); ++componentIterator) {
         Component* component = *componentIterator;
-        ComponentDecorator* componentDecorator = new RectangleDecorator(component);
-        if (component->getParent() != NULL) {
-            component->getParent()->replace(component, componentDecorator);
-        } else {
-            _mindMap = componentDecorator;
-        }
+        for (unordered_multimap<Component*, string>::const_reverse_iterator mapIterator = decorators.rbegin(); mapIterator != decorators.rend(); ++mapIterator)
+            if (mapIterator->first->getId() == (*componentIterator)->getId()) {
+                DecoratorFactory decoratorFactory;
+                ComponentDecorator* componentDecorator = decoratorFactory.create(mapIterator->second, component);
+                //new RectangleDecorator(component);
+                if (component->getParent() != NULL) {
+                    component->getParent()->replace(component, componentDecorator);
+                } else {
+                    _mindMap = componentDecorator;
+                }
+                component = componentDecorator;
+            }
     }
     ifstream.close();
 }
@@ -200,15 +189,18 @@ void MindMapModel::execute(Command* command)
     _commandManager.execute(command);
 }
 
-void MindMapModel::readComponentData(string line, int& id, string& description, string& children)
+void MindMapModel::readComponentData(string line, int& id, string& description, string& children, string& decorator)
 {
     stringstream splitterStringStream(line);
     string idString;
     getline(splitterStringStream, idString, '\"');
     getline(splitterStringStream, description, '\"');
-    getline(splitterStringStream, children, '\"');
+    getline(splitterStringStream, children, ',');
+    getline(splitterStringStream, decorator);
     stringstream idStringStream(idString);
     idStringStream >> id;
+    if (decorator == "")
+        decorator = RectangleDecorator::NAME;
 }
 
 

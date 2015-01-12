@@ -5,6 +5,7 @@ class RectangleDecorator :
     public ComponentDecorator
 {
 public:
+    static const string NAME;
     RectangleDecorator(Component* component);
     ~RectangleDecorator();
     int getX();

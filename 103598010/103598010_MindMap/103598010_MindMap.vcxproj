@@ -92,6 +92,7 @@
     <ClInclude Include="component_factory.h" />
     <ClInclude Include="component_visitor.h" />
     <ClInclude Include="composite.h" />
+    <ClInclude Include="decorator_factory.h" />
     <ClInclude Include="delete_command.h" />
     <ClInclude Include="delete_node_state.h" />
     <ClInclude Include="edit_description_command.h" />
@@ -145,6 +146,7 @@
     <ClCompile Include="component_factory.cpp" />
     <ClCompile Include="component_visitor.cpp" />
     <ClCompile Include="composite.cpp" />
+    <ClCompile Include="decorator_factory.cpp" />
     <ClCompile Include="delete_command.cpp" />
     <ClCompile Include="delete_node_state.cpp" />
     <ClCompile Include="edit_description_command.cpp" />

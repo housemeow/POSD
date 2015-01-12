@@ -25,7 +25,7 @@ public:
     void execute(Command* command);
     Component* findComponent(list<Component*> components, int id);
     ComponentType getComponentType(int id);
-    void readComponentData(string line, int& id, string& description, string& children);
+    void readComponentData(string line, int& id, string& description, string& children, string& decorator);
     Component* getMindMap();
     void editDescription(Component* component, string description);
     void deleteComponentCommand(Component* component);

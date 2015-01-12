@@ -2,6 +2,8 @@
 #include "ellipse_decorator.h"
 
 
+const string EllipseDecorator::NAME = "Ellipse";
+
 EllipseDecorator::EllipseDecorator(Component* component) : ComponentDecorator(component)
 {
 }
@@ -68,5 +70,5 @@ Component* EllipseDecorator::clone()
 }
 string EllipseDecorator::getTypeName()
 {
-    return "ellipse";
+    return NAME;
 }

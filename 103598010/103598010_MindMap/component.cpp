@@ -23,6 +23,11 @@ Component::~Component()
     }
 }
 
+string Component::getDecoratorName()
+{
+    return "";
+}
+
 int Component::getId()
 {
     return _id;
@@ -89,7 +94,7 @@ Component* Component::findNode(int id)
     if (_id == id) {
         return this;
     } else {
-        for (ComponentIterator iterator = _children.begin(), end = _children.end(); iterator != end; ++iterator) {
+        for (ComponentIterator iterator = getNodeList().begin(), end = getNodeList().end(); iterator != end; ++iterator) {
             Component* result = (*iterator)->findNode(id);
             if (result) {
                 return result;

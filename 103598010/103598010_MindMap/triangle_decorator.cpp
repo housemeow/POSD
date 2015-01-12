@@ -2,6 +2,8 @@
 #include "triangle_decorator.h"
 
 
+const string TriangleDecorator::NAME = "Triangle";
+
 TriangleDecorator::TriangleDecorator(Component* component) : ComponentDecorator(component)
 {
 }
@@ -55,5 +57,5 @@ Component* TriangleDecorator::clone()
 }
 string TriangleDecorator::getTypeName()
 {
-    return "triangle";
+    return NAME;
 }
