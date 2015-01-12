@@ -5,7 +5,7 @@ const int Component::CHARARATER_WIDTH_PIXEL = 6;
 const int Component::LINE_HEIGHT_PIXEL = 20;
 const int Component::MAX_WIDTH_CHARACTER = 25;
 const int Component::MAX_LINE = 3;
-const int Component::PADDING = 20;
+const int Component::PADDING = 5;
 const int Component::MAX_HEIGHT_PIXEL = LINE_HEIGHT_PIXEL * MAX_LINE;
 const int Component::MAX_WIDTH_PIXEL = CHARARATER_WIDTH_PIXEL * MAX_WIDTH_CHARACTER;
 
@@ -166,7 +166,7 @@ void Component::replace(Component* findComponent, Component* newComponent)
 {
     for (list<Component*>::iterator iterator = _children.begin(); iterator != _children.end(); iterator++) {
         Component* component = *iterator;
-        if (component == findComponent) {
+        if (component->getId() == findComponent->getId()) {
             *iterator = newComponent;
             break;
         }

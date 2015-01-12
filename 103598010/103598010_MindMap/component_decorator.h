@@ -4,7 +4,7 @@
 class ComponentDecorator: public Component
 {
 public:
-    static int GAP;
+    //static int GAP;
     ComponentDecorator(Component* component);
     virtual ~ComponentDecorator();
     void draw(IGraphics* graphics);

@@ -2,7 +2,7 @@
 #include "component_decorator.h"
 
 
-int ComponentDecorator::GAP = 5;
+//int ComponentDecorator::GAP = 5;
 
 ComponentDecorator::ComponentDecorator(Component* component) : Component(component->getId())
 {

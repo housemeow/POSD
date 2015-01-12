@@ -23,6 +23,4 @@ void AddTriangleStyleCommand::execute()
 void AddTriangleStyleCommand::unexecute()
 {
     _triangleDecorator->getParent()->replace(_triangleDecorator, _component);
-    delete _triangleDecorator;
-    _triangleDecorator = NULL;
 }

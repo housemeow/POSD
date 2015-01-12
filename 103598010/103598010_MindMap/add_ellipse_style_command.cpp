@@ -23,6 +23,4 @@ void AddEllipseStyleCommand::execute()
 void AddEllipseStyleCommand::unexecute()
 {
     _ellipseDecorator->getParent()->replace(_ellipseDecorator, _component);
-    delete _ellipseDecorator;
-    _ellipseDecorator = NULL;
 }

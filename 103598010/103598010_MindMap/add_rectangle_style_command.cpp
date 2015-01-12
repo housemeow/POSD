@@ -24,6 +24,4 @@ void AddRectangleStyleCommand::execute()
 void AddRectangleStyleCommand::unexecute()
 {
     _rectangleDecorator->getParent()->replace(_rectangleDecorator, _component);
-    delete _rectangleDecorator;
-    _rectangleDecorator = NULL;
 }
