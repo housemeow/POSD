@@ -93,6 +93,7 @@
     <ClInclude Include="delete_node_state.h" />
     <ClInclude Include="edit_description_command.h" />
     <ClInclude Include="edit_description_state.h" />
+    <ClInclude Include="ellipse_decorator.h" />
     <ClInclude Include="enumeration.h" />
     <ClInclude Include="create_mind_map_state.h" />
     <ClInclude Include="display_mind_map_state.h" />
@@ -125,6 +126,7 @@
     <ClInclude Include="text_ui_state_factory.h" />
     <ClInclude Include="text_ui_view.h" />
     <ClInclude Include="text_ui_controller.h" />
+    <ClInclude Include="triangle_decorator.h" />
     <ClInclude Include="undo_state.h" />
   </ItemGroup>
   <ItemGroup>
@@ -141,6 +143,7 @@
     <ClCompile Include="delete_node_state.cpp" />
     <ClCompile Include="edit_description_command.cpp" />
     <ClCompile Include="edit_description_state.cpp" />
+    <ClCompile Include="ellipse.decorator.cpp" />
     <ClCompile Include="enumeration.cpp" />
     <ClCompile Include="create_mind_map_state.cpp" />
     <ClCompile Include="display_mind_map_state.cpp" />
@@ -175,6 +178,7 @@
     <ClCompile Include="text_ui_state_factory.cpp" />
     <ClCompile Include="text_ui_view.cpp" />
     <ClCompile Include="text_ui_controller.cpp" />
+    <ClCompile Include="triangle_decorator.cpp" />
     <ClCompile Include="undo_state.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

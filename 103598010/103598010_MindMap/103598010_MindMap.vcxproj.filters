@@ -198,6 +198,12 @@
     <ClInclude Include="rectangle_decorator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ellipse_decorator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="triangle_decorator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -333,6 +339,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="rectangle_decorator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ellipse.decorator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="triangle_decorator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

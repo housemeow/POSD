@@ -27,8 +27,8 @@ void GUIDisplayVisitor::visit(Component* component)
     vector<int> layerCounter;
     int y = 0;
     draw(component, 0, y);
-    //draw(_mindMapPresentationModel->getMindMap(), 0, y);
 }
+
 int GUIDisplayVisitor::draw(Component* component, int xIndex, int& yIndex)
 {
     int x = xIndex * (Component::MAX_WIDTH_PIXEL + Component::PADDING);

@@ -10,6 +10,8 @@
 #include "insert_sibling_node_command.h"
 #include "save_visitor.h"
 #include "rectangle_decorator.h"
+#include "ellipse_decorator.h"
+#include "triangle_decorator.h"
 
 using namespace std;
 
@@ -152,14 +154,13 @@ void MindMapModel::loadMindMap(string filePath)
     }
     for (list<Component*>::iterator componentIterator = components.begin(); componentIterator != components.end(); ++componentIterator) {
         Component* component = *componentIterator;
-        RectangleDecorator* rectangleDecorator = new RectangleDecorator(new RectangleDecorator(component));
+        ComponentDecorator* componentDecorator = new EllipseDecorator(new TriangleDecorator(new RectangleDecorator(component)));
         if (component->getParent() != NULL) {
-            component->getParent()->replace(component, rectangleDecorator);
+            component->getParent()->replace(component, componentDecorator);
         } else {
-            _mindMap = rectangleDecorator;
+            _mindMap = componentDecorator;
         }
     }
-    //_mindMap = findComponent(components, 0);
     ifstream.close();
 }
 

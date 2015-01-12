@@ -8,12 +8,7 @@ public:
     ComponentDecorator(Component* component);
     virtual ~ComponentDecorator();
     void draw(IGraphics* graphics);
-    virtual string getDecoratorName() = 0;
     string getDescription();
-    int getX();
-    void setX(int x);
-    int getY();
-    void setY(int y);
     Component* getMindMap();
     void addChild(Component* component);
     void addSibling(Component* component, Component* insertPosition);

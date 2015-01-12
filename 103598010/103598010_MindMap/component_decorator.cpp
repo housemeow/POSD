@@ -23,27 +23,6 @@ string ComponentDecorator::getDescription()
     return _component->getDescription();
 }
 
-int ComponentDecorator::getX()
-{
-    return _component->getX() - ComponentDecorator::GAP;
-}
-
-void ComponentDecorator::setX(int x)
-{
-    Component::setX(x);
-    _component->setX(x + ComponentDecorator::GAP);
-}
-
-int ComponentDecorator::getY()
-{
-    return _component->getY() - ComponentDecorator::GAP;
-}
-
-void ComponentDecorator::setY(int y)
-{
-    Component::setY(y);
-    _component->setY(y + ComponentDecorator::GAP);
-}
 Component* ComponentDecorator::getMindMap()
 {
     return _component->getMindMap();

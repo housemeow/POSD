@@ -1,12 +1,11 @@
 #pragma once
 #include "component_decorator.h"
-
-class RectangleDecorator :
+class TriangleDecorator :
     public ComponentDecorator
 {
 public:
-    RectangleDecorator(Component* component);
-    ~RectangleDecorator();
+    TriangleDecorator(Component* component);
+    ~TriangleDecorator();
     int getX();
     void setX(int x);
     int getY();

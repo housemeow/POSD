@@ -4,9 +4,30 @@ RectangleDecorator::RectangleDecorator(Component* component) : ComponentDecorato
 {
 }
 
-
 RectangleDecorator::~RectangleDecorator()
 {
+}
+
+int RectangleDecorator::getX()
+{
+    return _component->getX() - ComponentDecorator::GAP;
+}
+
+void RectangleDecorator::setX(int x)
+{
+    Component::setX(x);
+    _component->setX(x + ComponentDecorator::GAP);
+}
+
+int RectangleDecorator::getY()
+{
+    return _component->getY() - ComponentDecorator::GAP;
+}
+
+void RectangleDecorator::setY(int y)
+{
+    Component::setY(y);
+    _component->setY(y + ComponentDecorator::GAP);
 }
 
 int RectangleDecorator::getWidth()
@@ -17,11 +38,6 @@ int RectangleDecorator::getWidth()
 int RectangleDecorator::getHeight()
 {
     return _component->getHeight() + ComponentDecorator::GAP * 2;
-}
-
-string RectangleDecorator::getDecoratorName()
-{
-    return "rectangle";
 }
 
 void RectangleDecorator::draw(IGraphics* graphics)

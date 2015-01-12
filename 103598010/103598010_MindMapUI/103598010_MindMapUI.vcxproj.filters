@@ -194,6 +194,12 @@
     <ClCompile Include="..\103598010_MindMap\rectangle_decorator.cpp">
       <Filter>References</Filter>
     </ClCompile>
+    <ClCompile Include="..\103598010_MindMap\triangle_decorator.cpp">
+      <Filter>References</Filter>
+    </ClCompile>
+    <ClCompile Include="..\103598010_MindMap\ellipse.decorator.cpp">
+      <Filter>References</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="mind_map_window.h">

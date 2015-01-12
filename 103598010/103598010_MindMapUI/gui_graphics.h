@@ -10,7 +10,7 @@ public:
     ~GUIGraphics();
     void drawText(string text, int x, int y, int width, int height);
     void drawRectangle(int x, int y, int width, int height);
-    void drawCircle(int x, int y, int width, int height);
+    void drawEllipse(int x, int y, int width, int height);
     void drawTriangle(int x, int y, int width, int height);
 private:
     QPainter* _painter;
