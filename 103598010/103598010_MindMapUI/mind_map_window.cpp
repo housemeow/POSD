@@ -107,6 +107,26 @@ void MindMapWindow::createActions()
     _redoAction->setIcon(QIcon("Resources\\redo.png"));
     _redoAction->setStatusTip(tr("Redo"));
     connect(_redoAction, SIGNAL(triggered()), this, SLOT(redo()));
+    // add rectangle action
+    _rectangleStyleAction = new QAction(tr("Rectangle Style"), this);
+    _rectangleStyleAction->setIcon(QIcon("Resources\\rectangle.png"));
+    _rectangleStyleAction->setStatusTip(tr("Rectangle Style"));
+    connect(_rectangleStyleAction, SIGNAL(triggered()), this, SLOT(addRectangleStyle()));
+    // add triangle action
+    _triangleStyleAction = new QAction(tr("Triangle Style"), this);
+    _triangleStyleAction->setIcon(QIcon("Resources\\triangle.png"));
+    _triangleStyleAction->setStatusTip(tr("Triangle Style"));
+    connect(_triangleStyleAction, SIGNAL(triggered()), this, SLOT(addTriangleStyle()));
+    // add ellipse action
+    _ellipseStyleAction = new QAction(tr("Ellipse Style"), this);
+    _ellipseStyleAction->setIcon(QIcon("Resources\\ellipse.png"));
+    _ellipseStyleAction->setStatusTip(tr("Ellipse Style"));
+    connect(_ellipseStyleAction, SIGNAL(triggered()), this, SLOT(addEllipseStyle()));
+    // toggle collapse action
+    _toggleCollapseAction = new QAction(tr("Toggle Collapse"), this);
+    _toggleCollapseAction->setIcon(QIcon("Resources\\collapse.png"));
+    _toggleCollapseAction->setStatusTip(tr("Toggle Collapse"));
+    connect(_toggleCollapseAction, SIGNAL(triggered()), this, SLOT(toggleCollapse()));
 }
 
 void MindMapWindow::createCentralWidget()
@@ -156,6 +176,12 @@ void MindMapWindow::createToolBar()
     _toolBar->addAction(_insertParentAction);
     _toolBar->addAction(_undoAction);
     _toolBar->addAction(_redoAction);
+    _toolBar->addSeparator();
+    _toolBar->addAction(_rectangleStyleAction);
+    _toolBar->addAction(_triangleStyleAction);
+    _toolBar->addAction(_ellipseStyleAction);
+    _toolBar->addSeparator();
+    _toolBar->addAction(_toggleCollapseAction);
 }
 
 void MindMapWindow::createMindMap()
@@ -197,6 +223,10 @@ void MindMapWindow::updateUIState()
     _pasteAction->setEnabled(_mindMapPresentationModel->getPasteActionEnabled());
     _undoAction->setEnabled(_mindMapPresentationModel->getUndoActionEnabled());
     _redoAction->setEnabled(_mindMapPresentationModel->getRedoActionEnabled());
+    _rectangleStyleAction->setEnabled(_mindMapPresentationModel->getRectangleStyleEnabled());
+    _ellipseStyleAction->setEnabled(_mindMapPresentationModel->getEllipseStyleEnabled());
+    _triangleStyleAction->setEnabled(_mindMapPresentationModel->getTriangleEnabled());
+    _toggleCollapseAction->setEnabled(_mindMapPresentationModel->getToggleCollapseEnabled());
     _mindMapView->updateSelection();
 }
 
@@ -298,4 +328,24 @@ void MindMapWindow::undo()
 void MindMapWindow::redo()
 {
     _mindMapPresentationModel->redo();
+}
+
+void MindMapWindow::addRectangleStyle()
+{
+    _mindMapPresentationModel->addRectangleStyle();
+}
+
+void MindMapWindow::addTriangleStyle()
+{
+    _mindMapPresentationModel->addTriangleStyle();
+}
+
+void MindMapWindow::addEllipseStyle()
+{
+    _mindMapPresentationModel->addEllipseStyle();
+}
+
+void MindMapWindow::toggleCollapse()
+{
+    _mindMapPresentationModel->toggleCollapse();
 }

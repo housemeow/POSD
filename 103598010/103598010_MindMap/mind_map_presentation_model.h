@@ -26,6 +26,10 @@ public:
     bool getPasteActionEnabled();
     bool getUndoActionEnabled();
     bool getRedoActionEnabled();
+    bool getRectangleStyleEnabled();
+    bool getEllipseStyleEnabled();
+    bool getTriangleEnabled();
+    bool getToggleCollapseEnabled();
     bool getSelected(Component*);
     void clickNode(Component*);
     Component* getSelectedComponent();
@@ -42,6 +46,10 @@ public:
     void paste();
     void undo();
     void redo();
+    void addRectangleStyle();
+    void addTriangleStyle();
+    void addEllipseStyle();
+    void toggleCollapse();
 private:
     void setActionsEnabled(bool enabled);
     map<Component*, bool> _componentSelections;
@@ -55,6 +63,10 @@ private:
     bool _cutActionEnabled;
     bool _copyActionEnabled;
     bool _pasteActionEnabled;
+    bool _rectangleStyleActionEnabled;
+    bool _ellipseStyleActionEnabled;
+    bool _triangleStyleActionEnabled;
+    bool _toggleCollapseActionEnabled;
     Component* _selectedComponent;
     Component* _clipboardComponent;
 };

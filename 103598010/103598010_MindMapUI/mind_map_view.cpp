@@ -25,7 +25,9 @@ void MindMapView::refresh()
     _nodeGraphicsItems.clear();
     _graphicsScene->clear();
     GUIDisplayVisitor guiDisplayVisitor(_graphicsScene, _nodeGraphicsItems, _mindMapPresentationModel);
-    _mindMapPresentationModel->getMindMap()->accept(&guiDisplayVisitor);
+    if (_mindMapPresentationModel->getMindMap() != NULL) {
+        _mindMapPresentationModel->getMindMap()->accept(&guiDisplayVisitor);
+    }
     viewport()->update();
 }
 

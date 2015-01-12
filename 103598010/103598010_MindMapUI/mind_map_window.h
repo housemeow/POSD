@@ -40,6 +40,10 @@ private:
     QAction* _aboutAction;
     QAction* _undoAction;
     QAction* _redoAction;
+    QAction* _rectangleStyleAction;
+    QAction* _triangleStyleAction;
+    QAction* _ellipseStyleAction;
+    QAction* _toggleCollapseAction;
 
     QWidget* _centralWidget;
     QMenuBar* _menuBar;
@@ -62,6 +66,10 @@ private slots:
     void about();
     void undo();
     void redo();
+    void addRectangleStyle();
+    void addTriangleStyle();
+    void addEllipseStyle();
+    void toggleCollapse();
 };
 
 #endif // MIND_MAP_WINDOW_H

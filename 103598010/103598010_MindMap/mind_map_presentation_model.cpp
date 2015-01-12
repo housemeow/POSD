@@ -78,6 +78,27 @@ bool MindMapPresentationModel::getCutActionEnabled()
     return _cutActionEnabled;
 }
 
+bool MindMapPresentationModel::getRectangleStyleEnabled()
+{
+    return _rectangleStyleActionEnabled;
+}
+
+bool MindMapPresentationModel::getEllipseStyleEnabled()
+{
+    return _ellipseStyleActionEnabled;
+}
+
+bool MindMapPresentationModel::getTriangleEnabled()
+{
+    return _triangleStyleActionEnabled;
+}
+
+bool MindMapPresentationModel::getToggleCollapseEnabled()
+{
+    return _toggleCollapseActionEnabled;
+}
+
+
 bool MindMapPresentationModel::getCopyActionEnabled()
 {
     return _copyActionEnabled;
@@ -114,6 +135,10 @@ void MindMapPresentationModel::clickNode(Component* component)
     _cutActionEnabled = false;
     _copyActionEnabled = false;
     _pasteActionEnabled = false;
+    _rectangleStyleActionEnabled = false;
+    _ellipseStyleActionEnabled = false;
+    _triangleStyleActionEnabled = false;
+    _toggleCollapseActionEnabled = false;
     _selectedComponent = component;
     _componentSelections.insert(pair<Component*, bool>(component, false));
     for (map<Component*, bool>::iterator iterator = _componentSelections.begin(); iterator != _componentSelections.end(); iterator++) {
@@ -124,6 +149,10 @@ void MindMapPresentationModel::clickNode(Component* component)
             bool isRoot = component == _mindMapModel->getMindMap();
             _cutActionEnabled = selected && !isRoot;
             _copyActionEnabled = selected && !isRoot;
+            _rectangleStyleActionEnabled = selected && !isRoot;
+            _ellipseStyleActionEnabled = selected && !isRoot;
+            _triangleStyleActionEnabled	= selected && !isRoot;
+            _toggleCollapseActionEnabled = selected;
             _pasteActionEnabled = selected && _clipboardComponent != NULL;
         } else {
             iterator->second = false;
@@ -144,6 +173,10 @@ void MindMapPresentationModel::setActionsEnabled(bool enabled)
     _cutActionEnabled = enabled;
     _copyActionEnabled = enabled;
     _pasteActionEnabled = enabled;
+    _rectangleStyleActionEnabled = enabled;
+    _ellipseStyleActionEnabled = enabled;
+    _triangleStyleActionEnabled = enabled;
+    _toggleCollapseActionEnabled = enabled;
 }
 
 Component* MindMapPresentationModel::getSelectedComponent()
@@ -265,3 +298,23 @@ void MindMapPresentationModel::redo()
     updateUIState();
     refreshUI();
 }
+void MindMapPresentationModel::addRectangleStyle()
+{
+    // TODO
+}
+
+void MindMapPresentationModel::addTriangleStyle()
+{
+    // TODO
+}
+
+void MindMapPresentationModel::addEllipseStyle()
+{
+    // TODO
+}
+
+void MindMapPresentationModel::toggleCollapse()
+{
+    // TODO
+}
+
