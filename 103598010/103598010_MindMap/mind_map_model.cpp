@@ -9,6 +9,8 @@
 #include "insert_parent_node_command.h"
 #include "insert_sibling_node_command.h"
 #include "add_rectangle_style_command.h"
+#include "add_ellipse_style_command.h"
+#include "add_triangle_style_command.h"
 #include "save_visitor.h"
 #include "rectangle_decorator.h"
 #include "ellipse_decorator.h"
@@ -293,10 +295,14 @@ void MindMapModel::addRectangleStyleCommand(Component* component)
 
 void MindMapModel::addTriangleStyleCommand(Component* component)
 {
+    execute(new AddTriangleStyleCommand(component));
+    _commandManager.clearRedo();
 }
 
 void MindMapModel::addEllipseStyleCommand(Component* component)
 {
+    execute(new AddEllipseStyleCommand(component));
+    _commandManager.clearRedo();
 }
 
 void MindMapModel::toggleCollapse(Component* component)

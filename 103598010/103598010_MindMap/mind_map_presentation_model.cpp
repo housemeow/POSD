@@ -310,11 +310,19 @@ void MindMapPresentationModel::addRectangleStyle()
 void MindMapPresentationModel::addTriangleStyle()
 {
     _mindMapModel->addTriangleStyleCommand(_selectedComponent);
+    _selectedComponent = NULL;
+    setActionsEnabled(false);
+    updateUIState();
+    refreshUI();
 }
 
 void MindMapPresentationModel::addEllipseStyle()
 {
     _mindMapModel->addEllipseStyleCommand(_selectedComponent);
+    _selectedComponent = NULL;
+    setActionsEnabled(false);
+    updateUIState();
+    refreshUI();
 }
 
 void MindMapPresentationModel::toggleCollapse()

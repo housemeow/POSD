@@ -213,6 +213,12 @@
     <ClInclude Include="rectangle_decorator.h">
       <Filter>Header Files\Decorators</Filter>
     </ClInclude>
+    <ClInclude Include="add_ellipse_style_command.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="add_triangle_style_command.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -358,6 +364,12 @@
     </ClCompile>
     <ClCompile Include="triangle_decorator.cpp">
       <Filter>Source Files\Decorators</Filter>
+    </ClCompile>
+    <ClCompile Include="add_ellipse_style_command.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="add_triangle_style_command.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
