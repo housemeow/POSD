@@ -37,16 +37,15 @@ QRectF NodeGraphicsItem::boundingRect() const
 void NodeGraphicsItem::paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget)
 {
     QRectF rect = boundingRect();
-    //else {
-//       painter->setPen(QPen(Qt::black, 3));
-//   }
-    //
     GUIGraphics graphics(painter);
     _component->draw(&graphics);
     if (_selected) {
         painter->setPen(QPen(Qt::red, 5));
         painter->drawRect(rect);
     }
+    painter->setPen(QPen(Qt::red, 5));
+    if (_component->isCollapse())
+        painter->drawText(QPoint(_component->getWidth(), _component->getHeight() / 2), QString::fromUtf8("+"));
 }
 
 bool NodeGraphicsItem::isSelected()

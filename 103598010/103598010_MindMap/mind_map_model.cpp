@@ -284,6 +284,23 @@ void MindMapModel::insertParentNodeCommand(Component* component, string descript
     _commandManager.clearRedo();
 }
 
+void MindMapModel::addRectangleStyleCommand(Component* component)
+{
+}
+
+void MindMapModel::addTriangleStyleCommand(Component* component)
+{
+}
+
+void MindMapModel::addEllipseStyleCommand(Component* component)
+{
+}
+
+void MindMapModel::toggleCollapse(Component* component)
+{
+    component->setCollapse(!component->isCollapse());
+}
+
 void MindMapModel::insertParentNode(Component* component, string description)
 {
     if (component == _mindMap) {

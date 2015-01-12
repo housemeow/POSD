@@ -300,21 +300,25 @@ void MindMapPresentationModel::redo()
 }
 void MindMapPresentationModel::addRectangleStyle()
 {
-    // TODO
+    _mindMapModel->addRectangleStyleCommand(_selectedComponent);
 }
 
 void MindMapPresentationModel::addTriangleStyle()
 {
-    // TODO
+    _mindMapModel->addTriangleStyleCommand(_selectedComponent);
 }
 
 void MindMapPresentationModel::addEllipseStyle()
 {
-    // TODO
+    _mindMapModel->addEllipseStyleCommand(_selectedComponent);
 }
 
 void MindMapPresentationModel::toggleCollapse()
 {
-    // TODO
+    _mindMapModel->toggleCollapse(_selectedComponent);
+    _selectedComponent = NULL;
+    setActionsEnabled(false);
+    updateUIState();
+    refreshUI();
 }
 

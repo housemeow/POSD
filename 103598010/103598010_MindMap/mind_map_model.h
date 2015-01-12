@@ -34,6 +34,10 @@ public:
     void insertSiblingNodeCommand(Component* component, string description);
     void insertParentNode(Component* component, string description);
     void insertParentNodeCommand(Component* component, string description);
+    void addRectangleStyleCommand(Component* component);
+    void addTriangleStyleCommand(Component* component);
+    void addEllipseStyleCommand(Component* component);
+    void toggleCollapse(Component* component);
     int getUndoCount();
     int getRedoCount();
 private:

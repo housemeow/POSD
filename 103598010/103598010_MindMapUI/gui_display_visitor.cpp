@@ -37,10 +37,12 @@ int GUIDisplayVisitor::draw(Component* component, int xIndex, int& yIndex)
     list<Component*> children = component->getNodeList();
     list<int> childrenMiddleY;
     // traversal
-    for (list<Component*>::iterator iterator = children.begin(); iterator != children.end(); iterator++) {
-        Component* child = *iterator;
-        int childMiddleY = draw(child, xIndex + 1, yIndex);
-        childrenMiddleY.push_back(childMiddleY);
+    if (!component->isCollapse()) {
+        for (list<Component*>::iterator iterator = children.begin(); iterator != children.end(); iterator++) {
+            Component* child = *iterator;
+            int childMiddleY = draw(child, xIndex + 1, yIndex);
+            childrenMiddleY.push_back(childMiddleY);
+        }
     }
     // create self GraphicsItem
     NodeGraphicsItem* nodeGraphicsItem = new NodeGraphicsItem(_mindMapPresentationModel, component);

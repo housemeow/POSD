@@ -49,6 +49,8 @@ public:
     static const int MAX_LINE;
     static const int PADDING;
     void replace(Component* component, Component* newComponent);
+    void setCollapse(bool collapse);
+    bool isCollapse();
 protected:
     Component() {}
     list<Component*> _children;
@@ -58,4 +60,5 @@ private:
     string _description;
     int _x;
     int _y;
+    bool _collapse;
 };

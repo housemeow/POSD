@@ -13,6 +13,7 @@ Component::Component(int id)
 {
     _id = id;
     _parent = NULL;
+    _collapse = false;
 }
 
 Component::~Component()
@@ -45,6 +46,16 @@ void Component::accept(ComponentVisitor* componentVisitor)
 void Component::setDescription(string description)
 {
     _description = description;
+}
+
+void Component::setCollapse(bool collapse)
+{
+    _collapse = collapse;
+}
+
+bool Component::isCollapse()
+{
+    return _collapse;
 }
 
 list<Component*>& Component::getNodeList()
