@@ -85,7 +85,8 @@ Component* Component::findNode(int id)
 
 void Component::draw(IGraphics* graphics)
 {
-    graphics->drawText(_description, getX(), getY(), getWidth(), getHeight());
+    if (graphics != NULL)
+        graphics->drawText(getBreakLineString(), getX(), getY(), getWidth(), getHeight());
 }
 
 int Component::getLineCount(string str) const
@@ -142,6 +143,12 @@ string Component::getConcatenationString(vector<string> strings) const
             strings.pop_back();
         }
         return str;
+    }
+}
+
+void Component::replace(Component* component, Component* newComponent)
+{
+    for (list<Component*>::iterator iterator = _children.begin(); iterator != _children.end(); iterator++) {
     }
 }
 

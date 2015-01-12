@@ -7,6 +7,7 @@ int ComponentDecorator::GAP = 10;
 ComponentDecorator::ComponentDecorator(Component* component)
 {
     _component = component;
+    _component->getParent()->replace(component, this);
 }
 
 ComponentDecorator::~ComponentDecorator()
@@ -35,6 +36,7 @@ int ComponentDecorator::getX()
 
 void ComponentDecorator::setX(int x)
 {
+    Component::setX(x);
     _component->setX(x + ComponentDecorator::GAP);
 }
 
@@ -45,5 +47,6 @@ int ComponentDecorator::getY()
 
 void ComponentDecorator::setY(int y)
 {
+    Component::setY(y);
     _component->setY(y + ComponentDecorator::GAP);
 }

@@ -61,7 +61,9 @@ int GUIDisplayVisitor::draw(Component* component, int xIndex, int& yIndex)
         }
     }
     nodeGraphicsItem->setPos(x, middleY - component->getHeight() / 2);
+    component->setX(0);
+    component->setY(0);
     _nodeGraphicsItems.push_back(nodeGraphicsItem);
     _graphicsScene->addItem(nodeGraphicsItem);
-    return middleY;// y + component->getHeight() / 2;
+    return middleY;
 }

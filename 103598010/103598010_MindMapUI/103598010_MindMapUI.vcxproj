@@ -163,6 +163,7 @@
     <ClCompile Include="..\103598010_MindMap\insert_parent_node_state.cpp" />
     <ClCompile Include="..\103598010_MindMap\insert_sibling_node_command.cpp" />
     <ClCompile Include="..\103598010_MindMap\insert_sibling_node_state.cpp" />
+    <ClCompile Include="..\103598010_MindMap\i_graphics.cpp" />
     <ClCompile Include="..\103598010_MindMap\load_state.cpp" />
     <ClCompile Include="..\103598010_MindMap\menu_state.cpp" />
     <ClCompile Include="..\103598010_MindMap\mind_map_model.cpp" />
@@ -203,6 +204,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="gui_display_visitor.cpp" />
+    <ClCompile Include="gui_graphics.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mind_map_view.cpp" />
     <ClCompile Include="mind_map_window.cpp" />
@@ -253,6 +255,7 @@
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_mind_map_window.h" />
     <ClInclude Include="gui_display_visitor.h" />
+    <ClInclude Include="gui_graphics.h" />
     <ClInclude Include="mind_map_view.h" />
     <ClInclude Include="node_graphics_item.h" />
     <ClInclude Include="rectangle_decorator.h" />

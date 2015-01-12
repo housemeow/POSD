@@ -13,3 +13,9 @@ string RectangleDecorator::getDecoratorName()
 {
     return "rectangle";
 }
+
+void RectangleDecorator::draw(IGraphics* graphics)
+{
+    if (graphics != NULL)
+        graphics->drawRectangle(getX(), getY(), getWidth(), getHeight());
+}

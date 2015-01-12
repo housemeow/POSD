@@ -48,6 +48,7 @@ public:
     static const int MAX_WIDTH_CHARACTER;
     static const int MAX_LINE;
     static const int PADDING;
+    void replace(Component* component, Component* newComponent);
 protected:
     Component() {}
     list<Component*> _children;

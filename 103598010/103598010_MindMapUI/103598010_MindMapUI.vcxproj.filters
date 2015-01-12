@@ -188,6 +188,12 @@
     <ClCompile Include="..\103598010_MindMap\component_decorator.cpp">
       <Filter>References</Filter>
     </ClCompile>
+    <ClCompile Include="gui_graphics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\103598010_MindMap\i_graphics.cpp">
+      <Filter>References</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="mind_map_window.h">
@@ -214,6 +220,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="rectangle_decorator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gui_graphics.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -5,6 +5,7 @@
 #include "mind_map_presentation_model.h"
 #include <string>
 #include <sstream>
+#include "gui_graphics.h"
 
 using namespace std;
 
@@ -42,7 +43,8 @@ void NodeGraphicsItem::paint(QPainter* painter, const QStyleOptionGraphicsItem* 
         painter->setPen(QPen(Qt::black, 3));
     }
     painter->drawRect(rect);
-    painter->drawText(rect, Qt::AlignCenter, QString::fromStdString(_component->getBreakLineString()));// getString()));
+    GUIGraphics graphics(painter);
+    _component->draw(&graphics);
 }
 
 bool NodeGraphicsItem::isSelected()

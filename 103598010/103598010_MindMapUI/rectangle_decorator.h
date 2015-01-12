@@ -8,5 +8,6 @@ public:
     RectangleDecorator(Component* component);
     ~RectangleDecorator();
     string getDecoratorName();
+    void draw(IGraphics* graphics);
 };
 
