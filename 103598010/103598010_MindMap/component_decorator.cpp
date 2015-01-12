@@ -2,31 +2,25 @@
 #include "component_decorator.h"
 
 
-int ComponentDecorator::GAP = 10;
+int ComponentDecorator::GAP = 5;
 
-ComponentDecorator::ComponentDecorator(Component* component)
+ComponentDecorator::ComponentDecorator(Component* component) : Component(component->getId())
 {
     _component = component;
-    _component->getParent()->replace(component, this);
 }
 
 ComponentDecorator::~ComponentDecorator()
 {
 }
 
+void ComponentDecorator::draw(IGraphics* graphics)
+{
+    _component->draw(graphics);
+}
+
 string ComponentDecorator::getDescription()
 {
-    return getDecoratorName() + _component->getDescription();
-}
-
-int ComponentDecorator::getWidth()
-{
-    return _component->getWidth() + ComponentDecorator::GAP * 2;
-}
-
-int ComponentDecorator::getHeight()
-{
-    return _component->getHeight() + ComponentDecorator::GAP * 2;
+    return _component->getDescription();
 }
 
 int ComponentDecorator::getX()
@@ -49,4 +43,59 @@ void ComponentDecorator::setY(int y)
 {
     Component::setY(y);
     _component->setY(y + ComponentDecorator::GAP);
+}
+Component* ComponentDecorator::getMindMap()
+{
+    return _component->getMindMap();
+}
+void ComponentDecorator::addChild(Component* component)
+{
+    _component->addChild(component);
+}
+void ComponentDecorator::addSibling(Component* component, Component* insertPosition)
+{
+    _component->addSibling(component, insertPosition);
+}
+void ComponentDecorator::addParent(Component* component)
+{
+    _component->addParent(component);
+}
+bool ComponentDecorator::isAncientOf(Component* component)
+{
+    return _component->isAncientOf(component);
+}
+void ComponentDecorator::accept(ComponentVisitor* componentVisitor)
+{
+    //_component->accept(componentVisitor);
+    componentVisitor->visit(this);
+}
+
+void ComponentDecorator::setDescription(string description)
+{
+    _component->setDescription(description);
+}
+
+string ComponentDecorator::getName()
+{
+    return _component->getName();
+}
+
+Component* ComponentDecorator::getParent()
+{
+    return _component->getParent();
+}
+
+void ComponentDecorator::setParent(Component* parent)
+{
+    _component->setParent(parent);
+}
+
+Component* ComponentDecorator::findNode(int id)
+{
+    return _component->findNode(id);
+}
+
+list<Component*>& ComponentDecorator::getNodeList()
+{
+    return _component->getNodeList();
 }

@@ -7,15 +7,26 @@ public:
     static int GAP;
     ComponentDecorator(Component* component);
     virtual ~ComponentDecorator();
-    virtual void draw() = 0;
+    void draw(IGraphics* graphics);
     virtual string getDecoratorName() = 0;
     string getDescription();
-    int getWidth();
-    int getHeight();
     int getX();
     void setX(int x);
     int getY();
     void setY(int y);
+    Component* getMindMap();
+    void addChild(Component* component);
+    void addSibling(Component* component, Component* insertPosition);
+    void addParent(Component* component);
+    bool isAncientOf(Component* component);
+    void accept(ComponentVisitor* componentVisitor);
+    void setDescription(string description);
+    string getName();
+    Component* getParent();
+    void setParent(Component* parent);
+    Component* findNode(int id);
+    list<Component*>& getNodeList();
+
 protected:
     Component* _component;
 };

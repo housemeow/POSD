@@ -9,7 +9,8 @@ class ComponentVisitor
 public:
     ComponentVisitor();
     virtual ~ComponentVisitor();
-    virtual void visit(Node* node) = 0;
-    virtual void visit(Root* root) = 0;
+    virtual void visit(Node* node);
+    virtual void visit(Root* root);
+    virtual void visit(Component* component);
 };
 

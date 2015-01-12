@@ -169,6 +169,7 @@
     <ClCompile Include="..\103598010_MindMap\mind_map_model.cpp" />
     <ClCompile Include="..\103598010_MindMap\mind_map_presentation_model.cpp" />
     <ClCompile Include="..\103598010_MindMap\node.cpp" />
+    <ClCompile Include="..\103598010_MindMap\rectangle_decorator.cpp" />
     <ClCompile Include="..\103598010_MindMap\redo_state.cpp" />
     <ClCompile Include="..\103598010_MindMap\root.cpp" />
     <ClCompile Include="..\103598010_MindMap\save_state.cpp" />
@@ -209,7 +210,6 @@
     <ClCompile Include="mind_map_view.cpp" />
     <ClCompile Include="mind_map_window.cpp" />
     <ClCompile Include="node_graphics_item.cpp" />
-    <ClCompile Include="rectangle_decorator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="mind_map_window.h">
@@ -258,7 +258,6 @@
     <ClInclude Include="gui_graphics.h" />
     <ClInclude Include="mind_map_view.h" />
     <ClInclude Include="node_graphics_item.h" />
-    <ClInclude Include="rectangle_decorator.h" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="mind_map_window.qrc">

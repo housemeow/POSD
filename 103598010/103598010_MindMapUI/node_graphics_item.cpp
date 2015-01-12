@@ -37,14 +37,16 @@ QRectF NodeGraphicsItem::boundingRect() const
 void NodeGraphicsItem::paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget)
 {
     QRectF rect = boundingRect();
-    if (_selected) {
-        painter->setPen(QPen(Qt::red, 5));
-    } else {
-        painter->setPen(QPen(Qt::black, 3));
-    }
-    painter->drawRect(rect);
+    //else {
+//       painter->setPen(QPen(Qt::black, 3));
+//   }
+    //
     GUIGraphics graphics(painter);
     _component->draw(&graphics);
+    if (_selected) {
+        painter->setPen(QPen(Qt::red, 5));
+        painter->drawRect(rect);
+    }
 }
 
 bool NodeGraphicsItem::isSelected()

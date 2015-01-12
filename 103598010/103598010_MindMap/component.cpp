@@ -37,6 +37,11 @@ string Component::getDescription()
     return _description;
 }
 
+void Component::accept(ComponentVisitor* componentVisitor)
+{
+    componentVisitor->visit(this);
+}
+
 void Component::setDescription(string description)
 {
     _description = description;
@@ -146,9 +151,14 @@ string Component::getConcatenationString(vector<string> strings) const
     }
 }
 
-void Component::replace(Component* component, Component* newComponent)
+void Component::replace(Component* findComponent, Component* newComponent)
 {
     for (list<Component*>::iterator iterator = _children.begin(); iterator != _children.end(); iterator++) {
+        Component* component = *iterator;
+        if (component == findComponent) {
+            *iterator = newComponent;
+            break;
+        }
     }
 }
 

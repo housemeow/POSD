@@ -9,6 +9,7 @@
 #include "insert_parent_node_command.h"
 #include "insert_sibling_node_command.h"
 #include "save_visitor.h"
+#include "rectangle_decorator.h"
 
 using namespace std;
 
@@ -115,6 +116,9 @@ void MindMapModel::saveMindMap(string fileName)
 
 void MindMapModel::loadMindMap(string filePath)
 {
+    if (_mindMap != NULL) {
+        delete _mindMap;
+    }
     ifstream ifstream(filePath, ifstream::in);
     if (!ifstream) {
         throw exception("File not found!!");
@@ -146,10 +150,16 @@ void MindMapModel::loadMindMap(string filePath)
                 (*componentIterator)->addChild(findComponent(components, mapIterator->second));
             }
     }
-    if (_mindMap != NULL) {
-        delete _mindMap;
+    for (list<Component*>::iterator componentIterator = components.begin(); componentIterator != components.end(); ++componentIterator) {
+        Component* component = *componentIterator;
+        RectangleDecorator* rectangleDecorator = new RectangleDecorator(new RectangleDecorator(component));
+        if (component->getParent() != NULL) {
+            component->getParent()->replace(component, rectangleDecorator);
+        } else {
+            _mindMap = rectangleDecorator;
+        }
     }
-    _mindMap = findComponent(components, 0);
+    //_mindMap = findComponent(components, 0);
     ifstream.close();
 }
 

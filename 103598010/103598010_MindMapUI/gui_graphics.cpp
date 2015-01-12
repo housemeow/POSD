@@ -16,6 +16,9 @@ void GUIGraphics::drawText(string text, int x, int y, int width, int height)
 }
 void GUIGraphics::drawRectangle(int x, int y, int width, int height)
 {
+    QRectF rect(x, y, width, height);
+    _painter->setPen(QPen(Qt::black, 3));
+    _painter->drawRect(rect);
 }
 void GUIGraphics::drawCircle(int x, int y, int width, int height)
 {
